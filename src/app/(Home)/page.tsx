@@ -8,7 +8,7 @@ export default async function Home() {
   const { home } = await GET_DATA_HOME()
 
   return (
-    <div className="mt-7 flex h-screen flex-col items-center justify-between gap-16 lg:flex-row lg:gap-0 ">
+    <div className="mt-7 flex flex-col items-center justify-between gap-16 lg:h-screen lg:flex-row lg:gap-0 ">
       <div className="text-light flex flex-col items-start lg:w-[544px]">
         <h1
           className={`text-6xl font-normal leading-[57px] lg:text-[6rem] lg:leading-[90.9px] ${bebas.className} `}

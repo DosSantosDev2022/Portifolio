@@ -1,13 +1,8 @@
 import type { Metadata } from 'next'
-import { Manrope } from 'next/font/google'
 
 import '../styles/globals.css'
 import { Header } from '@/components/global/Header'
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-})
+import { manrope } from './fonts'
 
 export const metadata: Metadata = {
   title: 'Portifólio - Juliano Santos',
@@ -21,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={manrope.className}>
-      <body className={` bg-zinc-950`}>
+      <body className={` bg-primary`}>
         <Header />
         <main className="mx-auto px-4 lg:px-[108px]">{children}</main>
       </body>

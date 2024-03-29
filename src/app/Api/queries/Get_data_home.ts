@@ -8,6 +8,7 @@ interface DataHome {
       links: {
         id: string
         name: string
+        url: string
         icon: string
       }[]
       image: {
@@ -52,6 +53,7 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
             links {
               id
               name
+              url
               icon
             }
             image {

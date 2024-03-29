@@ -1,6 +1,48 @@
-import { fetchHygraphQuery } from "../FetchHygraph"
+import { fetchHygraphQuery } from '../FetchHygraph'
 
-export const GET_DATA_HOME = async () : Promise<T> => {
+interface DataHome {
+  home: {
+    sectionHero: {
+      title: string
+      smallText: string
+      links: {
+        id: string
+        name: string
+        icon: string
+      }[]
+      image: {
+        url: string
+      }
+    }
+    featuredProjects: {
+      title: string
+      smallText: string
+      projects: {
+        title: string
+        description: string
+        technologie: {
+          id: string
+          name: string
+          icon: {
+            url: string
+          }
+        }
+        coverImage: {
+          url: string
+        }
+      }[]
+    }
+    sectionAboutMe: {
+      title: string
+      smallText: string
+      longText: {
+        text: string
+      }
+    }
+  }
+}
+
+export const GET_DATA_HOME = async (): Promise<DataHome> => {
   const query = `
       query MyQuery {
         home(where: {slug: "home"}) {

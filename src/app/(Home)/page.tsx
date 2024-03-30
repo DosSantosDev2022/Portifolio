@@ -3,6 +3,8 @@ import { CMSIcon } from '@/components/global/CmsIcon'
 import Link from 'next/link'
 import { bebas } from '@/app/fonts'
 import { RiArrowRightUpLine } from 'react-icons/ri'
+import { CardProject } from '@/components/global/cardProject'
+import Image from 'next/image'
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
@@ -81,7 +83,34 @@ export default async function Home() {
             {home.featuredProjects.smallText}{' '}
           </p>
         </div>
-        <div></div>
+        <div className="flex flex-col gap-[7.5rem] ">
+          {home.featuredProjects.projects.map((project) => (
+            <div key={project.title} className="flex w-full items-start gap-8">
+              <Image
+                alt=""
+                src={''}
+                width={600}
+                height={400}
+                className=" bg-zinc-400"
+              />
+              <div className="w-full items-start gap-2">
+                <h3 className="text-[2rem] font-medium leading-[2.8rem] text-light ">
+                  {project.title}
+                </h3>
+                <p className="text-lg font-normal leading-[1.6875rem] text-lightSilver ">
+                  {project.description}
+                </p>
+                <span className="text-base font-semibold uppercase leading-[1.5rem] ">
+                  Informações do projeto
+                </span>
+                <h4 className="text-base font-normal leading-[1.6rem] text-light ">
+                  Tecnologias
+                </h4>
+                <div></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

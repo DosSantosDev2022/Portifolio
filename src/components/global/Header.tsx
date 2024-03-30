@@ -28,16 +28,16 @@ export function Header() {
   }
 
   return (
-    <header className="border-secundary flex h-24 w-full flex-col items-center justify-between border-b p-4 lg:flex-row lg:px-[60px] lg:py-6 ">
+    <header className="flex h-24 w-full flex-col items-center justify-between border-b border-secundary p-4 lg:flex-row lg:px-[60px] lg:py-6 ">
       <div className="flex w-full items-center justify-between">
         <span
-          className={`text-light text-2xl font-normal uppercase  leading-10 tracking-[-0.32px] ${bebas.className}`}
+          className={`text-2xl font-normal uppercase leading-10  tracking-[-0.32px] text-light ${bebas.className}`}
         >
           Juliano Santos
         </span>
         <button
           onClick={handleMenu}
-          className="bg-light rounded-sm p-1 lg:hidden"
+          className="rounded-sm bg-light p-1 lg:hidden"
         >
           <FaBars />
         </button>
@@ -49,7 +49,7 @@ export function Header() {
           {NavLinks.map((link) => (
             <li key={link.name}>
               <Link
-                className="text-light hover:bg-secundary_hover rounded-md p-2 text-base font-normal uppercase leading-6 tracking-[-0.48px] transition-all duration-300"
+                className="rounded-md p-2 text-base font-normal uppercase leading-6 tracking-[-0.48px] text-light transition-all duration-300 hover:bg-highlights_hover"
                 href={link.url}
               >
                 {link.name}

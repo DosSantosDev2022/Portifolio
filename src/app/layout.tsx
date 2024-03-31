@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={manrope.className}>
-      <body className={` bg-primary`}>
+      <body className={` scrollbar scrollbar-thumb-zinc-800 bg-zinc-900`}>
         <Header />
         <main className="mx-auto px-4 lg:px-[108px]">{children}</main>
       </body>

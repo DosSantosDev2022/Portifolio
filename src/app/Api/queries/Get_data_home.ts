@@ -1,5 +1,5 @@
 import { fetchHygraphQuery } from '../FetchHygraph'
-
+import type { RichTextContent } from '@graphcms/rich-text-types'
 interface DataHome {
   home: {
     sectionHero: {
@@ -27,7 +27,7 @@ interface DataHome {
           icon: {
             url: string
           }
-        }
+        }[]
         coverImage: {
           url: string
         }
@@ -37,7 +37,7 @@ interface DataHome {
       title: string
       smallText: string
       longText: {
-        text: string
+        raw: RichTextContent
       }
     }
   }
@@ -82,7 +82,7 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
             title
             smallText
             longText {
-              text
+              raw
             }
           }
         }

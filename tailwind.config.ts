@@ -17,6 +17,7 @@ const config: Config = {
         highlights_hover: '#6d28d9',
         light: '#fafafa',
         lightSilver: '#d4d4d8',
+        border: '#1A1A1A',
       },
     },
   },

@@ -54,8 +54,8 @@ export default async function Home() {
         <div className="h-[470px] w-full flex-shrink-0 rounded-2xl bg-lightSilver lg:w-[450px]"></div>
       </div>
 
-      <div className="mt-10 flex w-full flex-col items-start justify-between gap-3 border-t-2 border-zinc-800 lg:h-screen lg:flex-row">
-        <div className="mt-6 flex w-full flex-col items-start gap-2">
+      <div className="mt-10 flex w-full flex-col items-center  justify-between gap-3 border-t-2 border-zinc-800 lg:h-screen lg:flex-row">
+        <div className="flex w-full flex-col items-start gap-2">
           <h3
             className={`${bebas.className}  w-full text-6xl font-normal leading-[5.68125rem] text-light lg:text-[6.3125rem]`}
           >

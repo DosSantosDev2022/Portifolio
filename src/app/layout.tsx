@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import '../styles/globals.css'
 import { Header } from '@/components/global/Header'
 import { manrope } from './fonts'
+import { Footer } from '@/components/global/Footer'
 
 export const metadata: Metadata = {
   title: 'Portifólio - Juliano Santos',
@@ -16,9 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={manrope.className}>
-      <body className={` scrollbar scrollbar-thumb-zinc-800 bg-zinc-900`}>
+      <body className={` bg-zinc-900 scrollbar scrollbar-thumb-zinc-800`}>
         <Header />
         <main className="mx-auto px-4 lg:px-[108px]">{children}</main>
+        <Footer />
       </body>
     </html>
   )

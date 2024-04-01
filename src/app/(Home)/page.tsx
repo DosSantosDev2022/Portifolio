@@ -181,8 +181,8 @@ export default async function Home() {
             </div>
           ))}
         </div>
-        <div className="mt-20 flex w-full items-center justify-center border-t-2 border-zinc-800 p-2 ">
-          <Button asChild variant="highlight">
+        <div className="mt-10  flex w-full items-center justify-center border-b-2 border-zinc-800 p-2 ">
+          <Button asChild className="mb-10" variant="outline">
             <Link href={'/Projects'}>Ver todos...</Link>
           </Button>
         </div>

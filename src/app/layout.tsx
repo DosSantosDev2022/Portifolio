@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import { Header } from '@/components/global/Header'
 import { manrope } from './fonts'
 import { Footer } from '@/components/global/Footer'
+import { ToastContainer } from 'react-toastify'
 
 export const metadata: Metadata = {
   title: 'Portifólio - Juliano Santos',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Header />
         <main className="mx-auto px-4 lg:px-[108px]">{children}</main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   )

@@ -10,7 +10,9 @@ interface ProjectCardProps {
   title: string
   coverImage: string
   description: string
-  url: string
+  slug: string
+  codeUrl: string
+  demoUrls: string
 }
 
 export function ProjectCard({
@@ -18,7 +20,9 @@ export function ProjectCard({
   title,
   description,
   coverImage,
-  url,
+  slug,
+  codeUrl,
+  demoUrls,
 }: ProjectCardProps) {
   return (
     <div
@@ -41,20 +45,23 @@ export function ProjectCard({
       </div>
       <div className="flex w-full gap-2">
         <Button variant="highlight" asChild>
-          <Link className="flex items-center gap-1 text-[12px] " href={url}>
+          <Link
+            className="flex items-center gap-1 text-[12px] "
+            href={demoUrls}
+          >
             View demo
             <MdOutlineWebAsset size={20} />
           </Link>
         </Button>
 
         <Button variant="outline" asChild>
-          <Link className="flex items-center gap-1 text-[12px] " href={url}>
+          <Link className="flex items-center gap-1 text-[12px] " href={codeUrl}>
             View code
             <FaGithub />
           </Link>
         </Button>
         <Button variant="outline" asChild>
-          <Link className="flex items-center gap-1 text-[12px] " href={url}>
+          <Link className="flex items-center gap-1 text-[12px] " href={slug}>
             Ver mais
             <BiArrowToRight size={20} />
           </Link>

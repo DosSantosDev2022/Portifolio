@@ -109,7 +109,9 @@ export default async function Home() {
             <ProjectCard
               key={project.title}
               title={project.title}
-              url={''}
+              codeUrl={''}
+              demoUrls={''}
+              slug={''}
               description={project.description}
               coverImage={project.coverImage.url}
               id=""

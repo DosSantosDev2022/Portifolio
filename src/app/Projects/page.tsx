@@ -11,12 +11,14 @@ export default async function ProjetcsPage() {
         Meus projetos
       </h1>
 
-      <div className="mt-10 grid grid-cols-1 gap-10 lg:mt-20  lg:grid-cols-3 ">
+      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 lg:mt-20 lg:grid-cols-3 ">
         {project.map((project) => (
           <ProjectCard
             key={project.title}
             title={project.title}
-            url={`/Project/${project.slug}`}
+            codeUrl={project.codeLink}
+            demoUrls={project.deployLink}
+            slug={`/Project/${project.slug}`}
             description={project.description}
             coverImage={project.coverImage.url}
             id=""

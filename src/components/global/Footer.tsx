@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="flex flex-col lg:px-20 lg:py-20">
+    <footer className="flex flex-col border-t-[1px] border-zinc-700 lg:px-20 lg:py-20">
       <div className="flex w-full flex-col px-4 py-4 lg:flex-row">
         <div className="flex w-full flex-col">
           <h3
@@ -45,7 +45,7 @@ export function Footer() {
 
         <Form />
       </div>
-      <div className=" mt-10 flex w-full items-center justify-center border-t-2 border-zinc-800 p-2">
+      <div className="mt-10 flex w-full items-center justify-center border-t-[1px] border-zinc-800 p-2">
         <span className="font-light leading-[25.6px] text-lightSilver ">
           © 2024 Juliano Santos
         </span>

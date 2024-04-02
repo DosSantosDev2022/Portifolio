@@ -5,23 +5,26 @@ import Link from 'next/link'
 import { CMSIcon } from '@/components/global/CmsIcon'
 import { TooltipComponent } from '@/components/global/Tooltip'
 import Image from 'next/image'
+import { RichText } from '@/components/global/RichText'
 
 export default async function AboutPage() {
   const { aboutMe } = await GET_DATA_ABOUT()
   const techs = aboutMe.sectionTechnologies
   return (
-    <div className="flex flex-col">
-      <div className="mt-[80px] flex w-full flex-col lg:mt-[160px] lg:h-screen lg:flex-row ">
+    <div className="flex flex-col space-y-20 ">
+      <div className="mt-16 flex h-screen w-full flex-col lg:flex-row ">
         <div className="w-full">
-          <h1 className={`${bebas.className} text-6xl font-normal text-light`}>
+          <h1
+            className={`${bebas.className} font-normal text-light lg:text-[6rem] lg:leading-[90.9px]`}
+          >
             {aboutMe.sectionHero.title}
           </h1>
         </div>
         <div className="flex w-full flex-col gap-2">
-          <span className="text-[32px] text-light  ">
+          <span className="text-3xl leading-[44.8px] text-light  ">
             {aboutMe.sectionHero.smallText}
           </span>
-          <p className="text-lightSilver">
+          <p className="text-lg font-normal leading-[27px] text-lightSilver ">
             {aboutMe.sectionHero.longText.text}
           </p>
           <div className="mt-[54px] flex items-center gap-4 ">
@@ -49,15 +52,19 @@ export default async function AboutPage() {
           </div>
         </div>
       </div>
-      <div className="mt-[70px] h-[500px] w-full rounded bg-zinc-300 lg:mt-0 "></div>
-      <div className="mt-[80px] flex h-screen flex-col lg:flex-row lg:pb-[80px]  lg:pt-[80px] ">
+
+      <div className="h-[500px] w-full rounded bg-zinc-300 "></div>
+
+      <div className="flex h-screen flex-col lg:flex-row ">
         <div className="w-full">
-          <h2 className={`${bebas.className} text-[76px] text-light `}>
-            {aboutMe.sectionTechnologies.title}{' '}
+          <h2
+            className={`${bebas.className} text-[76px] leading-[76px] text-light `}
+          >
+            {aboutMe.sectionTechnologies.title}
           </h2>
         </div>
         <div className="w-full">
-          <p className="mb-[32px] text-light ">
+          <p className="mb-[32px] text-lg font-normal leading-[27px] text-light">
             {aboutMe.sectionTechnologies.smallText}
           </p>
 
@@ -76,6 +83,28 @@ export default async function AboutPage() {
               </TooltipComponent>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="flex  h-screen flex-col lg:flex-row">
+        <div className="w-full">
+          <h2
+            className={`${bebas.className} w-full text-[76px] leading-[76px] text-light lg:w-[362px] `}
+          >
+            {aboutMe.sectionstory.title}
+          </h2>
+        </div>
+        <div className="w-full">
+          <RichText
+            content={aboutMe.sectionstory.longText.raw}
+            renderers={{
+              p: ({ children }) => (
+                <p className="text-lg font-normal leading-[27px] text-light">
+                  {children}
+                </p>
+              ),
+            }}
+          />
         </div>
       </div>
     </div>

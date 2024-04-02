@@ -3,3 +3,11 @@
 @tailwind utilities;
 
 
+@layer utilities {
+  .text-limit {
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
+}

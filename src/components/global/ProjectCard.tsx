@@ -38,32 +38,47 @@ export function ProjectCard({
         className=" rounded-md bg-zinc-400"
       />
       <div className="flex flex-col gap-2 p-1">
-        <h2 className="font-normal text-light">{title}</h2>
-        <p className="text-limit text-base font-normal leading-5 text-lightSilver ">
+        <h2 className="text-lg font-bold text-light">{title}</h2>
+        <p className="text-limit text-base font-thin leading-5 text-lightSilver ">
           {description}
         </p>
       </div>
-      <div className="flex w-full gap-2">
-        <Button variant="highlight" asChild>
+      <div className="flex w-full items-center justify-between gap-1 p-1">
+        <Button
+          className="flex w-full items-center justify-center"
+          variant="highlight"
+          asChild
+        >
           <Link
-            className="flex items-center gap-1 text-[12px] "
+            className="flex items-center gap-1  text-[10px] "
             href={demoUrls}
           >
             View demo
-            <MdOutlineWebAsset size={20} />
+            <MdOutlineWebAsset size={18} />
           </Link>
         </Button>
 
-        <Button variant="outline" asChild>
-          <Link className="flex items-center gap-1 text-[12px] " href={codeUrl}>
+        <Button
+          className="flex w-full items-center justify-center"
+          variant="outline"
+          asChild
+        >
+          <Link
+            className="flex items-center gap-1  text-[10px] "
+            href={codeUrl}
+          >
             View code
-            <FaGithub />
+            <FaGithub size={18} />
           </Link>
         </Button>
-        <Button variant="outline" asChild>
-          <Link className="flex items-center gap-1 text-[12px] " href={slug}>
+        <Button
+          className="flex w-full items-center justify-center"
+          variant="outline"
+          asChild
+        >
+          <Link className="flex items-center gap-1  text-[10px] " href={slug}>
             Ver mais
-            <BiArrowToRight size={20} />
+            <BiArrowToRight size={18} />
           </Link>
         </Button>
       </div>

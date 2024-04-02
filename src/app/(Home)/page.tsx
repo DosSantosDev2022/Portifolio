@@ -104,7 +104,7 @@ export default async function Home() {
             {home.featuredProjects.smallText}{' '}
           </p>
         </div>
-        <div className="mt-10 flex flex-col gap-10  lg:mt-20 lg:flex-row ">
+        <div className="mt-10 flex flex-col gap-5  lg:mt-20 lg:flex-row ">
           {home.featuredProjects.projects.map((project) => (
             <ProjectCard
               key={project.title}

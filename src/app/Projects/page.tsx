@@ -11,7 +11,7 @@ export default async function ProjetcsPage() {
         Meus projetos
       </h1>
 
-      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 lg:mt-20 lg:grid-cols-3 ">
+      <div className="mt-10 flex flex-wrap gap-6 md:grid-cols-3 lg:mt-20  ">
         {project.map((project) => (
           <ProjectCard
             key={project.title}

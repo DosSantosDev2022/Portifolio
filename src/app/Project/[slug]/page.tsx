@@ -89,7 +89,7 @@ export default async function ProjectPageDetails({
       </div>
 
       <div className="mt-10 flex items-start justify-start gap-2">
-        <Button asChild>
+        <Button variant="outline" asChild>
           <Link
             className="flex items-center gap-2"
             href={projectDetails?.codeLink || ''}
@@ -98,7 +98,7 @@ export default async function ProjectPageDetails({
             <FaGithub size={18} />
           </Link>
         </Button>
-        <Button asChild>
+        <Button variant="outline" asChild>
           <Link
             className="flex items-center gap-2"
             href={projectDetails?.deployLink || ''}

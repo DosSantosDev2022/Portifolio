@@ -27,17 +27,35 @@ export function Footer() {
             </span>
           </div>
           <div className="mb-10 mt-5 flex items-center gap-8 lg:mb-0">
-            <Link className="text-3xl text-lightSilver" href={''}>
+            <Link
+              target="_blank"
+              className="text-3xl text-lightSilver"
+              href={'https://www.linkedin.com/in/dossantosdev/'}
+            >
               <FaLinkedinIn />
             </Link>
-            <Link className="text-3xl text-lightSilver" href={''}>
+            <Link
+              target="_blank"
+              className="text-3xl text-lightSilver"
+              href={'https://github.com/DosSantosDev2022'}
+            >
               <FaGithub />
             </Link>
-            <Link className="text-3xl text-lightSilver" href={''}>
+            <Link
+              target="_blank"
+              className="text-3xl text-lightSilver"
+              href={'https://www.instagram.com/julianosantosdev/'}
+            >
               <FaInstagram />
             </Link>
 
-            <Link className="text-3xl text-lightSilver" href={''}>
+            <Link
+              target="_blank"
+              className="text-3xl text-lightSilver"
+              href={
+                'https://wa.me/+5511916453897?text=Ol%C3%A1,%20quero%20conhecer%20mais%20do%20seu%20trabalho,%20podemos%20conversar%20? '
+              }
+            >
               <FaWhatsapp />
             </Link>
           </div>

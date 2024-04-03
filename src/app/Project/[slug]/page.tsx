@@ -88,6 +88,14 @@ export default async function ProjectPageDetails({
         />
       </div>
 
+      <Button
+        variant="outline"
+        asChild
+        className="fixed bottom-4 right-4 w-16 animate-bounce text-center"
+      >
+        <Link href={'/Projects'}>Voltar</Link>
+      </Button>
+
       <div className="mt-10 flex items-start justify-start gap-2">
         <Button variant="outline" asChild>
           <Link

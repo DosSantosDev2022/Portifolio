@@ -1,4 +1,4 @@
-import { GET_DATA_PROJECT } from '@/app/Api/queries/Get_data_project'
+import { GET_DATA_PROJECT } from '@/app/api/queries/Get_data_project'
 import { bebas } from '@/app/fonts'
 import { RichText } from '@/components/global/RichText'
 import { Button } from '@/components/global/button'

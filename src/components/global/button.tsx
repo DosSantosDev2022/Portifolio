@@ -3,7 +3,7 @@ import { Slot } from '@radix-ui/react-slot'
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'highlight'
+  variant?: 'primary' | 'outline' | 'highlight' | 'disabled'
   asChild?: boolean
 }
 
@@ -18,6 +18,7 @@ export function Button({
     primary: `bg-zinc-50 text-zinc-900 hover:bg-zinc-100 hover:scale-105 transition-all duration-500`,
     outline: `bg-transparent border border-zinc-700 text-zinc-50 hover:bg-zinc-700 duration-300`,
     highlight: `text-zinc-50 hover:bg-highlights_hover duration-300 bg-highlights `,
+    disabled: 'bg-transparent border border-zinc-700 text-zinc-50 ',
   }
 
   const _className = twMerge(

@@ -1,4 +1,4 @@
-import { GET_DATA_HOME } from '@/app/Api/queries/Get_data_home'
+import { GET_DATA_HOME } from '@/app/api/queries/Get_data_home'
 import { CMSIcon } from '@/components/global/CmsIcon'
 import { bebas } from '@/app/fonts'
 import { RiArrowRightUpLine } from 'react-icons/ri'

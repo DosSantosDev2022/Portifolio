@@ -1,4 +1,4 @@
-import { GET_DATA_ABOUT } from '@/app/Api/queries/Get_data_about'
+import { GET_DATA_ABOUT } from '@/app/api/queries/Get_data_about'
 import { bebas } from '../fonts'
 import { RiArrowRightUpLine } from 'react-icons/ri'
 import Link from 'next/link'

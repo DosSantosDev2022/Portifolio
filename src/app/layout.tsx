@@ -5,6 +5,7 @@ import { Header } from '@/components/global/Header'
 import { manrope } from './fonts'
 import { Footer } from '@/components/global/Footer'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/ReactToastify.css'
 
 export const metadata: Metadata = {
   title: 'Portifólio - Juliano Santos',

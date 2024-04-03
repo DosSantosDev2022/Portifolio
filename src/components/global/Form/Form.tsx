@@ -4,9 +4,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '../button'
 import { Input } from './Input'
-import { TextArea } from './TextArea'
 import { Label } from './label'
 import { toast } from 'react-toastify'
+import TextArea from './TextArea'
 
 const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
@@ -19,7 +19,7 @@ export const FormSchema = z.object({
       message: 'Email inválido, tente novamente !',
     }),
   telefone: z.string().min(8).max(15),
-  mensagem: z.string().min(10).max(500),
+  mensagem: z.string().min(10, 'Deixe sua mensagem'),
 })
 
 type Form = z.infer<typeof FormSchema>
@@ -35,13 +35,14 @@ export function Form() {
   })
 
   const onSubmit: SubmitHandler<Form> = async (data) => {
-    const response = await fetch('', {
+    const response = await fetch('api/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
+    console.log(data)
 
     if (response.ok) {
       toast.success('E-mail enviado com sucesso !', {
@@ -72,7 +73,7 @@ export function Form() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
       <div className="flex flex-col gap-1">
-        <Label htmlFor="">Nome</Label>
+        <Label htmlFor="nome">Nome</Label>
         <Input
           {...register('nome')}
           placeholder="Digite seu nome"
@@ -85,7 +86,7 @@ export function Form() {
         )}
       </div>
       <div className="flex flex-col gap-1">
-        <Label htmlFor="">Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           {...register('email')}
           placeholder="Digite seu e-mail"
@@ -98,7 +99,7 @@ export function Form() {
         )}
       </div>
       <div className="flex flex-col gap-1">
-        <Label htmlFor="">Telefone</Label>
+        <Label htmlFor="telefone">Telefone</Label>
         <Input
           {...register('telefone')}
           placeholder="(xx) xxxx-xxxx"
@@ -111,7 +112,7 @@ export function Form() {
         )}
       </div>
       <div className="flex flex-col gap-1">
-        <Label htmlFor="">Mensagem</Label>
+        <Label htmlFor="mensagem">Mensagem</Label>
         <TextArea
           {...register('mensagem')}
           placeholder="Deixe sua mensagem..."

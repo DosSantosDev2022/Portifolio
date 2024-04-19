@@ -49,7 +49,16 @@ export default async function Home() {
             </ul>
           </div>
         </div>
-        <div className="h-[470px] w-full flex-shrink-0 rounded-2xl bg-lightSilver lg:w-[450px]"></div>
+        <div className="h-[470px] w-full flex-shrink-0 rounded-2xl  lg:w-[450px]">
+          <Image
+            className="rounded"
+            src={home.sectionHero.image.url}
+            alt=""
+            width={400}
+            height={400}
+            quality={100}
+          />
+        </div>
       </div>
 
       <div className="my-20 flex w-full flex-col items-center  justify-between gap-3 lg:flex-row">

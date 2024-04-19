@@ -1,9 +1,6 @@
 import Image from 'next/image'
 import { Button } from './button'
 import Link from 'next/link'
-import { MdOutlineWebAsset } from 'react-icons/md'
-import { FaGithub } from 'react-icons/fa'
-import { BiArrowToRight } from 'react-icons/bi'
 
 interface ProjectCardProps {
   id: string
@@ -49,12 +46,8 @@ export function ProjectCard({
           variant="highlight"
           asChild
         >
-          <Link
-            className="flex items-center gap-1  text-[10px] "
-            href={demoUrls}
-          >
+          <Link className="flex items-center gap-1" href={demoUrls}>
             View demo
-            <MdOutlineWebAsset size={18} />
           </Link>
         </Button>
 
@@ -63,12 +56,8 @@ export function ProjectCard({
           variant="outline"
           asChild
         >
-          <Link
-            className="flex items-center gap-1  text-[10px] "
-            href={codeUrl}
-          >
+          <Link className="flex items-center gap-1 " href={codeUrl}>
             View code
-            <FaGithub size={18} />
           </Link>
         </Button>
         <Button
@@ -76,9 +65,8 @@ export function ProjectCard({
           variant="outline"
           asChild
         >
-          <Link className="flex items-center gap-1  text-[10px] " href={slug}>
+          <Link className="flex items-center gap-1  " href={slug}>
             Ver mais
-            <BiArrowToRight size={18} />
           </Link>
         </Button>
       </div>

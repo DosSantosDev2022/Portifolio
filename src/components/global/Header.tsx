@@ -28,7 +28,7 @@ export function Header() {
   }
 
   return (
-    <header className="flex h-24 w-full flex-col items-center justify-between border-b border-secundary p-4 lg:flex-row lg:px-[60px] lg:py-6 ">
+    <header className="flex w-full flex-col items-center justify-between border-b border-secundary p-4 lg:h-24 lg:flex-row lg:px-[108px] lg:py-6 ">
       <div className="flex w-full items-center justify-between">
         <span
           className={`text-2xl font-normal uppercase leading-10  tracking-[-0.32px] text-light ${bebas.className}`}

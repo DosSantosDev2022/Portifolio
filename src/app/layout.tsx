@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={manrope.className}>
-      <body className={` bg-zinc-900 scrollbar scrollbar-thumb-zinc-800`}>
+      <body className={` bg-zinc-900 scrollbar scrollbar-thumb-zinc-800 h-screen `}>
         <Header />
-        <main className="mx-auto px-4 lg:px-[108px]">{children}</main>
+        <main className=" mx-auto px-4 lg:px-[108px] bg-[url('/background_02.jpg')] ">{children}</main>
         <Footer />
         <ToastContainer />
       </body>

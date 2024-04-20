@@ -16,8 +16,8 @@ export default async function ProjetcsPage({
   const { project, totalCount } = await GET_PAGINATION_DATA(page, first)
 
   return (
-    <div className="my-20 flex flex-col items-start justify-between gap-16  lg:gap-0 ">
-      <h1 className={`${bebas.className} text-8xl text-light`}>
+    <div className="flex flex-col items-start justify-between gap-16  lg:gap-0 ">
+      <h1 className={`${bebas.className} text-8xl text-light mt-10`}>
         Meus projetos
       </h1>
 
@@ -35,7 +35,7 @@ export default async function ProjetcsPage({
           />
         ))}
       </div>
-      <div className="mt-10  flex w-full items-center justify-end">
+      <div className="my-10  flex w-full items-center justify-end">
         <Pagination totalItens={totalCount} page={page} limit={first} />
       </div>
     </div>

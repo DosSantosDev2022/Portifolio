@@ -11,8 +11,8 @@ export default async function AboutPage() {
   const { aboutMe } = await GET_DATA_ABOUT()
   const techs = aboutMe.sectionTechnologies
   return (
-    <div className="flex flex-col space-y-20 ">
-      <div className="mt-16 flex h-screen w-full flex-col lg:flex-row ">
+    <div className="flex flex-col space-y-52 ">
+      <div className="mt-16 flex  w-full flex-col lg:flex-row ">
         <div className="w-full">
           <h1
             className={`${bebas.className} font-normal text-light lg:text-[6rem] lg:leading-[90.9px]`}
@@ -51,11 +51,12 @@ export default async function AboutPage() {
             </ul>
           </div>
         </div>
+        
       </div>
 
-      <div className="h-[500px] w-full rounded bg-zinc-300 "></div>
+      
 
-      <div className="flex h-screen flex-col lg:flex-row ">
+      <div className="flex flex-col lg:flex-row ">
         <div className="w-full">
           <h2
             className={`${bebas.className} text-[76px] leading-[76px] text-light `}
@@ -86,15 +87,15 @@ export default async function AboutPage() {
         </div>
       </div>
 
-      <div className="flex  h-screen flex-col lg:flex-row">
-        <div className="w-full">
+      <div className="flex  flex-col lg:flex-row w-full gap-4">
+        
           <h2
-            className={`${bebas.className} w-full text-[76px] leading-[76px] text-light lg:w-[362px] `}
+            className={`${bebas.className} text-[76px] leading-[76px] text-light w-full `}
           >
             {aboutMe.sectionstory.title}
           </h2>
-        </div>
-        <div className="w-full">
+        
+        <div className="w-full flex flex-col mb-20">
           <RichText
             content={aboutMe.sectionstory.longText.raw}
             renderers={{
@@ -106,6 +107,7 @@ export default async function AboutPage() {
             }}
           />
         </div>
+
       </div>
     </div>
   )

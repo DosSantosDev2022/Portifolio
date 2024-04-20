@@ -14,9 +14,10 @@ export default async function Home() {
   /* const techs = home.featuredProjects.projects.find((i) => i.technologie) */
 
   return (
-    <section className="">
-      <div className=" my-20 flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
-        <div className="flex flex-col items-start text-light lg:w-[544px]">
+    <div className="space-y-52  ">
+
+      <div className=" flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
+        <div className=" mt-16 flex flex-col items-start text-light lg:w-[544px]">
           <h1
             className={`text-6xl font-normal leading-[57px] lg:text-[6rem] lg:leading-[90.9px] ${bebas.className} `}
           >
@@ -49,7 +50,7 @@ export default async function Home() {
             </ul>
           </div>
         </div>
-        <div className="h-[470px] w-full flex-shrink-0 rounded-2xl  lg:w-[450px]">
+        <div className=" mt-16 h-[470px] w-full flex-shrink-0 rounded-2xl  lg:w-[450px]">
           <Image
             className="rounded"
             src={home.sectionHero.image.url}
@@ -61,7 +62,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="my-20 flex w-full flex-col items-center  justify-between gap-3 lg:flex-row">
+      <div className="flex w-full flex-col items-center  justify-between gap-3 lg:flex-row">
         <div className="flex w-full flex-col items-start gap-2">
           <h3
             className={`${bebas.className}  w-full text-6xl font-normal leading-[5.68125rem] text-light lg:text-[6.3125rem]`}
@@ -102,7 +103,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="my-20 flex flex-col gap-2 ">
+      <div className="flex flex-col gap-2 ">
         <div className="mt-6 flex flex-col items-start gap-2 lg:w-[37rem]">
           <h2
             className={` ${bebas.className} text-6xl font-normal  text-light lg:text-[4.75rem] lg:leading-[4.75rem] `}
@@ -133,6 +134,7 @@ export default async function Home() {
           </Button>
         </div>
       </div>
-    </section>
+
+    </div>
   )
 }

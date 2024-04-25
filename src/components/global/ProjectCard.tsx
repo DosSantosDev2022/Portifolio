@@ -24,7 +24,7 @@ export function ProjectCard({
   return (
     <div
       key={id}
-      className="flex w-full flex-col items-start gap-6 rounded-md bg-zinc-800 p-4 lg:w-[368px]"
+      className="flex w-full flex-col items-start gap-6 rounded-md bg-zinc-800 p-4 lg:w-[326px]"
     >
       <Image
         alt={title}
@@ -46,7 +46,7 @@ export function ProjectCard({
           variant="highlight"
           asChild
         >
-          <Link className="flex items-center gap-1" href={demoUrls}>
+          <Link className="flex items-center gap-1 text-sm" href={demoUrls} target='_blank'>
             View demo
           </Link>
         </Button>
@@ -56,7 +56,7 @@ export function ProjectCard({
           variant="outline"
           asChild
         >
-          <Link className="flex items-center gap-1 " href={codeUrl}>
+          <Link className="flex items-center gap-1 text-sm " href={codeUrl} target='_blank'>
             View code
           </Link>
         </Button>
@@ -65,7 +65,7 @@ export function ProjectCard({
           variant="outline"
           asChild
         >
-          <Link className="flex items-center gap-1  " href={slug}>
+          <Link className="flex items-center gap-1 text-sm  " href={slug}>
             Ver mais
           </Link>
         </Button>

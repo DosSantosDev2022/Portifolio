@@ -14,10 +14,10 @@ export default async function Home() {
   /* const techs = home.featuredProjects.projects.find((i) => i.technologie) */
 
   return (
-    <div className="space-y-52  ">
+    <div className="space-y-40  ">
 
-      <div className=" flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
-        <div className=" mt-16 flex flex-col items-start text-light lg:w-[544px]">
+      <div className=" pt-16  flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
+        <div className=" flex flex-col items-start text-light lg:w-[544px]">
           <h1
             className={`text-6xl font-normal leading-[57px] lg:text-[6rem] lg:leading-[90.9px] ${bebas.className} `}
           >
@@ -28,7 +28,7 @@ export default async function Home() {
           </span>
           <div className="mt-[54px] flex items-center gap-4 ">
             <button className="flex items-center gap-3 rounded-3xl bg-highlights px-5 py-2 duration-300 hover:bg-highlights_hover ">
-              Contact-Me
+              Contato
               <i className="rounded-full bg-light p-2 duration-300 hover:scale-105">
                 <RiArrowRightUpLine size={18} className="text-secundary" />
               </i>
@@ -50,7 +50,7 @@ export default async function Home() {
             </ul>
           </div>
         </div>
-        <div className=" mt-16 h-[470px] w-full flex-shrink-0 rounded-2xl  lg:w-[450px]">
+        <div className=" h-[470px] w-full flex-shrink-0 rounded-2xl  lg:w-[450px]">
           <Image
             className="rounded"
             src={home.sectionHero.image.url}
@@ -62,20 +62,20 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center  justify-between gap-3 lg:flex-row">
+      <div className="flex  w-full flex-col items-center  justify-between gap-3 lg:flex-row">
         <div className="flex w-full flex-col items-start gap-2">
           <h3
             className={`${bebas.className}  w-full text-6xl font-normal leading-[5.68125rem] text-light lg:text-[6.3125rem]`}
           >
             {home.sectionAboutMe.title}
           </h3>
-          <div className="mt-3 h-[400px] w-full flex-shrink-0 rounded-2xl bg-lightSilver lg:w-[350px]">
-            <Image src={'/profile.png'} alt="" width={343} height={400} />
+          <div className="mt-3  flex-shrink-0  bg-lightSilver w-[343px] h-[400px] relative rounded-md ">
+            <Image src={home.sectionHero.image.url} alt="" fill objectFit='cover' />
           </div>
         </div>
 
         <div className="mt-6 flex w-full flex-col items-start gap-2">
-          <h5 className="text-xl  font-medium text-light lg:text-[2rem] lg:leading-[2.8rem] ">
+          <h5 className="text-xl  font-medium text-light lg:text-[2rem] lg:leading-9">
             {home.sectionAboutMe.smallText}
           </h5>
           <RichText
@@ -87,7 +87,7 @@ export default async function Home() {
                 </b>
               ),
               p: ({ children }) => (
-                <p className="text-base font-normal leading-[24px] text-light ">
+                <p className="text-base font-normal leading-[21px] text-light ">
                   {children}
                 </p>
               ),
@@ -98,7 +98,11 @@ export default async function Home() {
             className="mt-3 text-base font-bold leading-[1.5rem] text-highlights "
             href={'/About'}
           >
-            <span className="">Veja mais sobre mim</span>
+            <Button asChild variant='highlight' >
+              <Link href={'/About'} className="text-sm px-3 ">
+              Veja mais sobre mim
+              </Link>
+            </Button>
           </Link>
         </div>
       </div>
@@ -119,12 +123,12 @@ export default async function Home() {
             <ProjectCard
               key={project.title}
               title={project.title}
-              codeUrl={''}
-              demoUrls={''}
-              slug={''}
+              codeUrl={project.codeLink}
+              demoUrls={project.deployLink}
+              slug={`/Project/${project.slug}`}
               description={project.description}
               coverImage={project.coverImage.url}
-              id=""
+              id={project.title}
             />
           ))}
         </div>

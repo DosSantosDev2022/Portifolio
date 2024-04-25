@@ -18,16 +18,16 @@ export function Pagination({ limit, page, totalItens }: PaginationProps) {
   const isLastPage = page === Math.ceil(totalItens / limit)
   return (
     <div className="flex w-full justify-between">
-      <span className="font-light text-light">Mostrando 2 de {totalItens}</span>
+      <span className="font-light text-light">Mostrando {limit} de {totalItens}</span>
       <div className="flex items-center gap-4">
         <span className="font-light text-light">
-          Páginas {page} de {Math.ceil(page)}
+        Página {page} de {Math.ceil(totalItens / limit)}
         </span>
 
         <div className="flex gap-2">
           <Button asChild variant="outline" disabled={isFirstPage}>
             {!isFirstPage ? (
-              <Link href={`/Projects?page=${page - 1}&limit=${limit}`}>
+              <Link href={`/Projects?page=1&limit=${limit}&limit=${limit}`}>
                 <ChevronsLeft />
               </Link>
             ) : (
@@ -63,7 +63,7 @@ export function Pagination({ limit, page, totalItens }: PaginationProps) {
           </Button>
           <Button asChild variant="outline" disabled={isLastPage}>
             {!isLastPage ? (
-              <Link href={`/Projects?page=${page + 1}&limit=${limit}`}>
+              <Link href={`/Projects?page=${Math.ceil(totalItens / limit)}&limit=${limit}`}>
                 <ChevronsRight />
               </Link>
             ) : (

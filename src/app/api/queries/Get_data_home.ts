@@ -19,6 +19,9 @@ interface DataHome {
       title: string
       smallText: string
       projects: {
+        slug:string
+        codeLink: string
+        deployLink: string
         title: string
         description: string
         technologie: {
@@ -64,6 +67,9 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
             title
             smallText
             projects {
+              slug
+              codeLink
+              deployLink
               title
               description
               technologie {
@@ -76,6 +82,7 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
               coverImage {
                 url
               }
+
             }
           }
           sectionAboutMe {

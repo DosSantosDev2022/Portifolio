@@ -121,7 +121,7 @@ export default async function Home() {
         <div className="mt-10 flex flex-col gap-5  lg:mt-20 lg:flex-row ">
           {home.featuredProjects.projects.map((project) => (
             <ProjectCard
-              key={project.title}
+              key={project.id}
               title={project.title}
               codeUrl={project.codeLink}
               demoUrls={project.deployLink}

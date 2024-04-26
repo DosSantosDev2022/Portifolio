@@ -4,50 +4,57 @@ import { ProjectCard } from '@/components/global/ProjectCard'
 import { bebas } from '../fonts'
 import { GET_PAGINATION_DATA } from '../api/queries/Get_Pagination_Data'
 import { Pagination } from '@/components/global/pagination'
-import { Input } from '@/components/global/Form/Input'
 import { Button } from '@/components/global/button'
+import { FormSearch } from './Form'
+
 
 interface ProjetcsPageProps {
-  searchParams?: {  page?: number; first?: number; total?: number }
+  searchParams?: { term?: string, page?: number; first?: number; total?: number }
 }
 
 export default async function ProjetcsPage({
   searchParams,
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 10
+  const first = Number(searchParams?.first) || 2
+  const term = searchParams?.term || ''
 
-  const { project, totalCount } = await GET_PAGINATION_DATA(page, first)
+  const { project, totalCount } = await GET_PAGINATION_DATA(term, page, first)
+  
+ 
+
 
   const links = [
     {
-      id: "1",
+      id: '1d5g15s8s1g1218sdgsdgsg',
       name: 'React js',
       url: ''
     },
     {
-      id: "2",
+      id: "sdg15s9s6161sdg15a9afas",
       name: 'Next js',
       url: ''
     },
     {
-      id: "3",
+      id: "sdg4s9s19s9sdg15151sds6",
       name: 'Back End',
       url: ''
     },
     {
-      id: "4",
+      id: "4sdg1595sd155sdg856g198w",
       name: 'Css',
       url: ''
     },
     {
-      id: "5",
+      id: "sg15s19191sdg19sg951df8s",
       name: 'Front End',
       url: ''
     },
   ]
 
+ 
   
+
 
   return (
     <div className="flex flex-col items-start justify-between gap-16  lg:gap-0 ">
@@ -61,23 +68,25 @@ export default async function ProjetcsPage({
           ))}
            
          </div>
-         <Input className='w-[296px] ' placeholder='Buscar...' />
+         <FormSearch/>
          
        </div>
       <div className="mt-10 grid lg:grid-cols-3 grid-cols-1 gap-6  lg:mt-20  ">
+        
         {project.map((project) => (
           <ProjectCard
-            key={project.title}
+            key={project.id}
             title={project.title}
             codeUrl={project.codeLink}
             demoUrls={project.deployLink}
             slug={`/Project/${project.slug}`}
             description={project.description}
             coverImage={project.coverImage.url}
-            id=""
+            id={project.id}
           />
         ))}
       </div>
+
       <div className="my-20  flex w-full items-center justify-end">
         <Pagination totalItens={totalCount} page={page} limit={first} />
       </div>

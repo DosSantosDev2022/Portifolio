@@ -16,9 +16,11 @@ interface DataHome {
       }
     }
     featuredProjects: {
+      id: string
       title: string
       smallText: string
       projects: {
+        id:string
         slug:string
         codeLink: string
         deployLink: string
@@ -64,9 +66,11 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
             }
           }
           featuredProjects {
+            id
             title
             smallText
             projects {
+              id
               slug
               codeLink
               deployLink

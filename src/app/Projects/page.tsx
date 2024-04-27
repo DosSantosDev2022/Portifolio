@@ -61,15 +61,13 @@ export default async function ProjetcsPage({
       <h1 className={`${bebas.className} text-8xl text-light mt-10`}>
         Meus projetos
       </h1>
-       <div className=' w-full rounded bg-zinc-800 flex items-center justify-end p-5 mt-10'>
-       <div className='w-full flex items-center gap-2'>
-          {links.map((link) => (
-            <Button className='w-[85px] ' key={link.id} variant='outline'>{link.name} </Button>
-          ))}
-           
-         </div>
+       <div className=' w-full rounded bg-zinc-800 flex items-center flex-col lg:flex-row justify-end p-5 mt-10 '>
+          <div className='w-full flex items-center gap-3  mb-4 lg:mb-0 overflow-x-auto p-4 lg:p-0 scrollbar scrollbar-thumb-zinc-700'>
+              {links.map((link) => (
+                <Button className='w-full lg:w-[85px] ' key={link.id} variant='outline'>{link.name} </Button>
+              ))}
+          </div>
          <FormSearch/>
-         
        </div>
       <div className="mt-10 grid lg:grid-cols-3 grid-cols-1 gap-6  lg:mt-20  ">
         
@@ -87,7 +85,7 @@ export default async function ProjetcsPage({
         ))}
       </div>
 
-      <div className="my-20  flex w-full items-center justify-end">
+      <div className="lg:my-20 my-10  flex w-full items-center justify-end">
         <Pagination totalItens={totalCount} page={page} limit={first} />
       </div>
     </div>

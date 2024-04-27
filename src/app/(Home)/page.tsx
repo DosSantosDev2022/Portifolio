@@ -14,7 +14,7 @@ export default async function Home() {
   /* const techs = home.featuredProjects.projects.find((i) => i.technologie) */
 
   return (
-    <div className="space-y-40  ">
+    <div className="   ">
 
       <div className=" pt-16  flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
         <div className=" flex flex-col items-start text-light lg:w-[544px]">
@@ -75,7 +75,7 @@ export default async function Home() {
         </div>
 
         <div className="mt-6 flex w-full flex-col items-start gap-2">
-          <h5 className="text-xl  font-medium text-light lg:text-[2rem] lg:leading-9">
+          <h5 className="text-xl  font-medium text-light lg:text-[2rem] lg:leading-9 mb-4">
             {home.sectionAboutMe.smallText}
           </h5>
           <RichText
@@ -94,20 +94,17 @@ export default async function Home() {
             }}
           />
 
-          <Link
-            className="mt-3 text-base font-bold leading-[1.5rem] text-highlights "
-            href={'/About'}
-          >
-            <Button asChild variant='highlight' >
-              <Link href={'/About'} className="text-sm px-3 ">
-              Veja mais sobre mim
+          
+            <Button asChild variant='highlight' className=' mt-4' >
+              <Link href={'/About'} className="text-sm  ">
+              Veja mais ...
               </Link>
             </Button>
-          </Link>
+          
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 ">
+      <div className="flex flex-col gap-2 pt-16 ">
         <div className="mt-6 flex flex-col items-start gap-2 lg:w-[37rem]">
           <h2
             className={` ${bebas.className} text-6xl font-normal  text-light lg:text-[4.75rem] lg:leading-[4.75rem] `}
@@ -134,7 +131,7 @@ export default async function Home() {
         </div>
         <div className="mt-10  flex w-full items-center justify-end p-2 ">
           <Button asChild className="mb-10" variant="outline">
-            <Link href={'/Projects'}>Ver todos...</Link>
+            <Link href={'/Projects'}>Ver todos ...</Link>
           </Button>
         </div>
       </div>

@@ -42,7 +42,7 @@ export default async function ProjectPageDetails({
           Tecnologias utilizadas
         </h2>
 
-        <div className="mt-5 flex w-full items-start justify-items-start gap-4  p-2">
+        <div className="mt-5 flex w-full items-start justify-items-start gap-4  p-6 overflow-x-auto scrollbar scrollbar-thumb-zinc-700">
           {projectDetails?.technologie.map((tech) => (
             <Image
               alt={tech.name}
@@ -89,7 +89,7 @@ export default async function ProjectPageDetails({
       </div>
 
       <Button
-        variant="outline"
+        variant="highlight"
         asChild
         className="fixed bottom-4 right-4 w-16 animate-bounce text-center"
       >

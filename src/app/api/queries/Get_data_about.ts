@@ -62,7 +62,7 @@ export const GET_DATA_ABOUT = async (): Promise<AboutMeData> => {
         sectionTechnologies {
           title
           smallText
-          technologies {
+          technologies(first: 20) {
             id
             name
             icon {

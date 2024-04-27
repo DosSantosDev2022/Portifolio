@@ -2,8 +2,10 @@
 
 import { bebas } from '@/app/fonts'
 import { FaBars } from 'react-icons/fa6'
+import { LuX } from "react-icons/lu";
 import Link from 'next/link'
 import { useState } from 'react'
+import { Button } from './button'
 
 export function Header() {
   const NavLinks = [
@@ -31,16 +33,21 @@ export function Header() {
     <header className=" bg-zinc-900  flex w-full flex-col items-center justify-between border-b border-secundary p-4 lg:h-24 lg:flex-row lg:px-[108px] lg:py-6 ">
       <div className="flex w-full items-center justify-between">
         <span
-          className={`text-2xl font-normal uppercase leading-10  tracking-[-0.32px] text-light ${bebas.className}`}
+          className={`text-3xl font-normal  leading-10  tracking-[-0.32px] text-light ${bebas.className}`}
         >
           Juliano Santos
         </span>
-        <button
+        <Button
+        variant='outline'
           onClick={handleMenu}
-          className="rounded-sm bg-light p-1 lg:hidden"
+          className="rounded-sm  p-2 lg:hidden"
         >
-          <FaBars />
-        </button>
+          {isOpen ? (
+            < LuX size={18} />
+          ) : (
+            < FaBars size={18} />
+          ) }
+        </Button>
       </div>
       <nav
         className={` ${isOpen ? 'flex' : 'hidden'}  mt-10 flex-col items-center  justify-center gap-5 lg:mt-0 lg:flex lg:flex-row `}

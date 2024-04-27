@@ -23,7 +23,7 @@ export function Button({
 
   const _className = twMerge(
     variantClasses[variant],
-    `appearance-none rounded-md px-1 py-2 text-sm font-bold shadow `,
+    `appearance-none rounded-md px-2 py-2 text-sm font-bold shadow `,
     className,
   )
 

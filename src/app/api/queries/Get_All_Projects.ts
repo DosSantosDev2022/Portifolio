@@ -35,13 +35,12 @@ interface Project {
 }
 
 export const GET_PAGINATION_DATA = async (
-  term: string,
   page: number,
   pageSize: number,
 ): Promise<Project> => {
   const query = `
-    query MyQuery($first: Int, $skip: Int, $term: String!) {
-      project(first: $first, skip: $skip, where:  {_search: $term}) {
+    query MyQuery($first: Int, $skip: Int) {
+      project(first: $first, skip: $skip ) {
         id
         title
         subtitle
@@ -73,7 +72,7 @@ export const GET_PAGINATION_DATA = async (
   `
 
   const skip = (page - 1) * pageSize
-  const variables = { first: pageSize, skip, term }
+  const variables = { first: pageSize, skip }
   const { project, projectConnection } = await fetchHygraphQuery(
     query,
     variables,

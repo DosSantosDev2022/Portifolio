@@ -2,14 +2,14 @@
 
 import { ProjectCard } from '@/components/global/ProjectCard'
 import { bebas } from '../fonts'
-import { GET_PAGINATION_DATA } from '../api/queries/Get_Pagination_Data'
+import { GET_PAGINATION_DATA } from '../api/queries/Get_All_Projects'
 import { Pagination } from '@/components/global/pagination'
 import { Button } from '@/components/global/button'
 import { FormSearch } from './Form'
 
 
 interface ProjetcsPageProps {
-  searchParams?: { term?: string, page?: number; first?: number; total?: number }
+  searchParams?: {  page?: number; first?: number; total?: number }
 }
 
 export default async function ProjetcsPage({
@@ -17,9 +17,9 @@ export default async function ProjetcsPage({
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
   const first = Number(searchParams?.first) || 2
-  const term = searchParams?.term || ''
+ 
 
-  const { project, totalCount } = await GET_PAGINATION_DATA(term, page, first)
+  const { project, totalCount } = await GET_PAGINATION_DATA(page, first)
   
  
 

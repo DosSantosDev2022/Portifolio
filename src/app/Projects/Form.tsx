@@ -17,7 +17,7 @@ export function FormSearch() {
             params.delete('q')
         }
          
-        push(`/Projects/search/?${params.toString()}`)
+        push(`/Projects/search?${params.toString()}`)
         
     }
     return (

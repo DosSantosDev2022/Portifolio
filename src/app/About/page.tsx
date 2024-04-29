@@ -54,8 +54,6 @@ export default async function AboutPage() {
         
       </div>
 
-      
-
       <div className="flex flex-col lg:flex-row ">
         <div className="w-full">
           <h2

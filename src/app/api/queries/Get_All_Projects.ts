@@ -1,21 +1,11 @@
-import type { RichTextContent } from '@graphcms/rich-text-types'
 import { fetchHygraphQuery } from '../FetchHygraph'
 
-interface Technologie {
-  id: string
-  name: string
-  icon: {
-    url: string
-  }
-}
+
 
 interface CoverImage {
   url: string
 }
 
-interface CompleteDescription {
-  raw: RichTextContent
-}
 
 interface Project {
   project: {
@@ -24,8 +14,6 @@ interface Project {
     subtitle: string
     slug: string
     description: string
-    technologie: Technologie[]
-    completeDescription: CompleteDescription
     coverImage: CoverImage
     codeLink: string
     deployLink: string
@@ -34,7 +22,7 @@ interface Project {
   totalCount: number
 }
 
-export const GET_PAGINATION_DATA = async (
+export const GET_ALL_PROJECTS = async (
   page: number,
   pageSize: number,
 ): Promise<Project> => {
@@ -46,16 +34,6 @@ export const GET_PAGINATION_DATA = async (
         subtitle
         slug
         description
-        technologie {
-          id
-          name
-          icon {
-            url
-          }
-        }
-        completeDescription {
-          raw
-        }
         coverImage {
           url
         }

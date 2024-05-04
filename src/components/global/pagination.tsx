@@ -18,7 +18,7 @@ export function Pagination({ limit, page, totalItens }: PaginationProps) {
   const isLastPage = page === Math.ceil(totalItens / limit)
   return (
     <div className="flex flex-col lg:flex-row w-full justify-between gap-4">
-      <span className="font-light text-light">Mostrando {limit} de {totalItens}</span>
+      <span className="font-light text-light">Mostrando {Math.min(limit, totalItens - (page - 1) * limit)} de {totalItens}</span>
       <div className="flex items-center gap-4">
         <span className="font-light text-light">
         Página {page} de {Math.ceil(totalItens / limit)}

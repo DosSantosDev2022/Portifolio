@@ -11,8 +11,8 @@ export default async function AboutPage() {
   const { aboutMe } = await GET_DATA_ABOUT()
   const techs = aboutMe.sectionTechnologies
   return (
-    <div className="flex flex-col space-y-32 ">
-      <div className="mt-16 flex  w-full flex-col lg:flex-row ">
+    <div className="space-y-28 ">
+      <div className="pt-16 flex  w-full flex-col lg:flex-row ">
         <div className="w-full">
           <h1
             className={`${bebas.className} font-normal text-light text-[6rem] lg:leading-[90.9px]`}

@@ -8,31 +8,27 @@ import { Button } from '@/components/global/button'
 import { RichText } from '@/components/global/RichText'
 import { ProjectCard } from '@/components/global/ProjectCard'
 import Image from 'next/image'
+import Modal from '@/components/global/modal'
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
   /* const techs = home.featuredProjects.projects.find((i) => i.technologie) */
 
   return (
-    <div className="   ">
+    <div className='space-y-28'>
 
-      <div className=" pt-16  flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
-        <div className=" flex flex-col items-start text-light lg:w-[544px]">
+      <div className=" pt-16   flex flex-col items-start justify-between gap-16  lg:flex-row lg:gap-0 ">
+        <div className=" flex flex-col gap-4 items-start text-light lg:w-[544px]">
           <h1
             className={`text-6xl font-normal leading-[57px] lg:text-[6rem] lg:leading-[90.9px] ${bebas.className} `}
           >
             {home.sectionHero.title}
           </h1>
-          <span className="mt-10 text-lg font-normal leading-[27px] ">
+          <span className="text-lg font-normal leading-[27px] ">
             {home.sectionHero.smallText}
           </span>
-          <div className="mt-[54px] flex items-center gap-4 ">
-            <button className="flex items-center gap-3 rounded-3xl bg-highlights px-5 py-2 duration-300 hover:bg-highlights_hover ">
-              Contato
-              <i className="rounded-full bg-light p-2 duration-300 hover:scale-105">
-                <RiArrowRightUpLine size={18} className="text-secundary" />
-              </i>
-            </button>
+          <div className=" flex items-center gap-4 ">
+            <Modal />
             <ul className="flex items-center gap-4">
               {home.sectionHero.links.map((link) => (
                 <li
@@ -62,8 +58,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex  w-full flex-col items-center  justify-between gap-3 lg:flex-row">
-        <div className="flex w-full flex-col items-start gap-2">
+      <div className="flex pb-4   w-full flex-col items-center  justify-between gap-3 lg:flex-row">
+        <div className="flex  w-full flex-col items-start gap-2">
           <h3
             className={`${bebas.className}  w-full text-6xl font-normal leading-[5.68125rem] text-light lg:text-[6.3125rem]`}
           >
@@ -75,14 +71,14 @@ export default async function Home() {
         </div>
 
         <div className="mt-6 flex w-full flex-col items-start gap-2">
-          <h5 className="text-xl  font-medium text-light lg:text-[2rem] lg:leading-9 mb-4">
+          <h5 className="text-xl  font-bold text-light lg:text-[2rem] lg:leading-9 mb-4">
             {home.sectionAboutMe.smallText}
           </h5>
           <RichText
             content={home.sectionAboutMe.longText.raw}
             renderers={{
               bold: ({ children }) => (
-                <b className="font-bold uppercase text-highlights">
+                <b className="font-bold  text-highlights">
                   {children}{' '}
                 </b>
               ),
@@ -104,8 +100,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 pt-16 ">
-        <div className="mt-6 flex flex-col items-start gap-2 lg:w-[37rem]">
+      <div className="flex   flex-col gap-2  ">
+        <div className=" flex flex-col items-start gap-2 lg:w-[37rem]">
           <h2
             className={` ${bebas.className} text-6xl font-normal  text-light lg:text-[4.75rem] lg:leading-[4.75rem] `}
           >
@@ -115,7 +111,7 @@ export default async function Home() {
             {home.featuredProjects.smallText}{' '}
           </p>
         </div>
-        <div className="mt-10 flex flex-col gap-5  lg:mt-20 lg:flex-row ">
+        <div className="mt-8 flex flex-col gap-5  lg:mt-20 lg:flex-row ">
           {home.featuredProjects.projects.map((project) => (
             <ProjectCard
               key={project.id}

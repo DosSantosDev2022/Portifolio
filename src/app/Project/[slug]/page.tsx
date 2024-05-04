@@ -1,4 +1,4 @@
-import { GET_DATA_PROJECT } from '@/app/api/queries/Get_Details_Project'
+import { GET_DETAILS_PROJECT } from '@/app/api/queries/Get_Details_Project'
 import { bebas } from '@/app/fonts'
 import { RichText } from '@/components/global/RichText'
 import { Button } from '@/components/global/button'
@@ -16,7 +16,7 @@ interface ProjectPageDetailsProps {
 export default async function ProjectPageDetails({
   params,
 }: ProjectPageDetailsProps) {
-  const { project } = await GET_DATA_PROJECT()
+  const { project } = await GET_DETAILS_PROJECT()
 
   const projectDetails = project.find((p) => p.slug === params.slug)
   return (

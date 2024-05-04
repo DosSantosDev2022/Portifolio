@@ -32,7 +32,7 @@ interface Project {
   }[]
 }
 
-export const GET_DATA_PROJECT = async (): Promise<Project> => {
+export const GET_DETAILS_PROJECT = async (): Promise<Project> => {
   const query = `
   query MyQuery {
     project {

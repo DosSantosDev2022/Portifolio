@@ -1,13 +1,16 @@
 import React from 'react'
+import {twMerge} from 'tailwind-merge'
 
-export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>
 
-export function Label({ ...props }: LabelProps) {
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>  {
+  className?: string
+}
+
+export function Label({className, ...props }: LabelProps) {
   return (
     <label
       {...props}
-      className="text-base font-medium leading-[25.6px] text-light
-    "
+      className={twMerge('text-base font-medium leading-[25.6px] text-light', className)}
     />
   )
 }

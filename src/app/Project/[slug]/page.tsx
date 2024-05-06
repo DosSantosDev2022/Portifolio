@@ -2,8 +2,10 @@ import { GET_DETAILS_PROJECT } from '@/app/api/queries/Get_Details_Project'
 import { bebas } from '@/app/fonts'
 import { RichText } from '@/components/global/RichText'
 import { Button } from '@/components/global/button'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { title } from 'process'
 
 import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa'
 
@@ -13,12 +15,22 @@ interface ProjectPageDetailsProps {
   }
 }
 
+export async function generateMetadata({ params}: ProjectPageDetailsProps){
+  const {project} = await GET_DETAILS_PROJECT()
+  const metadataProject = project.find((p) => p.slug === params.slug)
+
+  return {
+    title : metadataProject?.title
+  }
+}
+
 export default async function ProjectPageDetails({
   params,
 }: ProjectPageDetailsProps) {
   const { project } = await GET_DETAILS_PROJECT()
 
   const projectDetails = project.find((p) => p.slug === params.slug)
+
   return (
     <div className="py-20">
       <div className='flex flex-col gap-4'>

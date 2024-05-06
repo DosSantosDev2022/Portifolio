@@ -6,6 +6,12 @@ import { CMSIcon } from '@/components/global/CmsIcon'
 import { TooltipComponent } from '@/components/global/Tooltip'
 import Image from 'next/image'
 import { RichText } from '@/components/global/RichText'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Sobre mim',
+    description: ''
+}
 
 export default async function AboutPage() {
   const { aboutMe } = await GET_DATA_ABOUT()

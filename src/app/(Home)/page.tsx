@@ -1,7 +1,7 @@
 import { GET_DATA_HOME } from '@/app/api/queries/Get_data_home'
 import { CMSIcon } from '@/components/global/CmsIcon'
 import { bebas } from '@/app/fonts'
-import { RiArrowRightUpLine } from 'react-icons/ri'
+import type { Metadata } from 'next'
 
 import Link from 'next/link'
 import { Button } from '@/components/global/button'
@@ -9,6 +9,12 @@ import { RichText } from '@/components/global/RichText'
 import { ProjectCard } from '@/components/global/ProjectCard'
 import Image from 'next/image'
 import Modal from '@/components/global/modal'
+
+
+export const  metadata: Metadata = {
+    title: 'Página inicial',
+    description : ''
+}
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()

@@ -2,11 +2,16 @@ import { ProjectCard } from '@/components/global/ProjectCard'
 import { bebas } from '../fonts'
 import { GET_ALL_PROJECTS } from '../api/queries/Get_All_Projects'
 import { Pagination } from '@/components/global/pagination'
+import { Metadata } from 'next'
 
 
 
 interface ProjetcsPageProps {
   searchParams?: {  page?: number; first?: number; total?: number }
+}
+
+export const metadata: Metadata = {
+  title: 'Meus projetos'
 }
 
 export default async function ProjetcsPage({

@@ -1,11 +1,8 @@
 import { fetchHygraphQuery } from '../FetchHygraph'
 
-
-
 interface CoverImage {
   url: string
 }
-
 
 interface Project {
   project: {

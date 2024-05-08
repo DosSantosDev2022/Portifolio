@@ -20,8 +20,8 @@ interface DataHome {
       title: string
       smallText: string
       projects: {
-        id:string
-        slug:string
+        id: string
+        slug: string
         codeLink: string
         deployLink: string
         title: string

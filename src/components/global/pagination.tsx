@@ -4,7 +4,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from 'lucide-react'
-import { Button } from './button'
+import { Button } from '@/components/global/uiChroma/button'
 import Link from 'next/link'
 
 interface PaginationProps {
@@ -17,14 +17,17 @@ export function Pagination({ limit, page, totalItens }: PaginationProps) {
   const isFirstPage = page === 1
   const isLastPage = page === Math.ceil(totalItens / limit)
   return (
-    <div className="flex flex-col lg:flex-row w-full justify-between gap-4">
-      <span className="font-light text-light">Mostrando {Math.min(limit, totalItens - (page - 1) * limit)} de {totalItens}</span>
-      <div className="flex items-center gap-4">
-        <span className="font-light text-light">
-        Página {page} de {Math.ceil(totalItens / limit)}
+    <div className="flex w-full flex-col justify-between gap-2  p-2 lg:flex-row">
+      <span className="flex  items-center  p-2 font-light text-light">
+        Mostrando {Math.min(limit, totalItens - (page - 1) * limit)} de{' '}
+        {totalItens}
+      </span>
+      <div className="flex items-center justify-between gap-4   p-2">
+        <span className="w-full font-light text-light">
+          Página {page} de {Math.ceil(totalItens / limit)}
         </span>
 
-        <div className="flex gap-2">
+        <div className="flex w-full gap-2">
           <Button asChild variant="outline" disabled={isFirstPage}>
             {!isFirstPage ? (
               <Link href={`/Projects?page=1&limit=${limit}&limit=${limit}`}>
@@ -63,7 +66,9 @@ export function Pagination({ limit, page, totalItens }: PaginationProps) {
           </Button>
           <Button asChild variant="outline" disabled={isLastPage}>
             {!isLastPage ? (
-              <Link href={`/Projects?page=${Math.ceil(totalItens / limit)}&limit=${limit}`}>
+              <Link
+                href={`/Projects?page=${Math.ceil(totalItens / limit)}&limit=${limit}`}
+              >
                 <ChevronsRight />
               </Link>
             ) : (

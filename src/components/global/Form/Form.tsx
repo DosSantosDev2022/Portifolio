@@ -2,11 +2,11 @@
 import * as z from 'zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button } from '../button'
-import { Input } from './Input'
-import { Label } from './label'
+import { Button } from '@/components/global/uiChroma/button'
+import { Input } from '@/components/global/uiChroma/Input'
+import { Label } from '@/components/global/uiChroma/label'
 import { toast } from 'react-toastify'
-import TextArea from './TextArea'
+import TextArea from '@/components/global/uiChroma/TextArea'
 
 const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 

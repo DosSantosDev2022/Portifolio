@@ -1,14 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from './button'
+import { Button } from '@/components/global/uiChroma/button'
 import { RiArrowRightUpLine } from 'react-icons/ri'
-import { Form } from './Form/Form'
-import { ModalForm } from './Form/ModalForm'
-  
+import { ModalForm } from '@/components/global/uiChroma/ModalForm'
 
 export default function Modal() {
-
   const [isOpenModal, setIsOpenModal] = useState(false)
 
   const handleOpenModal = () => {
@@ -16,7 +13,11 @@ export default function Modal() {
   }
   return (
     <>
-      <Button className='flex items-center gap-3 rounded-3xl bg-highlights px-5 py-2 duration-300 hover:bg-highlights_hover ' onClick={handleOpenModal} variant="highlight">
+      <Button
+        className="flex items-center gap-3 rounded-3xl bg-highlights px-5 py-2 duration-300 hover:bg-highlights_hover "
+        onClick={handleOpenModal}
+        variant="highlight"
+      >
         Contato
         <i className="rounded-full bg-light p-2 duration-300 hover:scale-105">
           <RiArrowRightUpLine size={18} className="text-secundary" />
@@ -32,7 +33,7 @@ export default function Modal() {
               {/* Modal Header */}
 
               <div className="flex items-center justify-between rounded-t border-b border-lightSilver/30 p-4 md:p-5 ">
-                <h3 className="lg:text-xl text-lg font-semibold text-light">
+                <h3 className="text-lg font-semibold text-light lg:text-xl">
                   Vamos fechar uma parceria ?
                 </h3>
                 <Button
@@ -61,10 +62,9 @@ export default function Modal() {
               </div>
 
               {/*  Modal body */}
-              <div className='w-full p-4'>
-               <ModalForm />
+              <div className="w-full p-4">
+                <ModalForm />
               </div>
-              
             </div>
           </div>
         </div>

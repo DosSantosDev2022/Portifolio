@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Button } from './button'
+import { Button } from '@/components/global/uiChroma/button'
 import Link from 'next/link'
 
 interface ProjectCardProps {
@@ -46,7 +46,11 @@ export function ProjectCard({
           variant="highlight"
           asChild
         >
-          <Link className="flex items-center gap-1 text-sm" href={demoUrls} target='_blank'>
+          <Link
+            className="flex items-center gap-1 text-sm"
+            href={demoUrls}
+            target="_blank"
+          >
             View demo
           </Link>
         </Button>
@@ -56,7 +60,11 @@ export function ProjectCard({
           variant="outline"
           asChild
         >
-          <Link className="flex items-center gap-1 text-sm " href={codeUrl} target='_blank'>
+          <Link
+            className="flex items-center gap-1 text-sm "
+            href={codeUrl}
+            target="_blank"
+          >
             View code
           </Link>
         </Button>

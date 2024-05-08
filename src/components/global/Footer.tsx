@@ -65,7 +65,7 @@ export function Footer() {
       </div>
       <div className="mt-10 flex w-full items-center justify-center border-t-[1px] border-zinc-800 p-2">
         <span className="font-light leading-[25.6px] text-lightSilver ">
-          © 2024 Juliano Santos
+          © 2024 DosSantosDev
         </span>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 export const fetchHygraphQuery = async (
   query: string,
-  variables?: Record<string, string>,
+  variables?: Record<string, number>,
 ) => {
   const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
     method: 'POST',

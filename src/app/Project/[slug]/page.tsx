@@ -80,7 +80,7 @@ export default async function ProjectPageDetails({
 
           <div className="mt-10 w-full space-y-3 lg:w-[768px] ">
             <RichText
-              content={projectDetails?.completeDescription.raw}
+              content={projectDetails?.completeDescription.raw || []}
               renderers={{
                 bold: ({ children }) => (
                   <b className="text-xl font-bold text-light">{children} </b>

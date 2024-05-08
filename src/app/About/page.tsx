@@ -1,16 +1,16 @@
 import { GET_DATA_ABOUT } from '@/app/api/queries/Get_data_about'
 import { bebas } from '../fonts'
-import { RiArrowRightUpLine } from 'react-icons/ri'
 import Link from 'next/link'
 import { CMSIcon } from '@/components/global/CmsIcon'
 import { TooltipComponent } from '@/components/global/Tooltip'
 import Image from 'next/image'
 import { RichText } from '@/components/global/RichText'
 import { Metadata } from 'next'
+import Modal from '@/components/global/modal'
 
 export const metadata: Metadata = {
-    title: 'Sobre mim',
-    description: ''
+  title: 'Sobre mim',
+  description: '',
 }
 
 export default async function AboutPage() {
@@ -18,28 +18,32 @@ export default async function AboutPage() {
   const techs = aboutMe.sectionTechnologies
   return (
     <div className="space-y-28 ">
-      <div className="pt-16 flex  w-full flex-col lg:flex-row ">
+      <div className="flex w-full flex-col items-center justify-center  px-3 py-8  lg:flex-row lg:px-12 lg:py-16 ">
         <div className="w-full">
+          <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
+            <Image
+              alt="Imagem do desenvolvedor Juliano Santos de braços cruzados, usando camiseta preta e sorrindo"
+              src={'/profile02.png'}
+              width={250}
+              height={300}
+              quality={100}
+            />
+          </div>
+        </div>
+        <div className="flex w-full  flex-col gap-2">
           <h1
-            className={`${bebas.className} font-normal text-light text-[6rem] lg:leading-[90.9px]`}
+            className={`${bebas.className} text-[5rem] font-normal text-light lg:text-[6rem] lg:leading-[90.9px]`}
           >
             {aboutMe.sectionHero.title}
           </h1>
-        </div>
-        <div className="flex w-full flex-col gap-2">
-          <span className="text-3xl leading-[44.8px] text-light  ">
+          <span className="text-3xl text-light lg:leading-[44.8px]  ">
             {aboutMe.sectionHero.smallText}
           </span>
           <p className="text-lg font-normal leading-[27px] text-lightSilver ">
             {aboutMe.sectionHero.longText.text}
           </p>
           <div className="mt-[54px] flex items-center gap-4 ">
-            <button className="flex items-center gap-3 rounded-3xl bg-highlights px-5 py-2 text-light duration-300 hover:bg-highlights_hover ">
-              Contact-Me
-              <i className="rounded-full bg-light p-2 duration-300 hover:scale-105">
-                <RiArrowRightUpLine size={18} className="text-secundary" />
-              </i>
-            </button>
+            <Modal />
             <ul className="flex items-center gap-4">
               {aboutMe.sectionHero.links.map((link) => (
                 <li
@@ -57,13 +61,12 @@ export default async function AboutPage() {
             </ul>
           </div>
         </div>
-        
       </div>
 
-      <div className="flex flex-col lg:flex-row ">
+      <div className="flex flex-col items-start justify-center px-3 py-8 lg:flex-row lg:px-12 lg:py-16 ">
         <div className="w-full">
           <h2
-            className={`${bebas.className} text-[76px] leading-[76px] text-light `}
+            className={`${bebas.className} text-[4.2rem] leading-[76px] text-light lg:text-[5rem] `}
           >
             {aboutMe.sectionTechnologies.title}
           </h2>
@@ -91,15 +94,13 @@ export default async function AboutPage() {
         </div>
       </div>
 
-      <div className="flex  flex-col lg:flex-row w-full gap-4">
-        
+      <div className="flex w-full flex-col items-start justify-center gap-8   px-3 py-8 pb-20 lg:flex-row lg:px-12 lg:py-16">
+        <div className=" flex w-full flex-col">
           <h2
-            className={`${bebas.className} text-[76px] leading-[76px] text-light w-full `}
+            className={`${bebas.className} w-full text-[4.2rem] leading-[76px]  text-light lg:w-[450px] lg:text-[5rem] `}
           >
             {aboutMe.sectionstory.title}
           </h2>
-        
-        <div className="w-full flex flex-col mb-20">
           <RichText
             content={aboutMe.sectionstory.longText.raw}
             renderers={{
@@ -111,7 +112,17 @@ export default async function AboutPage() {
             }}
           />
         </div>
-
+        <div className="flex w-full flex-col gap-4">
+          <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
+            <Image
+              alt="Imagem do desenvolvedor Juliano Santos de braços cruzados, usando camiseta preta e sorrindo"
+              src={'/profile03.png'}
+              width={280}
+              height={200}
+              quality={100}
+            />
+          </div>
+        </div>
       </div>
     </div>
   )

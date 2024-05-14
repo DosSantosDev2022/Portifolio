@@ -14,6 +14,13 @@ interface Project {
     coverImage: CoverImage
     codeLink: string
     deployLink: string
+    technologie: {
+      id: string
+      name: string
+      icon: {
+        url: string
+      }
+    }[]
   }[]
 
   totalCount: number
@@ -36,7 +43,15 @@ export const GET_ALL_PROJECTS = async (
         }
         codeLink
         deployLink
+        technologie {
+          id
+          name
+          icon {
+            url
+          }
+        }
       }
+      
       projectConnection {
         aggregate {
           count

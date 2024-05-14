@@ -30,6 +30,7 @@ export default async function ProjectPageDetails({
   const { project } = await GET_DETAILS_PROJECT()
 
   const projectDetails = project.find((p) => p.slug === params.slug)
+  const otherProjects = project.filter((p) => p.slug !== params.slug)
 
   return (
     <div className="py-20">
@@ -83,7 +84,7 @@ export default async function ProjectPageDetails({
               content={projectDetails?.completeDescription.raw || []}
               renderers={{
                 bold: ({ children }) => (
-                  <b className="text-xl font-bold text-light">{children} </b>
+                  <b className=" font-bold text-light">{children} </b>
                 ),
                 h2: ({ children }) => (
                   <h2
@@ -100,9 +101,9 @@ export default async function ProjectPageDetails({
                 p: ({ children }) => (
                   <p className="font-light text-lightSilver">{children}</p>
                 ),
-
+                li: ({ children }) => <li className=" ">{children} </li>,
                 ul: ({ children }) => (
-                  <ul className="list-inside list-disc p-2 text-lightSilver">
+                  <ul className="list-inside list-disc space-y-2 p-2 text-lightSilver">
                     {children}
                   </ul>
                 ),
@@ -146,7 +147,7 @@ export default async function ProjectPageDetails({
           </h2>
 
           <div className="flex flex-col gap-4">
-            {project.map((p) => (
+            {otherProjects.map((p) => (
               <MiniCard
                 key={p.id}
                 title={p.title}

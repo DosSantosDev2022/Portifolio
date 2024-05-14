@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/global/uiChroma/button'
 import { RichText } from '@/components/global/RichText'
-import { ProjectCard } from '@/components/global/ProjectCard'
+import { Projects } from '@/components/global/Projects'
 import Image from 'next/image'
 import Modal from '@/components/global/modal'
 
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
-  /* const techs = home.featuredProjects.projects.find((i) => i.technologie) */
 
+  console.log(home?.featuredProjects.projects)
   return (
     <div className="space-y-28">
       <div className="flex w-full flex-col items-start justify-between  gap-16  px-3 py-8 lg:flex-row lg:gap-0  lg:px-12 lg:py-16 ">
@@ -117,17 +117,22 @@ export default async function Home() {
             {home.featuredProjects.smallText}{' '}
           </p>
         </div>
-        <div className="mt-8 flex flex-col gap-5  lg:mt-20 lg:flex-row ">
+        <div className="mt-8 flex flex-col gap-28  lg:mt-20 ">
           {home.featuredProjects.projects.map((project) => (
-            <ProjectCard
+            <Projects
               key={project.id}
               title={project.title}
               codeUrl={project.codeLink}
-              demoUrls={project.deployLink}
+              demoUrl={project.deployLink}
               slug={`/Project/${project.slug}`}
               description={project.description}
               coverImage={project.coverImage.url}
               id={project.title}
+              tech={project.technologie.map((tech) => ({
+                id: tech.id,
+                name: tech.name,
+                icon: tech.icon.url,
+              }))}
             />
           ))}
         </div>

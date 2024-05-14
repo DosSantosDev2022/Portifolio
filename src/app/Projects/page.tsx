@@ -1,4 +1,4 @@
-import { ProjectCard } from '@/components/global/ProjectCard'
+import { Projects } from '@/components/global/Projects'
 import { bebas } from '../fonts'
 import { GET_ALL_PROJECTS } from '../api/queries/Get_All_Projects'
 import { Pagination } from '@/components/global/pagination'
@@ -16,10 +16,10 @@ export default async function ProjetcsPage({
   searchParams,
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 2
+  const first = Number(searchParams?.first) || 4
 
   const { project, totalCount } = await GET_ALL_PROJECTS(page, first)
-
+  console.log(project)
   return (
     <div className="flex flex-col items-start justify-between gap-16  lg:gap-0 ">
       <div className="flex flex-col gap-2  px-3 py-8 lg:px-12 lg:py-16">
@@ -33,17 +33,26 @@ export default async function ProjetcsPage({
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-6  px-3 py-8 lg:mt-20 lg:grid-cols-3 lg:px-12 lg:py-16  ">
+      <div className="mt-10 flex flex-col  gap-28  px-3 py-8 lg:mt-20 lg:px-12 lg:py-16  ">
         {project.map((project) => (
-          <ProjectCard
+          <Projects
             key={project.id}
             title={project.title}
             codeUrl={project.codeLink}
-            demoUrls={project.deployLink}
+            demoUrl={project.deployLink}
             slug={`/Project/${project.slug}`}
             description={project.description}
             coverImage={project.coverImage.url}
             id={project.id}
+            tech={
+              project.technologie
+                ? project.technologie.map((tech) => ({
+                    id: tech.id,
+                    name: tech.name,
+                    icon: tech.icon.url,
+                  }))
+                : []
+            }
           />
         ))}
       </div>

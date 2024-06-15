@@ -3,12 +3,13 @@ import Link from 'next/link'
 interface MiniCardProps {
   title: string
   description: string
+  slug: string
 }
 
-export function MiniCard({ title, description }: MiniCardProps) {
+export function MiniCard({ title, description, slug }: MiniCardProps) {
   return (
     <Link
-      href={''}
+      href={slug}
       className=" w-full rounded-md border border-border px-2 py-4 duration-500 hover:scale-95"
     >
       <div className="space-y-2">

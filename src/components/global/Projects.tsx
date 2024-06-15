@@ -34,14 +34,17 @@ export function Projects({
         className="flex w-full flex-col items-center justify-center gap-4 lg:flex-row   lg:gap-12"
         key={id}
       >
-        <Image
-          className="rounded-md lg:h-[304px]  "
-          alt={title}
-          src={coverImage}
-          height={450}
-          width={450}
-          quality={100}
-        />
+        <div className="relative flex h-[20rem] w-full items-center justify-center   rounded-md  bg-zinc-600/25 object-cover  ">
+          <Image
+            className="w-80"
+            alt={title}
+            src={coverImage}
+            width={400}
+            height={400}
+            quality={100}
+          />
+        </div>
+
         <div className="flex  flex-col items-center  justify-center gap-3  p-2 ">
           <div className="flex flex-col gap-4">
             <h2 className="text-[2rem] font-bold leading-[44.8px] text-light lg:text-[2.8rem]">

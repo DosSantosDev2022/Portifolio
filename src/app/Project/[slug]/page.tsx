@@ -31,6 +31,7 @@ export default async function ProjectPageDetails({
 
   const projectDetails = project.find((p) => p.slug === params.slug)
   const otherProjects = project.filter((p) => p.slug !== params.slug)
+  const firstTechnologyName = projectDetails?.technologie[0]?.name
 
   return (
     <div className="py-20">
@@ -45,16 +46,25 @@ export default async function ProjectPageDetails({
           {projectDetails?.description}{' '}
         </p>
       </div>
-
-      <div className="relative mt-10 h-[210px] w-full lg:h-[422px] ">
+      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25 lg:h-[26.25rem]">
+        <div className="hidden flex-col gap-1 p-2 text-zinc-50 lg:flex">
+          <h3
+            className={`${bebas.className} text-7xl font-normal text-zinc-50 lg:text-9xl`}
+          >
+            {projectDetails?.title}{' '}
+          </h3>
+          <span className="text-lg font-normal">{`Um projeto construído com ${firstTechnologyName}`}</span>
+        </div>
         <Image
-          alt={projectDetails?.title || ''}
+          quality={100}
+          className="w-[458px] object-contain  "
+          alt={projectDetails?.title || 'Foto de capa do projeto'}
           src={projectDetails?.coverImage.url || ''}
-          fill
-          objectFit="cover"
-          className="rounded-md"
+          width={400}
+          height={400}
         />
       </div>
+
       <section className="mt-4 flex flex-col items-start justify-between gap-4 lg:flex-row">
         <div className=" px-3">
           <div className="mt-10 w-full ">
@@ -64,7 +74,7 @@ export default async function ProjectPageDetails({
               Stack de desenvolvimento
             </h2>
 
-            <div className="mt-5 flex w-full items-start justify-items-start gap-4  overflow-x-auto px-1 pb-2 pt-2 scrollbar scrollbar-thumb-zinc-700">
+            <div className="mt-5 flex w-full flex-wrap items-start justify-items-start gap-4  px-1 pb-2 pt-2 ">
               {projectDetails?.technologie.map((tech) => (
                 <Image
                   alt={tech.name}
@@ -112,6 +122,7 @@ export default async function ProjectPageDetails({
             <div className="mt-12 flex items-start justify-start gap-2">
               <Button variant="outline" asChild>
                 <Link
+                  target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.codeLink || ''}
                 >
@@ -121,6 +132,7 @@ export default async function ProjectPageDetails({
               </Button>
               <Button variant="outline" asChild>
                 <Link
+                  target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.deployLink || ''}
                 >
@@ -149,6 +161,7 @@ export default async function ProjectPageDetails({
           <div className="flex flex-col gap-4">
             {otherProjects.map((p) => (
               <MiniCard
+                slug={p.slug}
                 key={p.id}
                 title={p.title}
                 description={p.description}

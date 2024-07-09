@@ -1,9 +1,9 @@
-import { bebas } from '@/app/fonts'
+import { bebas } from '@/assets/fonts'
 
 export function Logo() {
   return (
     <span
-      className={`text-4xl font-normal  leading-10  tracking-wider text-light ${bebas.className}`}
+      className={`text-3xl font-normal leading-10 tracking-wider  text-lightSilver  ${bebas.className}`}
     >
       DosSantosDev
     </span>

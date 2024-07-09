@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '../FetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/hygraph/FetchHygraph'
 import type { RichTextContent } from '@graphcms/rich-text-types'
 interface DataHome {
   home: {
@@ -45,59 +45,66 @@ interface DataHome {
         raw: RichTextContent
       }
     }
+    metaData: {
+      title: string
+      description: string
+    }
   }
 }
 
 export const GET_DATA_HOME = async (): Promise<DataHome> => {
   const query = `
-      query MyQuery {
-        home(where: {slug: "home"}) {
-          sectionHero {
+          query MyQuery {
+          home(where: {slug: "home"}) {
+        sectionHero {
+          title
+          smallText
+          links {
+            id
+            name
+            url
+            icon
+          }
+          image {
+            url
+          }
+        }
+        featuredProjects {
+          id
+          title
+          smallText
+          projects {
+            id
+            slug
+            codeLink
+            deployLink
             title
-            smallText
-            links {
+            description
+            technologie {
               id
               name
-              url
-              icon
-            }
-            image {
-              url
-            }
-          }
-          featuredProjects {
-            id
-            title
-            smallText
-            projects {
-              id
-              slug
-              codeLink
-              deployLink
-              title
-              description
-              technologie {
-                id
-                name
-                icon {
-                  url
-                }
-              }
-              coverImage {
+              icon {
                 url
               }
-
             }
-          }
-          sectionAboutMe {
-            title
-            smallText
-            longText {
-              raw
+            coverImage {
+              url
             }
           }
         }
-      }  
+        sectionAboutMe {
+          title
+          smallText
+          longText {
+            raw
+          }
+        }
+        metaData {
+          title
+          description
+        }
+      }
+    } 
   `
 
   return fetchHygraphQuery(query)

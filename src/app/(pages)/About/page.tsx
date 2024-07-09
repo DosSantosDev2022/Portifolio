@@ -1,5 +1,5 @@
 import { GET_DATA_ABOUT } from '@/app/api/queries/Get_data_about'
-import { bebas } from '../fonts'
+import { bebas } from '@/assets/fonts'
 import Link from 'next/link'
 import { CMSIcon } from '@/components/global/CmsIcon'
 import { TooltipComponent } from '@/components/global/Tooltip'
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const { aboutMe } = await GET_DATA_ABOUT()
+
   const techs = aboutMe.sectionTechnologies
   return (
     <div className="space-y-28 ">
@@ -22,8 +23,8 @@ export default async function AboutPage() {
         <div className="w-full">
           <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
             <Image
-              alt="Imagem do desenvolvedor Juliano Santos de braços cruzados, usando camiseta preta e sorrindo"
-              src={'/profile02.png'}
+              alt={aboutMe.authorImage01.fileName}
+              src={aboutMe.authorImage01.url}
               width={250}
               height={300}
               quality={100}
@@ -32,11 +33,11 @@ export default async function AboutPage() {
         </div>
         <div className="flex w-full  flex-col gap-2">
           <h1
-            className={`${bebas.className} text-[5rem] font-normal text-light lg:text-[6rem] lg:leading-[90.9px]`}
+            className={`${bebas.className} text-[5rem] font-normal  lg:text-[6rem] lg:leading-[90.9px]`}
           >
             {aboutMe.sectionHero.title}
           </h1>
-          <span className="text-3xl text-light lg:leading-[44.8px]  ">
+          <span className="text-3xl lg:leading-[44.8px]  ">
             {aboutMe.sectionHero.smallText}
           </span>
           <p className="text-lg font-normal leading-[27px] text-lightSilver ">
@@ -53,7 +54,7 @@ export default async function AboutPage() {
                   <Link href={link.url} target="_blank">
                     <CMSIcon
                       icon={link.icon}
-                      className="text-2xl text-light duration-300 hover:scale-105"
+                      className="text-2xl duration-300 hover:scale-105"
                     />
                   </Link>
                 </li>
@@ -66,13 +67,13 @@ export default async function AboutPage() {
       <div className="flex flex-col items-start justify-center px-3 py-8 lg:flex-row lg:px-12 lg:py-16 ">
         <div className="w-full">
           <h2
-            className={`${bebas.className} text-[4.2rem] leading-[76px] text-light lg:text-[5rem] `}
+            className={`${bebas.className} text-[4.2rem] leading-[76px] lg:text-[5rem] `}
           >
             {aboutMe.sectionTechnologies.title}
           </h2>
         </div>
         <div className="w-full">
-          <p className="mb-[32px] text-lg font-normal leading-[27px] text-light">
+          <p className="mb-[32px] text-lg font-normal leading-[27px]">
             {aboutMe.sectionTechnologies.smallText}
           </p>
 
@@ -97,7 +98,7 @@ export default async function AboutPage() {
       <div className="flex w-full flex-col items-start justify-center gap-8   px-3 py-8 pb-20 lg:flex-row lg:px-12 lg:py-16">
         <div className=" flex w-full flex-col">
           <h2
-            className={`${bebas.className} w-full text-[4.2rem] leading-[76px]  text-light lg:w-[450px] lg:text-[5rem] `}
+            className={`${bebas.className} w-full text-[4.2rem] leading-[76px]  lg:w-[450px] lg:text-[5rem] `}
           >
             {aboutMe.sectionstory.title}
           </h2>
@@ -105,9 +106,7 @@ export default async function AboutPage() {
             content={aboutMe.sectionstory.longText.raw}
             renderers={{
               p: ({ children }) => (
-                <p className="text-lg font-normal leading-[27px] text-light">
-                  {children}
-                </p>
+                <p className="text-lg font-normal leading-[27px]">{children}</p>
               ),
             }}
           />
@@ -115,8 +114,8 @@ export default async function AboutPage() {
         <div className="flex w-full flex-col gap-4">
           <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
             <Image
-              alt="Imagem do desenvolvedor Juliano Santos de braços cruzados, usando camiseta preta e sorrindo"
-              src={'/profile03.png'}
+              alt={aboutMe.authorImage02.fileName}
+              src={aboutMe.authorImage02.url}
               width={280}
               height={200}
               quality={100}

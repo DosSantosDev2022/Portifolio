@@ -1,7 +1,6 @@
 import { GET_DETAILS_PROJECT } from '@/app/api/queries/Get_Details_Project'
-import { bebas } from '@/app/fonts'
+import { bebas } from '@/assets/fonts'
 import { RichText } from '@/components/global/RichText'
-import { MiniCard } from '@/components/global/miniCards'
 import { Button } from '@/components/global/uiChroma/button'
 
 import Image from 'next/image'
@@ -30,15 +29,11 @@ export default async function ProjectPageDetails({
   const { project } = await GET_DETAILS_PROJECT()
 
   const projectDetails = project.find((p) => p.slug === params.slug)
-  const otherProjects = project.filter((p) => p.slug !== params.slug)
-  const firstTechnologyName = projectDetails?.technologie[0]?.name
 
   return (
-    <div className="py-20">
+    <div className="px-5 py-10">
       <div className="flex flex-col gap-4">
-        <h1
-          className={`${bebas.className} text-7xl font-normal text-light lg:text-9xl`}
-        >
+        <h1 className={`${bebas.className} text-7xl font-normal  lg:text-9xl`}>
           {projectDetails?.title}{' '}
         </h1>
 
@@ -46,18 +41,10 @@ export default async function ProjectPageDetails({
           {projectDetails?.description}{' '}
         </p>
       </div>
-      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25 lg:h-[26.25rem]">
-        <div className="hidden flex-col gap-1 p-2 text-zinc-50 lg:flex">
-          <h3
-            className={`${bebas.className} text-7xl font-normal text-zinc-50 lg:text-9xl`}
-          >
-            {projectDetails?.title}{' '}
-          </h3>
-          <span className="text-lg font-normal">{`Um projeto construído com ${firstTechnologyName}`}</span>
-        </div>
+      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25 ">
         <Image
           quality={100}
-          className="w-[458px] object-contain  "
+          className="w-[358px] object-contain  "
           alt={projectDetails?.title || 'Foto de capa do projeto'}
           src={projectDetails?.coverImage.url || ''}
           width={400}
@@ -89,12 +76,12 @@ export default async function ProjectPageDetails({
             </div>
           </div>
 
-          <div className="mt-10 w-full space-y-3 lg:w-[768px] ">
+          <div className="mt-10 w-full space-y-3  ">
             <RichText
               content={projectDetails?.completeDescription.raw || []}
               renderers={{
                 bold: ({ children }) => (
-                  <b className=" font-bold text-light">{children} </b>
+                  <b className=" font-bold ">{children} </b>
                 ),
                 h2: ({ children }) => (
                   <h2
@@ -104,9 +91,7 @@ export default async function ProjectPageDetails({
                   </h2>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="space-y-2 font-semibold text-light">
-                    {children}{' '}
-                  </h5>
+                  <h5 className="space-y-2 font-semibold ">{children} </h5>
                 ),
                 p: ({ children }) => (
                   <p className="font-light text-lightSilver">{children}</p>
@@ -150,24 +135,6 @@ export default async function ProjectPageDetails({
           >
             <Link href={'/Projects'}>Voltar</Link>
           </Button>
-        </div>
-        <div className="flex  w-full flex-col gap-8 rounded-md border  border-primary_hover bg-primary px-3 py-8">
-          <h2
-            className={`text-3xl font-medium text-lightSilver ${bebas.className}`}
-          >
-            Projetos relacionados
-          </h2>
-
-          <div className="flex flex-col gap-4">
-            {otherProjects.map((p) => (
-              <MiniCard
-                slug={p.slug}
-                key={p.id}
-                title={p.title}
-                description={p.description}
-              />
-            ))}
-          </div>
         </div>
       </section>
     </div>

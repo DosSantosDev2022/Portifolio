@@ -30,25 +30,25 @@ export function Header() {
   }
 
   return (
-    <header className=" fixed top-0  z-50 flex w-full flex-col  items-center justify-between border-b border-secundary bg-zinc-900 p-4 lg:h-24 lg:flex-row lg:px-[108px] lg:py-6 ">
-      <div className="flex w-full items-center justify-between">
-        <Logo />
-        <Button
-          variant="outline"
-          onClick={handleMenu}
-          className="rounded-sm  p-2 lg:hidden"
-        >
-          {isOpen ? <LuX size={18} /> : <FaBars size={18} />}
-        </Button>
-      </div>
-      <nav
-        className={` ${isOpen ? 'flex' : 'hidden'}  mt-10 w-full flex-col items-center  justify-end gap-5 lg:mt-0 lg:flex lg:flex-row `}
+    <header className="sticky top-0 z-50 flex h-[90px] w-full items-center justify-between rounded-md border-b border-secundary bg-zinc-900 px-6 py-3">
+      <Logo />
+      <Button
+        variant="outline"
+        onClick={handleMenu}
+        className="rounded-sm p-2 lg:hidden"
       >
-        <ul className=" flex flex-col items-center justify-center gap-8 lg:flex-row">
+        {isOpen ? <LuX size={18} /> : <FaBars size={18} />}
+      </Button>
+      <nav
+        className={` ${
+          isOpen ? 'flex' : 'hidden'
+        } mt-10 w-full flex-col items-center justify-end gap-5 lg:mt-0 lg:flex lg:flex-row`}
+      >
+        <ul className="flex flex-col items-center justify-center gap-8 lg:flex-row">
           {NavLinks.map((link) => (
             <li key={link.name}>
               <Link
-                className="rounded-md p-2 text-base font-normal uppercase leading-6 -tracking-tight  transition-all duration-300 hover:bg-highlights_hover"
+                className="rounded-md bg-highlights p-2 text-base font-normal uppercase leading-6 tracking-tight transition-all duration-300 hover:bg-highlights_hover"
                 href={link.url}
                 prefetch
               >

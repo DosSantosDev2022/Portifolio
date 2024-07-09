@@ -7,18 +7,6 @@ import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
 import Image from 'next/image'
 
-import { Metadata } from 'next'
-
-export async function generateMetaData(): Promise<Metadata> {
-  const { home } = await GET_DATA_HOME()
-  const pageData = home.metaData
-  console.log(pageData.title)
-  return {
-    title: pageData.title,
-    description: pageData.description,
-  }
-}
-
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
   console.log(home)

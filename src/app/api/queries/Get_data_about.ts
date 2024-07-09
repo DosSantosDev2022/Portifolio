@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '../FetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/hygraph/FetchHygraph'
 import type { RichTextContent } from '@graphcms/rich-text-types'
 
 interface AboutMeData {
@@ -36,12 +36,20 @@ interface AboutMeData {
         raw: RichTextContent
       }
     }
+    authorImage01: {
+      fileName: string
+      url: string
+    }
+    authorImage02: {
+      fileName: string
+      url: string
+    }
   }
 }
 
 export const GET_DATA_ABOUT = async (): Promise<AboutMeData> => {
   const query = `
-    query MyQuery {
+      query MyQuery {
       aboutMe(where: {slug: "about-me"}) {
         sectionHero {
           title
@@ -75,6 +83,14 @@ export const GET_DATA_ABOUT = async (): Promise<AboutMeData> => {
           longText {
             raw
           }
+        }
+        authorImage01 {
+          fileName
+          url
+        }
+        authorImage02 {
+          fileName
+          url
         }
       }
     }

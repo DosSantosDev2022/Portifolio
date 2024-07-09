@@ -47,7 +47,7 @@ export function Projects({
 
         <div className="flex  flex-col items-center  justify-center gap-3  p-2 ">
           <div className="flex flex-col gap-4">
-            <h2 className="text-[2rem] font-bold leading-[44.8px] text-light lg:text-[2.8rem]">
+            <h2 className="text-[2rem] font-bold leading-[44.8px] lg:text-[2.8rem]">
               {title}
             </h2>
             <p className="text-md left-[27px]  font-normal text-lightSilver lg:text-lg ">

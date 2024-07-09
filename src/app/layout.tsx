@@ -1,32 +1,29 @@
-import type { Metadata } from 'next'
-
 import '../styles/globals.css'
 import { Header } from '@/components/global/Header'
-import { manrope } from './fonts'
-import { Footer } from '@/components/global/Footer'
+import { manrope } from '@/assets/fonts'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
+import { SideBar } from '@/components/global/sideBar'
+import { Footer } from '@/components/global/Footer'
 
-export const metadata: Metadata = {
-  title: 'Portifólio - Juliano Santos',
-  description: 'O meu portifólio dev',
-}
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-br" className={manrope.className}>
-      <body
-        className={` h-screen bg-zinc-900 scrollbar scrollbar-thumb-zinc-800 `}
-      >
-        <Header />
-        <main className=" mx-auto bg-[url('/background_02.jpg')] px-4 lg:px-[108px] ">
-          {children}
-        </main>
-        <Footer />
+    <html lang="pt-br" className={`${manrope.className}  scrollbar-thin`}>
+      <body className="h-screen bg-zinc-700 bg-[url('https://media.graphassets.com/u0Z1QcrWTzeE9eYcGxak')] text-light">
+        <div className="flex  gap-6 border px-[113px] py-12">
+          <SideBar />
+          <div className="flex  flex-1 flex-col gap-6">
+            <Header />
+            <main className="h-screen flex-1 overflow-auto rounded-md bg-zinc-900 p-4 ">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </div>
         <ToastContainer />
       </body>
     </html>

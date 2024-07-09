@@ -1,5 +1,5 @@
 import type { RichTextContent } from '@graphcms/rich-text-types'
-import { fetchHygraphQuery } from '../FetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/hygraph/FetchHygraph'
 
 interface Technologie {
   id: string

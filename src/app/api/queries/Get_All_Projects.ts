@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '../FetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/hygraph/FetchHygraph'
 
 interface CoverImage {
   url: string

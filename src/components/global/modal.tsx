@@ -33,7 +33,7 @@ export default function Modal() {
               {/* Modal Header */}
 
               <div className="flex items-center justify-between rounded-t border-b border-lightSilver/30 p-4 md:p-5 ">
-                <h3 className="text-lg font-semibold text-light lg:text-xl">
+                <h3 className="text-lg font-semibold  lg:text-xl">
                   Vamos fechar uma parceria ?
                 </h3>
                 <Button

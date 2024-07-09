@@ -30,7 +30,7 @@ export function Header() {
   }
 
   return (
-    <header className=" flex  w-full flex-col items-center justify-between border-b border-secundary bg-zinc-900 p-4 lg:h-24 lg:flex-row lg:px-[108px] lg:py-6 ">
+    <header className=" fixed top-0  z-50 flex w-full flex-col  items-center justify-between border-b border-secundary bg-zinc-900 p-4 lg:h-24 lg:flex-row lg:px-[108px] lg:py-6 ">
       <div className="flex w-full items-center justify-between">
         <Logo />
         <Button
@@ -48,8 +48,9 @@ export function Header() {
           {NavLinks.map((link) => (
             <li key={link.name}>
               <Link
-                className="rounded-md p-2 text-base font-normal uppercase leading-6 -tracking-tight text-light transition-all duration-300 hover:bg-highlights_hover"
+                className="rounded-md p-2 text-base font-normal uppercase leading-6 -tracking-tight  transition-all duration-300 hover:bg-highlights_hover"
                 href={link.url}
+                prefetch
               >
                 {link.name}
               </Link>

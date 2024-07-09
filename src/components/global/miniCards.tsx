@@ -13,7 +13,7 @@ export function MiniCard({ title, description, slug }: MiniCardProps) {
       className=" w-full rounded-md border border-border px-2 py-4 duration-500 hover:scale-95"
     >
       <div className="space-y-2">
-        <h4 className="text-base font-semibold text-light">{title} </h4>
+        <h4 className="text-base font-semibold ">{title} </h4>
         <span className="text-limit text-sm font-light text-lightSilver">
           {description}
         </span>

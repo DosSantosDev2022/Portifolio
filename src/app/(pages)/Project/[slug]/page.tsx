@@ -1,5 +1,5 @@
 import { GET_DETAILS_PROJECT } from '@/app/api/queries/Get_Details_Project'
-import { bebas } from '@/app/fonts'
+import { bebas } from '@/assets/fonts'
 import { RichText } from '@/components/global/RichText'
 import { MiniCard } from '@/components/global/miniCards'
 import { Button } from '@/components/global/uiChroma/button'
@@ -36,9 +36,7 @@ export default async function ProjectPageDetails({
   return (
     <div className="py-20">
       <div className="flex flex-col gap-4">
-        <h1
-          className={`${bebas.className} text-7xl font-normal text-light lg:text-9xl`}
-        >
+        <h1 className={`${bebas.className} text-7xl font-normal  lg:text-9xl`}>
           {projectDetails?.title}{' '}
         </h1>
 
@@ -47,9 +45,9 @@ export default async function ProjectPageDetails({
         </p>
       </div>
       <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25 lg:h-[26.25rem]">
-        <div className="hidden flex-col gap-1 p-2 text-zinc-50 lg:flex">
+        <div className="hidden flex-col gap-1 p-2  lg:flex">
           <h3
-            className={`${bebas.className} text-7xl font-normal text-zinc-50 lg:text-9xl`}
+            className={`${bebas.className} text-7xl font-normal  lg:text-9xl`}
           >
             {projectDetails?.title}{' '}
           </h3>
@@ -94,7 +92,7 @@ export default async function ProjectPageDetails({
               content={projectDetails?.completeDescription.raw || []}
               renderers={{
                 bold: ({ children }) => (
-                  <b className=" font-bold text-light">{children} </b>
+                  <b className=" font-bold ">{children} </b>
                 ),
                 h2: ({ children }) => (
                   <h2
@@ -104,9 +102,7 @@ export default async function ProjectPageDetails({
                   </h2>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="space-y-2 font-semibold text-light">
-                    {children}{' '}
-                  </h5>
+                  <h5 className="space-y-2 font-semibold ">{children} </h5>
                 ),
                 p: ({ children }) => (
                   <p className="font-light text-lightSilver">{children}</p>

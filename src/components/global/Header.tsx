@@ -21,6 +21,10 @@ export function Header() {
       name: 'Projetos',
       url: '/Projects',
     },
+    {
+      name: 'Contato',
+      url: '/Contacts',
+    },
   ]
 
   const [isOpen, setIsOpen] = useState(false)
@@ -30,7 +34,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex h-[90px] w-full items-center justify-between rounded-md border-b border-secundary bg-zinc-900 px-6 py-3">
+    <header className="sticky top-0 z-50 order-first  flex h-[90px] w-full  items-center justify-between rounded-md border-b border-secundary bg-zinc-900 px-6 py-3  lg:w-auto">
       <Logo />
       <Button
         variant="outline"
@@ -48,7 +52,7 @@ export function Header() {
           {NavLinks.map((link) => (
             <li key={link.name}>
               <Link
-                className="rounded-md bg-highlights p-2 text-base font-normal uppercase leading-6 tracking-tight transition-all duration-300 hover:bg-highlights_hover"
+                className="rounded-md p-2 text-sm font-light  leading-6 tracking-tight transition-all duration-300 hover:bg-highlights_hover"
                 href={link.url}
                 prefetch
               >

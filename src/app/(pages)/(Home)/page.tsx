@@ -1,5 +1,4 @@
 import { GET_DATA_HOME } from '@/app/api/queries/Get_data_home'
-import { CMSIcon } from '@/components/global/CmsIcon'
 import { bebas } from '@/assets/fonts'
 
 import Link from 'next/link'
@@ -7,7 +6,6 @@ import { Button } from '@/components/global/uiChroma/button'
 import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
 import Image from 'next/image'
-import Modal from '@/components/global/modal'
 
 import { Metadata } from 'next'
 
@@ -23,55 +21,23 @@ export async function generateMetaData(): Promise<Metadata> {
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
-
+  console.log(home)
   return (
-    <div className="mt-10 space-y-20 border px-6 py-8 lg:p-20">
-      <div className="flex  w-full flex-col items-center  justify-around gap-3  lg:flex-row lg:gap-0">
-        <div className=" flex flex-col items-start gap-4 lg:w-[544px]">
-          <h1
-            className={`text-6xl font-normal leading-[57px] lg:text-[6rem] lg:leading-[90.9px] ${bebas.className} `}
-          >
-            {home.sectionHero.title}
-          </h1>
-          <span className="text-lg font-normal leading-[27px] ">
-            {home.sectionHero.smallText}
-          </span>
-          <div className=" flex items-center gap-4 ">
-            <Modal />
-            <ul className="flex items-center gap-4">
-              {home.sectionHero.links.map((link) => (
-                <li
-                  className="rounded-full bg-highlights p-[14px] duration-300  hover:bg-highlights_hover "
-                  key={link.id}
-                >
-                  <Link href={link.url} target="_blank">
-                    <CMSIcon
-                      icon={link.icon}
-                      className="text-2xl  duration-300 hover:scale-105"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="  flex-shrink-0">
-          <Image
-            className="rounded-md"
-            src={home.sectionHero.image.url}
-            alt=""
-            width={400}
-            height={400}
-            quality={100}
-          />
-        </div>
+    <div className=" space-y-20  px-3 py-8  lg:px-12 lg:py-16  ">
+      <div className="flex w-full flex-col items-start justify-center gap-3 lg:w-[582px] ">
+        <h1
+          className={` text-7xl font-normal leading-[57px] lg:text-8xl lg:leading-[90.9px] ${bebas.className} `}
+        >
+          {home.sectionHero.title}
+        </h1>
+        <span className="text-lg font-normal leading-[27px] ">
+          {home.sectionHero.smallText}
+        </span>
       </div>
 
-      <div className=" flex  w-full  flex-col items-center justify-around  gap-3  px-3  py-8 lg:flex-row lg:px-12 lg:py-16">
-        <div className="flex  w-full flex-col items-start gap-2">
-          <h3
-            className={`${bebas.className}  w-full text-6xl font-normal leading-[5.68125rem]  lg:text-[6.3125rem]`}
-          >
+      <div className=" flex  w-full  flex-col items-center justify-around gap-3   ">
+        <div className="flex  w-full flex-col items-start gap-2 ">
+          <h3 className={`${bebas.className}  w-full text-7xl font-normal  `}>
             {home.sectionAboutMe.title}
           </h3>
           <div className="relative   flex-shrink-0 rounded-md">
@@ -96,9 +62,7 @@ export default async function Home() {
                 <b className="font-bold  text-highlights">{children} </b>
               ),
               p: ({ children }) => (
-                <p className="text-base font-normal leading-[21px]  ">
-                  {children}
-                </p>
+                <p className="text-sm font-extralight ">{children}</p>
               ),
             }}
           />
@@ -111,7 +75,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className=" flex flex-col gap-2  px-3 py-8  lg:px-12 lg:py-16  ">
+      <div className=" flex flex-col gap-2 ">
         <div className=" flex flex-col items-start gap-2 lg:w-[37rem]">
           <h2
             className={` ${bebas.className} text-6xl font-normal  lg:text-[4.75rem] lg:leading-[4.75rem] `}

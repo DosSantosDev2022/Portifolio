@@ -1,7 +1,7 @@
 export function Footer() {
   return (
-    <footer className="justify-centerh-14 sticky  flex  flex-col items-center rounded-md bg-zinc-600">
-      <span className=" text-lg font-extralight text-lightSilver ">
+    <footer className="sticky flex h-20 w-full flex-col  items-center justify-center rounded-md bg-zinc-900 ">
+      <span className=" text-sm font-extralight text-lightSilver/50 ">
         Todos os direitos reservados - © 2024 DosSantosDev
       </span>
     </footer>

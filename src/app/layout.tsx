@@ -12,15 +12,17 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-br" className={`${manrope.className}  scrollbar-thin`}>
-      <body className="h-screen bg-zinc-700 bg-[url('https://media.graphassets.com/u0Z1QcrWTzeE9eYcGxak')] text-light">
-        <div className="flex  gap-6 border px-[113px] py-12">
-          <SideBar />
+    <html
+      lang="pt-br"
+      className={`${manrope.className} scrollbar scrollbar-track-zinc-800 scrollbar-thumb-zinc-900 `}
+    >
+      <body className=" h-screen rounded-md bg-[url('https://media.graphassets.com/u0Z1QcrWTzeE9eYcGxak')] text-light">
+        <div className="flex   flex-col gap-6   px-6 py-12 lg:flex-row lg:px-[96px]">
+          <SideBar className="hidden lg:flex" />
           <div className="flex  flex-1 flex-col gap-6">
             <Header />
-            <main className="h-screen flex-1 overflow-auto rounded-md bg-zinc-900 p-4 ">
-              {children}
-            </main>
+            <SideBar className="lg:hidden" />
+            <div className="container   rounded-lg bg-zinc-900">{children}</div>
             <Footer />
           </div>
         </div>

@@ -45,17 +45,19 @@ interface DataHome {
         raw: RichTextContent
       }
     }
-    metaData: {
+    features: {
+      id: string
       title: string
+      icon: string
       description: string
-    }
+    }[]
   }
 }
 
 export const GET_DATA_HOME = async (): Promise<DataHome> => {
   const query = `
-          query MyQuery {
-          home(where: {slug: "home"}) {
+      query MyQuery {
+      home(where: {slug: "home"}) {
         sectionHero {
           title
           smallText
@@ -99,12 +101,14 @@ export const GET_DATA_HOME = async (): Promise<DataHome> => {
             raw
           }
         }
-        metaData {
+        features {
+          id
           title
+          icon
           description
         }
       }
-    } 
+    }
   `
 
   return fetchHygraphQuery(query)

@@ -1,15 +1,12 @@
 import { GET_DATA_ABOUT } from '@/app/api/queries/Get_data_about'
 import { bebas } from '@/assets/fonts'
-import Link from 'next/link'
-import { CMSIcon } from '@/components/global/CmsIcon'
 import { TooltipComponent } from '@/components/global/Tooltip'
 import Image from 'next/image'
 import { RichText } from '@/components/global/RichText'
 import { Metadata } from 'next'
-import Modal from '@/components/global/modal'
 
 export const metadata: Metadata = {
-  title: 'Sobre mim',
+  title: 'Portifólio - Sobre mim',
   description: '',
 }
 
@@ -18,62 +15,44 @@ export default async function AboutPage() {
 
   const techs = aboutMe.sectionTechnologies
   return (
-    <div className="space-y-28 ">
-      <div className="flex w-full flex-col items-center justify-center  px-3 py-8  lg:flex-row lg:px-12 lg:py-16 ">
-        <div className="w-full">
-          <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
-            <Image
-              alt={aboutMe.authorImage01.fileName}
-              src={aboutMe.authorImage01.url}
-              width={250}
-              height={300}
-              quality={100}
-            />
-          </div>
+    <div className="space-y-28 px-3 py-8  lg:flex-row lg:px-12 lg:py-16 ">
+      <div className="flex w-full flex-col items-start justify-between gap-6 lg:flex-row  ">
+        <div className="flex  items-center justify-center rounded-md bg-zinc-800/80  ">
+          <Image
+            alt={aboutMe.authorImage01.fileName}
+            src={aboutMe.authorImage01.url}
+            quality={100}
+            width={800}
+            height={200}
+            className="w-[380px]"
+          />
         </div>
+
         <div className="flex w-full  flex-col gap-2">
           <h1
-            className={`${bebas.className} text-[5rem] font-normal  lg:text-[6rem] lg:leading-[90.9px]`}
+            className={`${bebas.className} text-6xl font-normal lg:text-[5rem]   lg:leading-[90.9px]`}
           >
             {aboutMe.sectionHero.title}
           </h1>
-          <span className="text-3xl lg:leading-[44.8px]  ">
+          <span className="text-xl lg:text-lg  ">
             {aboutMe.sectionHero.smallText}
           </span>
-          <p className="text-lg font-normal leading-[27px] text-lightSilver ">
+          <p className="text-base font-normal leading-[27px] text-lightSilver ">
             {aboutMe.sectionHero.longText.text}
           </p>
-          <div className="mt-[54px] flex items-center gap-4 ">
-            <Modal />
-            <ul className="flex items-center gap-4">
-              {aboutMe.sectionHero.links.map((link) => (
-                <li
-                  className="rounded-full bg-highlights p-[14px] duration-300  hover:bg-highlights_hover "
-                  key={link.id}
-                >
-                  <Link href={link.url} target="_blank">
-                    <CMSIcon
-                      icon={link.icon}
-                      className="text-2xl duration-300 hover:scale-105"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
       <div className="flex flex-col items-start justify-center px-3 py-8 lg:flex-row lg:px-12 lg:py-16 ">
         <div className="w-full">
           <h2
-            className={`${bebas.className} text-[4.2rem] leading-[76px] lg:text-[5rem] `}
+            className={`${bebas.className} text-6xl font-normal leading-[76px]  lg:text-[5rem] `}
           >
             {aboutMe.sectionTechnologies.title}
           </h2>
         </div>
         <div className="w-full">
-          <p className="mb-[32px] text-lg font-normal leading-[27px]">
+          <p className="mb-[32px] text-base font-light leading-[27px]">
             {aboutMe.sectionTechnologies.smallText}
           </p>
 
@@ -95,10 +74,10 @@ export default async function AboutPage() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-start justify-center gap-8   px-3 py-8 pb-20 lg:flex-row lg:px-12 lg:py-16">
-        <div className=" flex w-full flex-col">
+      <div className="flex w-full flex-col  gap-6 lg:flex-row">
+        <div className=" flex w-full  flex-col">
           <h2
-            className={`${bebas.className} w-full text-[4.2rem] leading-[76px]  lg:w-[450px] lg:text-[5rem] `}
+            className={`${bebas.className} w-full text-6xl font-normal leading-[76px] lg:w-[450px]  lg:text-[5rem]`}
           >
             {aboutMe.sectionstory.title}
           </h2>
@@ -106,21 +85,21 @@ export default async function AboutPage() {
             content={aboutMe.sectionstory.longText.raw}
             renderers={{
               p: ({ children }) => (
-                <p className="text-lg font-normal leading-[27px]">{children}</p>
+                <p className="text-base font-light">{children}</p>
               ),
             }}
           />
         </div>
-        <div className="flex w-full flex-col gap-4">
-          <div className=" flex w-full items-center justify-center rounded-md bg-zinc-200 lg:w-[380px] ">
-            <Image
-              alt={aboutMe.authorImage02.fileName}
-              src={aboutMe.authorImage02.url}
-              width={280}
-              height={200}
-              quality={100}
-            />
-          </div>
+
+        <div className=" flex items-center justify-center rounded-md bg-zinc-800/80  ">
+          <Image
+            alt={aboutMe.authorImage02.fileName}
+            src={aboutMe.authorImage02.url}
+            quality={100}
+            width={800}
+            height={200}
+            className="w-[380px]"
+          />
         </div>
       </div>
     </div>

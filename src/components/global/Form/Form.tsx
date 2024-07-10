@@ -7,19 +7,41 @@ import { Input } from '@/components/global/uiChroma/Input'
 import { Label } from '@/components/global/uiChroma/label'
 import { toast } from 'react-toastify'
 import TextArea from '@/components/global/uiChroma/TextArea'
+import { useState } from 'react'
+import { ImSpinner9 } from 'react-icons/im'
 
-const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+// Regex para validação de email
+const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Regex para validação de telefone
+const regexTelefone = /^[0-9+\-\s()]*$/
 
 export const FormSchema = z.object({
-  nome: z.string().nonempty('O nome é obrigatório').min(2).max(50),
+  nome: z
+    .string()
+    .nonempty('O nome é obrigatório')
+    .min(2, { message: 'O nome deve ter pelo menos 2 caracteres' })
+    .max(50, { message: 'O nome deve ter no máximo 50 caracteres' }),
+
   email: z
     .string()
-    .min(1, 'O email é obrigatório')
+    .nonempty('O email é obrigatório')
     .refine((value) => regexEmail.test(value), {
-      message: 'Email inválido, tente novamente !',
+      message: 'Email inválido, tente novamente!',
     }),
-  telefone: z.string().min(8).max(15),
-  mensagem: z.string().min(10, 'Deixe sua mensagem'),
+
+  telefone: z
+    .string()
+    .nonempty('O telefone é obrigatório')
+    .refine((value) => regexTelefone.test(value), {
+      message:
+        'O telefone deve conter apenas números e símbolos válidos (+, -, (), espaço)',
+    }),
+
+  mensagem: z.string().nonempty('A mensagem é obrigatória').min(10, {
+    message:
+      'A mensagem deve ser bem elaborada para te atendermos da melhor maneira',
+  }),
 })
 
 type Form = z.infer<typeof FormSchema>
@@ -34,7 +56,10 @@ export function Form() {
     resolver: zodResolver(FormSchema),
   })
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const onSubmit: SubmitHandler<Form> = async (data) => {
+    setIsLoading(true)
     const response = await fetch('api/send', {
       method: 'POST',
       headers: {
@@ -42,8 +67,8 @@ export function Form() {
       },
       body: JSON.stringify(data),
     })
-    console.log(data)
 
+    setIsLoading(false)
     if (response.ok) {
       toast.success('E-mail enviado com sucesso !', {
         position: 'top-right',
@@ -71,12 +96,15 @@ export function Form() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full space-y-6 lg:w-[668px] "
+    >
       <div className="flex flex-col gap-1">
         <Label htmlFor="nome">Nome</Label>
         <Input
           {...register('nome')}
-          placeholder="Digite seu nome"
+          placeholder="Digite seu nome completo"
           type="text"
         />
         {errors && (
@@ -89,7 +117,7 @@ export function Form() {
         <Label htmlFor="email">Email</Label>
         <Input
           {...register('email')}
-          placeholder="Digite seu e-mail"
+          placeholder="Digite seu melhor e-mail"
           type="email"
         />
         {errors && (
@@ -127,8 +155,16 @@ export function Form() {
         <Button
           className="flex h-[54px] w-[137px] items-center justify-center p-4 text-base font-bold uppercase tracking-wider "
           variant="highlight"
+          disabled={isLoading}
         >
-          Enviar
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-1">
+              Enviando...
+              <ImSpinner9 className="animate-spin text-light" />
+            </span>
+          ) : (
+            'Enviar'
+          )}
         </Button>
       </div>
     </form>

@@ -6,15 +6,20 @@ import { Button } from '@/components/global/uiChroma/button'
 import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Portifólio - DosSantosDev',
+}
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
-  console.log(home)
+
   return (
     <div className=" space-y-20  px-3 py-8  lg:px-12 lg:py-16  ">
       <div className="flex w-full flex-col items-start justify-center gap-3 lg:w-[582px] ">
         <h1
-          className={` text-7xl font-normal leading-[57px] lg:text-8xl lg:leading-[90.9px] ${bebas.className} `}
+          className={` text-6xl font-normal leading-[57px] lg:text-8xl lg:leading-[90.9px] ${bebas.className} `}
         >
           {home.sectionHero.title}
         </h1>
@@ -23,26 +28,20 @@ export default async function Home() {
         </span>
       </div>
 
-      <div className=" flex  w-full  flex-col items-center justify-around gap-3   ">
-        <div className="flex  w-full flex-col items-start gap-2 ">
-          <h3 className={`${bebas.className}  w-full text-7xl font-normal  `}>
-            {home.sectionAboutMe.title}
-          </h3>
-          <div className="relative   flex-shrink-0 rounded-md">
-            <Image
-              src={home.sectionHero.image.url}
-              alt=""
-              width={400}
-              height={400}
-              quality={100}
-            />
-          </div>
-        </div>
+      <div className=" flex  w-full flex-col items-start justify-around  gap-12 rounded-md bg-zinc-800/80 px-3 py-4 lg:flex-row  ">
+        <Image
+          src={home.sectionHero.image.url}
+          alt={home.sectionHero.title}
+          width={400}
+          height={400}
+          quality={100}
+          className="flex-shrink-0 rounded-lg border-[4px] border-zinc-800 bg-zinc-800/80"
+        />
 
         <div className="mt-6 flex w-full flex-col items-start gap-2">
-          <h5 className="mb-4  text-xl font-bold  lg:text-[2rem] lg:leading-9">
+          <h2 className="mb-4  text-xl font-bold  lg:text-[2rem] lg:leading-9">
             {home.sectionAboutMe.smallText}
-          </h5>
+          </h2>
           <RichText
             content={home.sectionAboutMe.longText.raw}
             renderers={{
@@ -50,14 +49,14 @@ export default async function Home() {
                 <b className="font-bold  text-highlights">{children} </b>
               ),
               p: ({ children }) => (
-                <p className="text-sm font-extralight ">{children}</p>
+                <p className="text-base font-light ">{children}</p>
               ),
             }}
           />
 
-          <Button asChild variant="highlight" className=" mt-4">
-            <Link href={'/About'} className="text-sm  ">
-              Veja mais ...
+          <Button asChild variant="outline" className=" mt-4 w-36 text-center">
+            <Link href={'/About'} className="text-sm">
+              Veja mais
             </Link>
           </Button>
         </div>

@@ -9,7 +9,7 @@ interface ProjetcsPageProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Meus projetos',
+  title: 'Portifólio - Meus projetos',
 }
 
 export default async function ProjetcsPage({

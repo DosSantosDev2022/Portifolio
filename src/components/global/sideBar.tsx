@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import { CMSIcon } from './CmsIcon'
+import { TooltipComponent } from './Tooltip'
 
 export async function SideBar({ className }: { className: string }) {
   const { sideBar } = await GET_DATA_SIDEBAR()
-  console.log(sideBar)
 
   return (
     <aside
@@ -50,15 +50,17 @@ export async function SideBar({ className }: { className: string }) {
         <span className="mb-6 ml-2 text-lightSilver">Tecnologias</span>
         <div className="flex flex-wrap items-center gap-2 p-2">
           {sideBar.technologies?.map((tech) => (
-            <Image
-              width={40}
-              height={40}
-              quality={100}
-              alt={tech.name}
-              src={tech.icon.url}
-              key={tech.id}
-              className="flex h-8 w-8 items-center justify-center rounded-md bg-zinc-800/70 p-1 text-2xl text-zinc-400 duration-200 hover:scale-105"
-            />
+            <TooltipComponent key={tech.id} content={tech.name}>
+              <Image
+                key={tech.id}
+                alt={tech.name}
+                src={tech.icon.url}
+                width={32}
+                height={32}
+                quality={100}
+                className=" rounded-md border border-zinc-700 bg-zinc-800 p-1"
+              />
+            </TooltipComponent>
           ))}
         </div>
       </div>

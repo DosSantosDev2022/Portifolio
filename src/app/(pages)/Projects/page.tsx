@@ -16,7 +16,7 @@ export default async function ProjetcsPage({
   searchParams,
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 4
+  const first = Number(searchParams?.first) || 2
 
   const { project, totalCount } = await GET_ALL_PROJECTS(page, first)
 
@@ -56,7 +56,7 @@ export default async function ProjetcsPage({
       </div>
 
       <div className="flex  w-full items-center justify-end px-3 py-8  lg:px-12 lg:py-16">
-        <Pagination totalItens={totalCount} page={page} limit={first} />
+        <Pagination total={totalCount} page={page} limit={first} />
       </div>
     </div>
   )

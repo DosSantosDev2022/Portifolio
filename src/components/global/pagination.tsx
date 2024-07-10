@@ -1,84 +1,75 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-} from 'lucide-react'
+'use client'
+
+import { usePagination } from '@/hooks/usePagination'
 import { Button } from '@/components/global/uiChroma/button'
 import Link from 'next/link'
+import { ChevronsLeft, ChevronsRight } from 'lucide-react'
 
 interface PaginationProps {
-  limit: number
   page: number
-  totalItens: number
+  limit: number
+  total: number
 }
 
-export function Pagination({ limit, page, totalItens }: PaginationProps) {
-  const isFirstPage = page === 1
-  const isLastPage = page === Math.ceil(totalItens / limit)
-  return (
-    <div className="flex w-full flex-col justify-between gap-2  p-2 lg:flex-row">
-      <span className="flex  items-center  p-2 font-light ">
-        Mostrando {Math.min(limit, totalItens - (page - 1) * limit)} de{' '}
-        {totalItens}
-      </span>
-      <div className="flex items-center justify-between gap-4   p-2">
-        <span className="w-full font-light ">
-          Página {page} de {Math.ceil(totalItens / limit)}
-        </span>
+export function Pagination({ page, limit, total }: PaginationProps) {
+  const { pages } = usePagination({
+    page,
+    limit,
+    total,
+  })
 
-        <div className="flex w-full gap-2">
-          <Button asChild variant="outline" disabled={isFirstPage}>
-            {!isFirstPage ? (
-              <Link href={`/Projects?page=1&limit=${limit}&limit=${limit}`}>
-                <ChevronsLeft />
-              </Link>
-            ) : (
-              <Button variant="disabled">
-                {' '}
-                <ChevronsLeft />
-              </Button>
-            )}
+  const isFirstPage = page === 1
+  const isLastPage = page === Math.ceil(total / limit)
+
+  return (
+    <div className="mt-8 flex w-full items-center justify-between p-2">
+      <span className="flex w-full font-light text-light">
+        Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
+      </span>
+
+      <div className="flex items-center gap-2">
+        <Button
+          className={`flex h-10 w-10 items-center justify-center ${
+            isFirstPage ? 'pointer-events-none opacity-50' : ''
+          }`}
+          variant="outline"
+          asChild
+        >
+          <Link href={!isFirstPage ? `/Projects?page=1` : '#'} passHref>
+            <ChevronsLeft />
+          </Link>
+        </Button>
+        {pages.map((pageNumber) => (
+          <Button
+            variant="outline"
+            asChild
+            key={pageNumber}
+            className={`flex h-10 w-10 items-center justify-center ${
+              page === pageNumber ? 'pointer-events-none border opacity-50' : ''
+            }`}
+          >
+            <Link
+              href={page !== pageNumber ? `/Projects?page=${pageNumber}` : '#'}
+            >
+              {pageNumber}
+            </Link>
           </Button>
-          <Button asChild variant="outline" disabled={isFirstPage}>
-            {!isFirstPage ? (
-              <Link href={`/Projects?page=${page - 1}&limit=${limit}`}>
-                <ChevronLeft />
-              </Link>
-            ) : (
-              <Button variant="disabled">
-                {' '}
-                <ChevronLeft />
-              </Button>
-            )}
-          </Button>
-          <Button asChild variant="outline" disabled={isLastPage}>
-            {!isLastPage ? (
-              <Link href={`/Projects?page=${page + 1}&limit=${limit}`}>
-                <ChevronRight />
-              </Link>
-            ) : (
-              <Button variant="disabled">
-                {' '}
-                <ChevronRight />
-              </Button>
-            )}
-          </Button>
-          <Button asChild variant="outline" disabled={isLastPage}>
-            {!isLastPage ? (
-              <Link
-                href={`/Projects?page=${Math.ceil(totalItens / limit)}&limit=${limit}`}
-              >
-                <ChevronsRight />
-              </Link>
-            ) : (
-              <Button variant="disabled">
-                {' '}
-                <ChevronsRight />
-              </Button>
-            )}
-          </Button>
-        </div>
+        ))}
+
+        <Button
+          variant="outline"
+          className={`flex h-10 w-10 items-center justify-center ${
+            isLastPage ? 'pointer-events-none opacity-50' : ''
+          }`}
+          asChild
+        >
+          <Link
+            href={!isLastPage ? `/Projects?page=${page + 1}` : '#'}
+            passHref
+          >
+            <ChevronsRight />
+          </Link>
+        </Button>
       </div>
     </div>
   )

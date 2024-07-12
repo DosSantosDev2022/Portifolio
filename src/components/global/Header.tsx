@@ -55,7 +55,7 @@ export function Header() {
               {NavLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    className="flex items-center gap-2 rounded-md p-2 text-lg font-light leading-6 tracking-tight text-lightSilver transition-all duration-300 hover:bg-highlights_hover"
+                    className="flex items-center gap-2 rounded-md px-1 py-1.5 text-lg font-light  tracking-tight text-lightSilver transition-all duration-300 hover:bg-highlights_hover"
                     href={link.url}
                     prefetch
                   >

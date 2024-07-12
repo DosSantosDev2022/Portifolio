@@ -153,7 +153,7 @@ export function Form() {
       </div>
       <div className="flex w-full items-center justify-end p-2">
         <Button
-          className="flex h-[54px] w-[137px] items-center justify-center p-4 text-base font-bold uppercase tracking-wider "
+          className="flex h-[44px] w-full items-center justify-center p-4 text-base font-bold uppercase tracking-wider "
           variant="highlight"
           disabled={isLoading}
         >

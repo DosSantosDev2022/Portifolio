@@ -22,7 +22,7 @@ export default async function RootLayout({
           <div className="flex  flex-1 flex-col gap-6">
             <Header />
             <SideBar className="lg:hidden" />
-            <div className="container   rounded-lg bg-zinc-900">{children}</div>
+            <div className="   rounded-lg bg-zinc-900">{children}</div>
             <Footer />
           </div>
         </div>

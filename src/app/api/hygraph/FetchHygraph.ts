@@ -1,6 +1,6 @@
 export const fetchHygraphQuery = async (
   query: string,
-  variables?: Record<string, string>,
+  variables?: Record<string, number>,
 ) => {
   const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
     method: 'POST',
@@ -10,7 +10,7 @@ export const fetchHygraphQuery = async (
     },
     body: JSON.stringify({ query, variables }),
     next: {
-      revalidate: 60,
+      revalidate: 60 * 60 * 24, // one day,
     },
   })
 

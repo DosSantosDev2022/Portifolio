@@ -69,7 +69,8 @@ export function Projects({
 
           <div className="flex w-full flex-col items-center justify-start gap-2 lg:flex-row">
             <Button
-              className="w-full text-center text-sm lg:w-20"
+              sizes="xs"
+              className="w-full text-center text-sm "
               variant="highlight"
               asChild
             >
@@ -78,7 +79,7 @@ export function Projects({
               </Link>
             </Button>
             <Button
-              className="w-full text-center text-sm lg:w-20"
+              className="w-full text-center text-sm "
               variant="outline"
               asChild
             >
@@ -86,11 +87,7 @@ export function Projects({
                 Code
               </Link>
             </Button>
-            <Button
-              className="w-full text-center  lg:w-20"
-              variant="outline"
-              asChild
-            >
+            <Button className="w-full text-center" variant="outline" asChild>
               <Link href={slug}>Ver mais</Link>
             </Button>
           </div>

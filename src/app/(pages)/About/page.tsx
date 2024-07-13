@@ -4,6 +4,7 @@ import { TooltipComponent } from '@/components/global/Tooltip'
 import Image from 'next/image'
 import { RichText } from '@/components/global/RichText'
 import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
+import ScrollAnimation from '@/components/animations/ScrollAnimation'
 
 export async function generateMetadata() {
   const params = 'about'
@@ -36,7 +37,7 @@ export default async function AboutPage() {
   return (
     <>
       <div className="space-y-28 px-3 py-8  lg:flex-row lg:px-12 lg:py-16 ">
-        <div className="flex w-full flex-col items-start justify-between gap-6 lg:flex-row  ">
+        <ScrollAnimation className="flex w-full flex-col items-start justify-between gap-6 lg:flex-row  ">
           <div className="flex  items-center justify-center rounded-md bg-zinc-800/80  ">
             <Image
               alt={aboutMe.authorImage02.fileName}
@@ -60,9 +61,9 @@ export default async function AboutPage() {
               {aboutMe.sectionHero.longText.text}
             </p>
           </div>
-        </div>
+        </ScrollAnimation>
 
-        <div className="flex flex-col items-start justify-center px-2 py-4 rounded-md bg-zinc-800/40 ">
+        <ScrollAnimation className="flex flex-col items-start justify-center px-2 py-4 rounded-md bg-zinc-800/40 ">
           <div className="w-full">
             <h2 className={`${bebas.className} text-6xl font-normal    `}>
               {aboutMe.sectionTechnologies.title}
@@ -88,8 +89,9 @@ export default async function AboutPage() {
               </TooltipComponent>
             ))}
           </div>
-        </div>
-        <div className="flex w-full flex-col  gap-6 lg:flex-row">
+        </ScrollAnimation>
+
+        <ScrollAnimation className="flex w-full flex-col  gap-6 lg:flex-row">
           <div className=" flex w-full  flex-col">
             <h2
               className={`${bebas.className} w-full text-6xl font-normal leading-[76px] lg:w-[450px]  lg:text-[5rem]`}
@@ -105,7 +107,7 @@ export default async function AboutPage() {
               }}
             />
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
     </>
   )

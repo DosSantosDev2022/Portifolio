@@ -6,6 +6,7 @@ import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
 import { MiniCards } from '@/components/global/minicard'
 import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
+import ScrollAnimation from '@/components/animations/ScrollAnimation'
 
 export async function generateMetadata() {
   const params = 'home'
@@ -36,7 +37,7 @@ export default async function Home() {
 
   return (
     <div className="space-y-10 px-4 py-8 md:space-y-20 lg:px-12 lg:py-16">
-      <div className="flex w-full flex-col items-start justify-center gap-3 lg:w-[582px]">
+      <ScrollAnimation className="flex w-full flex-col items-start justify-center gap-3 lg:w-[582px]">
         <h1
           className={`text-4xl font-normal leading-[40px] md:text-6xl md:leading-[57px] lg:text-8xl lg:leading-[90.9px] ${bebas.className}`}
         >
@@ -45,11 +46,11 @@ export default async function Home() {
         <span className="text-base font-normal leading-[22px] md:text-lg md:leading-[27px]">
           {home.sectionHero.smallText}
         </span>
-      </div>
+      </ScrollAnimation>
 
-      <div className="flex w-full flex-col items-start justify-around gap-6 rounded-md bg-zinc-800/80 px-4 py-4 md:gap-12 ">
-        <div className=" flex  flex-col items-start justify-center gap-4">
-          <h2 className=" text-lg font-bold  md:text-xl lg:text-4xl">
+      <ScrollAnimation className="flex w-full flex-col items-start justify-around gap-6 rounded-md bg-zinc-800/80 px-4 py-4 md:gap-12">
+        <div className="flex flex-col items-start justify-center gap-4">
+          <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
             {home.sectionAboutMe.smallText}
           </h2>
           <RichText
@@ -63,14 +64,13 @@ export default async function Home() {
               ),
             }}
           />
-
           <Button asChild variant="outline" className="mt-2 w-36 text-center">
             <Link href={'/About'} className="text-sm">
               Veja mais
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-4 items-center justify-center  gap-3">
+        <div className="grid grid-cols-4 items-center justify-center gap-3">
           {home.features.map((feature) => (
             <MiniCards
               title={feature.title}
@@ -80,9 +80,9 @@ export default async function Home() {
             />
           ))}
         </div>
-      </div>
+      </ScrollAnimation>
 
-      <div className="flex flex-col gap-6 md:gap-8">
+      <ScrollAnimation className="flex flex-col gap-6 md:gap-8">
         <div className="flex flex-col items-start gap-2 lg:w-[37rem]">
           <h2
             className={`text-4xl font-normal md:text-6xl lg:text-[4.75rem] lg:leading-[4.75rem] ${bebas.className}`}
@@ -95,29 +95,30 @@ export default async function Home() {
         </div>
         <div className="mt-8 flex flex-col gap-14 md:gap-20 lg:mt-20">
           {home.featuredProjects.projects.map((project) => (
-            <Projects
-              key={project.id}
-              title={project.title}
-              codeUrl={project.codeLink}
-              demoUrl={project.deployLink}
-              slug={`/Project/${project.slug}`}
-              description={project.description}
-              coverImage={project.coverImage.url}
-              id={project.title}
-              tech={project.technologie.map((tech) => ({
-                id: tech.id,
-                name: tech.name,
-                icon: tech.icon.url,
-              }))}
-            />
+            <ScrollAnimation key={project.id}>
+              <Projects
+                title={project.title}
+                codeUrl={project.codeLink}
+                demoUrl={project.deployLink}
+                slug={`/Project/${project.slug}`}
+                description={project.description}
+                coverImage={project.coverImage.url}
+                id={project.title}
+                tech={project.technologie.map((tech) => ({
+                  id: tech.id,
+                  name: tech.name,
+                  icon: tech.icon.url,
+                }))}
+              />
+            </ScrollAnimation>
           ))}
         </div>
         <div className="mt-10 flex w-full items-center justify-end p-2">
-          <Button asChild className="mb-10" variant="outline">
-            <Link href={'/Projects'}>Ver todos ...</Link>
+          <Button asChild sizes="xs" variant="Shine">
+            <Link href={'/Projects'}>Ver mais</Link>
           </Button>
         </div>
-      </div>
+      </ScrollAnimation>
     </div>
   )
 }

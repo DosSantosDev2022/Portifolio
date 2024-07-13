@@ -3,6 +3,7 @@ import { bebas } from '@/assets/fonts'
 import { GET_ALL_PROJECTS } from '@/app/api/queries/Get_All_Projects'
 import { Pagination } from '@/components/global/pagination'
 import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
+import ScrollAnimation from '@/components/animations/ScrollAnimation'
 
 interface ProjetcsPageProps {
   searchParams?: { page?: number; first?: number; total?: number }
@@ -42,36 +43,37 @@ export default async function ProjetcsPage({
 
   return (
     <div className="flex flex-col items-start justify-between gap-16  lg:gap-0 ">
-      <div className="flex flex-col gap-2  px-3 py-8 lg:px-12 lg:py-16">
+      <ScrollAnimation className="flex flex-col gap-2  px-3 py-8 lg:px-12 lg:py-16">
         <h1 className={`${bebas.className} mt-10 text-8xl `}>Meus projetos</h1>
         <p className="text-lg font-medium ">
           Explore minha galeria de projetos! Descubra criações dinâmicas e
           envolventes, refletindo minha paixão e expertise fullstack. Prepare-se
           para se inspirar enquanto mergulha em soluções inovadoras!
         </p>
-      </div>
+      </ScrollAnimation>
 
       <div className="mt-10 flex flex-col  gap-28  px-3 py-8 lg:mt-20 lg:px-12 lg:py-16  ">
         {project.map((project) => (
-          <Projects
-            key={project.id}
-            title={project.title}
-            codeUrl={project.codeLink}
-            demoUrl={project.deployLink}
-            slug={`/Project/${project.slug}`}
-            description={project.description}
-            coverImage={project.coverImage.url}
-            id={project.id}
-            tech={
-              project.technologie
-                ? project.technologie.map((tech) => ({
-                    id: tech.id,
-                    name: tech.name,
-                    icon: tech.icon.url,
-                  }))
-                : []
-            }
-          />
+          <ScrollAnimation key={project.id}>
+            <Projects
+              title={project.title}
+              codeUrl={project.codeLink}
+              demoUrl={project.deployLink}
+              slug={`/Project/${project.slug}`}
+              description={project.description}
+              coverImage={project.coverImage.url}
+              id={project.id}
+              tech={
+                project.technologie
+                  ? project.technologie.map((tech) => ({
+                      id: tech.id,
+                      name: tech.name,
+                      icon: tech.icon.url,
+                    }))
+                  : []
+              }
+            />
+          </ScrollAnimation>
         ))}
       </div>
 

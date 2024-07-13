@@ -118,24 +118,24 @@ export default async function ProjectPageDetails({
                 ),
               }}
             />
-            <div className="mt-12 flex items-start justify-start gap-2">
-              <Button variant="outline" asChild>
+            <div className="mt-12 w-full lg:w-[496px]  px-2 py-2.5 flex items-start justify-start gap-2">
+              <Button sizes="full" variant="outline" asChild>
                 <Link
                   target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.codeLink || ''}
                 >
-                  Code View
+                  Code
                   <FaGithub size={18} />
                 </Link>
               </Button>
-              <Button variant="outline" asChild>
+              <Button sizes="full" variant="outline" asChild>
                 <Link
                   target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.deployLink || ''}
                 >
-                  Deploy View
+                  Deploy
                   <FaRegWindowMaximize size={18} />
                 </Link>
               </Button>
@@ -145,7 +145,7 @@ export default async function ProjectPageDetails({
           <Button
             variant="highlight"
             asChild
-            className="fixed bottom-4 right-4 w-16 animate-bounce text-center"
+            className="fixed bottom-4 right-4 w-16 animate-bounce text-center z-50"
           >
             <Link href={'/Projects'}>Voltar</Link>
           </Button>

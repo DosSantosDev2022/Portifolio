@@ -114,8 +114,8 @@ export default async function Home() {
           ))}
         </div>
         <div className="mt-10 flex w-full items-center justify-end p-2">
-          <Button asChild sizes="xs" variant="Shine">
-            <Link href={'/Projects'}>Ver mais</Link>
+          <Button asChild sizes="xs" variant="outline">
+            <Link href={'/Projects'}>Ver mais..</Link>
           </Button>
         </div>
       </ScrollAnimation>

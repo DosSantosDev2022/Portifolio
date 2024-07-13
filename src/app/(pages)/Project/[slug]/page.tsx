@@ -1,11 +1,10 @@
 import { GET_DETAILS_PROJECT } from '@/app/api/queries/Get_Details_Project'
+import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
 import { bebas } from '@/assets/fonts'
 import { RichText } from '@/components/global/RichText'
 import { Button } from '@/components/global/uiChroma/button'
-
 import Image from 'next/image'
 import Link from 'next/link'
-
 import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa'
 
 interface ProjectPageDetailsProps {
@@ -14,12 +13,27 @@ interface ProjectPageDetailsProps {
   }
 }
 
-export async function generateMetadata({ params }: ProjectPageDetailsProps) {
-  const { project } = await GET_DETAILS_PROJECT()
-  const metadataProject = project.find((p) => p.slug === params.slug)
+export async function generateMetadata() {
+  const params = 'projetoid'
+  const { metadata } = await GET_META_DATA(params)
 
   return {
-    title: metadataProject?.title,
+    title: `${metadata.title}`,
+    description: `${metadata.description}`,
+    authors: [
+      { name: `${metadata.author?.name}`, url: `${metadata.author?.url}` },
+    ],
+    keywords: `${metadata.keywords}`,
+    viewport: `${metadata.viewport}`,
+    robots: `${metadata.robots}`,
+    openGraph: {
+      title: `${metadata.openGraph.title}`,
+      description: `${metadata.openGraph.description}`,
+      url: `${metadata.openGraph.url}`,
+      type: `${metadata.openGraph.type}`,
+      images: `${metadata.openGraph.images}`,
+      siteName: `${metadata.openGraph.siteName}`,
+    },
   }
 }
 

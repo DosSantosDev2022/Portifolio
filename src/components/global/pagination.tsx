@@ -29,9 +29,10 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 
       <div className="flex items-center gap-2">
         <Button
-          className={`flex h-10 w-10 items-center justify-center ${
+          className={`flex items-center justify-center ${
             isFirstPage ? 'pointer-events-none opacity-50' : ''
           }`}
+          sizes="icon"
           variant="outline"
           asChild
         >
@@ -43,8 +44,9 @@ export function Pagination({ page, limit, total }: PaginationProps) {
           <Button
             variant="outline"
             asChild
+            sizes="icon"
             key={pageNumber}
-            className={`flex h-10 w-10 items-center justify-center ${
+            className={`flex  items-center justify-center ${
               page === pageNumber ? 'pointer-events-none border opacity-50' : ''
             }`}
           >
@@ -58,7 +60,8 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 
         <Button
           variant="outline"
-          className={`flex h-10 w-10 items-center justify-center ${
+          sizes="icon"
+          className={`flex items-center justify-center ${
             isLastPage ? 'pointer-events-none opacity-50' : ''
           }`}
           asChild

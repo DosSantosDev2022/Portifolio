@@ -3,6 +3,7 @@ import type { RichTextContent } from '@graphcms/rich-text-types'
 
 interface AboutMeData {
   aboutMe: {
+    slug: string
     sectionHero: {
       title: string
       smallText: string
@@ -51,6 +52,7 @@ export const GET_DATA_ABOUT = async (): Promise<AboutMeData> => {
   const query = `
       query MyQuery {
       aboutMe(where: {slug: "about-me"}) {
+        slug
         sectionHero {
           title
           smallText

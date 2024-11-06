@@ -50,7 +50,15 @@ export const GET_ABOUT_ME = async (): Promise<AboutMeData> => {
     }
   `
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION
+      : process.env.NEXT_PUBLIC_BASE_URL
+
+  if (!baseUrl) {
+    throw new Error('Base URL is not defined in environment variables')
+  }
+
   const response = await fetch(`${baseUrl}/api/cms`, {
     method: 'POST',
     headers: {

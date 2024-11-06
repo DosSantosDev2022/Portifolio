@@ -33,7 +33,14 @@ export const GET_DATA_SIDEBAR = async (): Promise<SIDEBAR_TYPES> => {
     }
   `
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '' // Default to localhost for dev
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION
+      : process.env.NEXT_PUBLIC_BASE_URL
+
+  if (!baseUrl) {
+    throw new Error('Base URL is not defined in environment variables')
+  }
 
   const response = await fetch(`${baseUrl}/api/cms`, {
     method: 'POST',

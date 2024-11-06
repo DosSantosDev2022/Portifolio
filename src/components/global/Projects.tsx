@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from './uiChroma/button'
+import { Button, ButtonSize, ButtonVariant } from './uiChroma/button'
 import { Technologies } from '@/components/global/technologies'
+import { randomUUID } from 'node:crypto'
 
 interface ProjectsProps {
   id: string
@@ -17,6 +18,13 @@ interface ProjectsProps {
     icon: string
   }[]
 }
+interface ActionButton {
+  id: string
+  label: string
+  variant: ButtonVariant
+  sizes: ButtonSize
+  href: string | undefined
+}
 
 export function Projects({
   id,
@@ -28,6 +36,30 @@ export function Projects({
   demoUrl,
   tech,
 }: ProjectsProps) {
+  const actionButton: ActionButton[] = [
+    {
+      id: randomUUID(),
+      label: 'Deploy',
+      variant: 'highlight',
+      sizes: 'full',
+      href: demoUrl,
+    },
+    {
+      id: randomUUID(),
+      label: 'Code',
+      variant: 'outline',
+      sizes: 'full',
+      href: codeUrl,
+    },
+    {
+      id: randomUUID(),
+      label: 'Ver mais',
+      variant: 'outline',
+      sizes: 'full',
+      href: slug,
+    },
+  ]
+
   return (
     <>
       <div
@@ -68,28 +100,21 @@ export function Projects({
           </div>
 
           <div className="flex w-full flex-col items-center justify-start gap-2 lg:flex-row">
-            <Button
-              sizes="xs"
-              className="w-full text-center text-sm "
-              variant="highlight"
-              asChild
-            >
-              <Link className="text-lightSilver" href={demoUrl}>
-                Deploy
-              </Link>
-            </Button>
-            <Button
-              className="w-full text-center text-sm "
-              variant="outline"
-              asChild
-            >
-              <Link className="text-lightSilver" href={codeUrl || ''}>
-                Code
-              </Link>
-            </Button>
-            <Button className="w-full text-center" variant="outline" asChild>
-              <Link href={slug}>Ver mais</Link>
-            </Button>
+            {actionButton.map((btn) => (
+              <Button
+                key={btn.id}
+                sizes={btn.sizes}
+                variant={btn.variant}
+                asChild
+              >
+                <Link
+                  className="text-lightSilver text-sm"
+                  href={btn.href || ''}
+                >
+                  {btn.label}
+                </Link>
+              </Button>
+            ))}
           </div>
         </div>
       </div>

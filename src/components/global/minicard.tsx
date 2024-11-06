@@ -8,7 +8,7 @@ interface MiniCardsProps {
 
 export function MiniCards({ icon, description, title }: MiniCardsProps) {
   return (
-    <div className="w-full col-span-4 lg:col-span-2 h-[124px] px-4   py-4 bg-zinc-900/50 rounded-xl justify-center items-center gap-2 flex">
+    <div className="w-full col-span-4 lg:col-span-2 h-[124px] px-4   py-4 bg-primary/50 rounded-xl justify-center items-center gap-2 flex">
       <div
         className="flex 
        items-start h-full  justify-center "

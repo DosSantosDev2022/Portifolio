@@ -1,30 +1,5 @@
-import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
 import ScrollAnimation from '@/components/animations/ScrollAnimation'
 import { Form } from '@/components/global/Form/Form'
-
-export async function generateMetadata() {
-  const params = 'contact'
-  const { metadata } = await GET_META_DATA(params)
-
-  return {
-    title: `${metadata.title}`,
-    description: `${metadata.description}`,
-    authors: [
-      { name: `${metadata.author?.name}`, url: `${metadata.author?.url}` },
-    ],
-    keywords: `${metadata.keywords}`,
-    viewport: `${metadata.viewport}`,
-    robots: `${metadata.robots}`,
-    openGraph: {
-      title: `${metadata.openGraph.title}`,
-      description: `${metadata.openGraph.description}`,
-      url: `${metadata.openGraph.url}`,
-      type: `${metadata.openGraph.type}`,
-      images: `${metadata.openGraph.images}`,
-      siteName: `${metadata.openGraph.siteName}`,
-    },
-  }
-}
 
 export default async function Contact() {
   return (

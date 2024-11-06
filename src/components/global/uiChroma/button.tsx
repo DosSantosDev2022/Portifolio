@@ -4,23 +4,27 @@ import { ForwardedRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { FaSpinner } from 'react-icons/fa6'
 
+export type ButtonVariant =
+  | 'primary'
+  | 'secundary'
+  | 'outline'
+  | 'highlight'
+  | 'disabled'
+  | 'link'
+  | 'danger'
+  | 'warning'
+  | 'Shine'
+  | 'Swipe'
+
+export type ButtonSize = 'xs' | 'sm' | 'lg' | 'icon' | 'full'
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean
   animate?: 'default' | 'Swipe' | 'Shine'
   asChild?: boolean
-  sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
-  variant?:
-    | 'primary'
-    | 'secundary'
-    | 'outline'
-    | 'highlight'
-    | 'disabled'
-    | 'link'
-    | 'danger'
-    | 'warning'
-    | 'Shine'
-    | 'Swipe'
+  sizes?: ButtonSize
+  variant?: ButtonVariant
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -34,11 +38,11 @@ export function Button({
   ...props
 }: ButtonProps) {
   const variantClasses = {
-    primary: 'bg-primary text-secondary hover:bg-primary/50',
-    secundary: 'bg-secondary text-primary-900 hover:bg-secondary/50',
+    primary: 'bg-primary text-secondary hover:bg-primary_hover',
+    secundary: 'bg-secondary text-primary-900 hover:bg-secundary_hover',
     outline:
-      'bg-transparent border border-secundary text-light hover:bg-primary ',
-    highlight: 'text-zinc-50 hover:bg-violet-800 duration-300 bg-violet-900',
+      'bg-transparent border border-secundary text-light hover:bg-primary_hover ',
+    highlight: 'text-zinc-50 hover:bg-violet-800 bg-violet-900',
     disabled: 'bg-opacity-80 bg-zinc-900 border border-zinc-800 text-zinc-50',
     link: 'bg-transparent border-none underline-offset-4 hover:underline',
     danger: 'bg-red-700 hover:bg-red-600 text-zinc-50',
@@ -59,7 +63,7 @@ export function Button({
   const _className = twMerge(
     variantClasses[variant],
     sizeClasses[sizes],
-    `appearance-none rounded-md  flex items-center justify-center  font-normal transition-all duration-500 `,
+    `appearance-none rounded-md  flex items-center justify-center  font-normal transition-all duration-300 `,
     className,
   )
   const Comp = asChild ? Slot : 'button'

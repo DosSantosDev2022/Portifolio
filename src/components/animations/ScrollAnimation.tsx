@@ -8,7 +8,10 @@ interface ScrollAnimationProps {
   className?: string
 }
 
-const ScrollAnimation = ({ children, className }: ScrollAnimationProps) => {
+export default function ScrollAnimation({
+  children,
+  className,
+}: ScrollAnimationProps) {
   const controls = useAnimation()
   const [ref, inView] = useInView({ threshold: 0.1 })
 
@@ -35,5 +38,3 @@ const ScrollAnimation = ({ children, className }: ScrollAnimationProps) => {
     </motion.div>
   )
 }
-
-export default ScrollAnimation

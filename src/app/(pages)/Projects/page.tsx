@@ -1,43 +1,18 @@
 import { Projects } from '@/components/global/Projects'
 import { bebas } from '@/assets/fonts'
-import { GET_ALL_PROJECTS } from '@/app/api/queries/Get_All_Projects'
+import { GET_ALL_PROJECTS } from '@/utils/query/GET_PROJECTS'
 import { Pagination } from '@/components/global/pagination'
-import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
 import ScrollAnimation from '@/components/animations/ScrollAnimation'
 
 interface ProjetcsPageProps {
   searchParams?: { page?: number; first?: number; total?: number }
 }
 
-export async function generateMetadata() {
-  const params = 'projects'
-  const { metadata } = await GET_META_DATA(params)
-
-  return {
-    title: `${metadata.title}`,
-    description: `${metadata.description}`,
-    authors: [
-      { name: `${metadata.author?.name}`, url: `${metadata.author?.url}` },
-    ],
-    keywords: `${metadata.keywords}`,
-    viewport: `${metadata.viewport}`,
-    robots: `${metadata.robots}`,
-    openGraph: {
-      title: `${metadata.openGraph.title}`,
-      description: `${metadata.openGraph.description}`,
-      url: `${metadata.openGraph.url}`,
-      type: `${metadata.openGraph.type}`,
-      images: `${metadata.openGraph.images}`,
-      siteName: `${metadata.openGraph.siteName}`,
-    },
-  }
-}
-
 export default async function ProjetcsPage({
   searchParams,
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 2
+  const first = Number(searchParams?.first) || 1
 
   const { project, totalCount } = await GET_ALL_PROJECTS(page, first)
 

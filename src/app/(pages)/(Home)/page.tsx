@@ -1,36 +1,11 @@
-import { GET_DATA_HOME } from '@/app/api/queries/Get_data_home'
+import { GET_DATA_HOME } from '@/utils/query/GET_HOME_PAGE'
 import { bebas } from '@/assets/fonts'
 import Link from 'next/link'
 import { Button } from '@/components/global/uiChroma/button'
 import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
 import { MiniCards } from '@/components/global/minicard'
-import { GET_META_DATA } from '@/app/api/queries/Get_meta_data'
 import ScrollAnimation from '@/components/animations/ScrollAnimation'
-
-export async function generateMetadata() {
-  const params = 'home'
-  const { metadata } = await GET_META_DATA(params)
-
-  return {
-    title: `${metadata.title}`,
-    description: `${metadata.description}`,
-    authors: [
-      { name: `${metadata.author?.name}`, url: `${metadata.author?.url}` },
-    ],
-    keywords: `${metadata.keywords}`,
-    viewport: `${metadata.viewport}`,
-    robots: `${metadata.robots}`,
-    openGraph: {
-      title: `${metadata.openGraph.title}`,
-      description: `${metadata.openGraph.description}`,
-      url: `${metadata.openGraph.url}`,
-      type: `${metadata.openGraph.type}`,
-      images: `${metadata.openGraph.images}`,
-      siteName: `${metadata.openGraph.siteName}`,
-    },
-  }
-}
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
@@ -48,7 +23,7 @@ export default async function Home() {
         </span>
       </ScrollAnimation>
 
-      <ScrollAnimation className="flex w-full flex-col items-start justify-around gap-6 rounded-md bg-zinc-800/80 px-4 py-4 md:gap-12">
+      <ScrollAnimation className="flex w-full flex-col items-start justify-around gap-6 rounded-md bg-secundary/40 px-4 py-4 md:gap-12">
         <div className="flex flex-col items-start justify-center gap-4">
           <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
             {home.sectionAboutMe.smallText}

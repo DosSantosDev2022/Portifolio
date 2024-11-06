@@ -11,7 +11,7 @@ export function Technologies({ id, name, icon }: TechnologiesProps) {
     <>
       <Image
         key={id}
-        className='className=" rounded-md border border-zinc-700 bg-zinc-800 p-1'
+        className='className=" rounded-md border border-border_color bg-secundary p-1.5'
         width={32}
         height={32}
         src={icon}

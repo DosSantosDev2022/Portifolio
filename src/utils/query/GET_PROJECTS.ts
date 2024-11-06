@@ -1,30 +1,4 @@
-import { fetchHygraphQuery } from '@/app/api/hygraph/FetchHygraph'
-
-interface CoverImage {
-  url: string
-}
-
-interface Project {
-  project: {
-    id: string
-    title: string
-    subtitle: string
-    slug: string
-    description: string
-    coverImage: CoverImage
-    codeLink: string
-    deployLink: string
-    technologie: {
-      id: string
-      name: string
-      icon: {
-        url: string
-      }
-    }[]
-  }[]
-
-  totalCount: number
-}
+import { Project } from '@/types/projects' // Considerando que os tipos estejam em um arquivo separado para organização
 
 export const GET_ALL_PROJECTS = async (
   page: number,
@@ -58,15 +32,27 @@ export const GET_ALL_PROJECTS = async (
         }
       }
     }
-  
   `
 
   const skip = (page - 1) * pageSize
   const variables = { first: pageSize, skip }
-  const { project, projectConnection } = await fetchHygraphQuery(
-    query,
-    variables,
-  )
+
+  // Realiza a requisição para a rota API
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+  const response = await fetch(`${baseUrl}/api/cms`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query, variables }),
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch projects')
+  }
+
+  const { project, projectConnection } = await response.json()
   const totalCount = projectConnection.aggregate.count
   return { project, totalCount }
 }

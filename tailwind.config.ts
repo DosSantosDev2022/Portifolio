@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#09090b',
+        primary: '#18181b',
         primary_hover: '#18181b',
         secundary: '#27272a',
         secundary_hover: '#3f3f46',
@@ -17,7 +17,11 @@ const config: Config = {
         highlights_hover: '#6d28d9',
         light: '#fafafa',
         lightSilver: '#d4d4d8',
-        border: '#1A1A1A',
+        border_color: '#3f3f46',
+      },
+      backgroundImage: {
+        'gradient-color':
+          'linear-gradient(180deg, #09090b 0%,  #27272a 50%,  #18181b 100%)',
       },
       keyframes: {
         'fade-in': {

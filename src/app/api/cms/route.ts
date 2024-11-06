@@ -4,7 +4,13 @@ export async function POST(req: NextRequest) {
   try {
     const { query, variables } = await req.json()
 
-    const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
+    const HYGRAPH_API_KEY = process.env.HYGRAPH_API_KEY
+
+    if (!HYGRAPH_API_KEY) {
+      throw new Error('Error connecting to Hygraph api')
+    }
+
+    const response = await fetch(HYGRAPH_API_KEY, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

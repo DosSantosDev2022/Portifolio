@@ -4,13 +4,13 @@ export async function POST(req: NextRequest) {
   try {
     const { query, variables } = await req.json()
 
-    const HYGRAPH_API_KEY = process.env.HYGRAPH_API_KEY
+    const HYGRAPH_API_URL = process.env.HYGRAPH_API_URL
 
-    if (!HYGRAPH_API_KEY) {
-      throw new Error('Error connecting to Hygraph api')
+    if (!HYGRAPH_API_URL) {
+      throw new Error('HYGRAPH_API_URL is not defined in environment variables')
     }
 
-    const response = await fetch(HYGRAPH_API_KEY, {
+    const response = await fetch(HYGRAPH_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,9 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: 'Failed to fetch data from Hygraph' },
+        {
+          error: `Failed to fetch data from Hygraph, status: ${response.status}`,
+        },
         { status: response.status },
       )
     }

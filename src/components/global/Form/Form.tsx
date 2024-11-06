@@ -3,12 +3,12 @@ import * as z from 'zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/global/uiChroma/button'
-import { Input } from '@/components/global/uiChroma/Input'
+import { ComponentInput, InputRoot } from '@/components/global/uiChroma/Input'
 import { Label } from '@/components/global/uiChroma/label'
-import { toast } from 'react-toastify'
 import TextArea from '@/components/global/uiChroma/TextArea'
 import { useState } from 'react'
 import { ImSpinner9 } from 'react-icons/im'
+import { useNotification } from '@/context/notificationContext'
 
 // Regex para validação de email
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -55,7 +55,7 @@ export function Form() {
   } = useForm<Form>({
     resolver: zodResolver(FormSchema),
   })
-
+  const { showNotification } = useNotification()
   const [isLoading, setIsLoading] = useState(false)
 
   const onSubmit: SubmitHandler<Form> = async (data) => {
@@ -70,27 +70,9 @@ export function Form() {
 
     setIsLoading(false)
     if (response.ok) {
-      toast.success('E-mail enviado com sucesso !', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+      showNotification('Email enviado com sucesso!', 'success')
     } else {
-      toast.error('Erro ao enviar e-mail , tente novamente', {
-        position: 'top-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      })
+      showNotification('Email enviado com sucesso!', 'error')
     }
     reset()
   }
@@ -102,11 +84,14 @@ export function Form() {
     >
       <div className="flex flex-col gap-1">
         <Label htmlFor="nome">Nome</Label>
-        <Input
-          {...register('nome')}
-          placeholder="Digite seu nome completo"
-          type="text"
-        />
+        <InputRoot>
+          <ComponentInput
+            {...register('nome')}
+            placeholder="Digite seu nome completo"
+            type="text"
+          />
+        </InputRoot>
+
         {errors && (
           <span className="text-md font-normal text-red-500">
             {errors.nome?.message}
@@ -115,11 +100,13 @@ export function Form() {
       </div>
       <div className="flex flex-col gap-1">
         <Label htmlFor="email">Email</Label>
-        <Input
-          {...register('email')}
-          placeholder="Digite seu melhor e-mail"
-          type="email"
-        />
+        <InputRoot>
+          <ComponentInput
+            {...register('email')}
+            placeholder="Digite um e-mail válido"
+            type="email"
+          />
+        </InputRoot>
         {errors && (
           <span className="text-md font-normal text-red-500">
             {errors.email?.message}
@@ -128,11 +115,13 @@ export function Form() {
       </div>
       <div className="flex flex-col gap-1">
         <Label htmlFor="telefone">Telefone</Label>
-        <Input
-          {...register('telefone')}
-          placeholder="(xx) xxxx-xxxx"
-          type="number"
-        />
+        <InputRoot>
+          <ComponentInput
+            {...register('telefone')}
+            placeholder="(xx) xxxx-xxxxx"
+            type="tel"
+          />
+        </InputRoot>
         {errors && (
           <span className="text-md font-normal text-red-500">
             {errors.telefone?.message}

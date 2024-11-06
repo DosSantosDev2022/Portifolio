@@ -1,23 +1,48 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+const InputRoot = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={twMerge(
+      'flex h-12 w-full items-center gap-3 rounded  bg-secundary p-4 focus-within:ring-2 focus-within:ring-secundary_hover',
+      className,
+    )}
+    {...props}
+  />
+))
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={twMerge(
-          'flex h-10 w-full rounded-md border border-zinc-700 bg-border px-3 text-lightSilver placeholder:text-zinc-400',
-          className,
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  },
-)
-Input.displayName = 'Input'
+InputRoot.displayName = 'InputRoot'
 
-export { Input }
+const InputIcon = React.forwardRef<
+  HTMLElement,
+  React.HTMLAttributes<HTMLElement>
+>(({ className, ...props }, ref) => (
+  <i ref={ref} className={twMerge('', className)} {...props} />
+))
+
+InputIcon.displayName = 'InputIcon'
+
+const ComponentInput = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>(({ className, type, ...props }, ref) => {
+  return (
+    <input
+      type={type}
+      className={twMerge(
+        'text-md flex-1 bg-transparent font-light text-lightSilver outline-none  placeholder:text-lightSilver',
+        className,
+      )}
+      ref={ref}
+      {...props}
+    />
+  )
+})
+
+ComponentInput.displayName = 'Input'
+
+export { InputRoot, InputIcon, ComponentInput }

@@ -29,16 +29,17 @@ export const GET_DETAILS_PROJECT = async (): Promise<DetailsProject> => {
   
   `
 
-  const baseUrl =
+  const baseURL =
     process.env.NODE_ENV === 'production'
       ? process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION
       : process.env.NEXT_PUBLIC_BASE_URL
 
-  if (!baseUrl) {
+  if (!baseURL) {
+    console.error('Base URL not defined:', process.env.NODE_ENV)
     throw new Error('Base URL is not defined in environment variables')
   }
 
-  const response = await fetch(`${baseUrl}/api/cms`, {
+  const response = await fetch(`${baseURL}/api/cms`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

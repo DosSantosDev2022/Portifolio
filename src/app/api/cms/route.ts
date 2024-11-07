@@ -17,7 +17,9 @@ export async function POST(req: NextRequest) {
         Accept: 'application/json',
       },
       body: JSON.stringify({ query, variables }),
-      cache: 'no-cache',
+      next: {
+        revalidate: 60 * 60 * 24,
+      },
     })
 
     if (!response.ok) {

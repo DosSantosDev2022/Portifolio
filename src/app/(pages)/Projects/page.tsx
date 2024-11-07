@@ -12,7 +12,7 @@ export default async function ProjetcsPage({
   searchParams,
 }: ProjetcsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 1
+  const first = 2
 
   const { project, totalCount } = await GET_ALL_PROJECTS(page, first)
 

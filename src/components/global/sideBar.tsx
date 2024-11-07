@@ -8,7 +8,9 @@ import { Technologies } from './technologies'
 
 export async function SideBar({ className }: { className: string }) {
   const { sideBar } = await GET_DATA_SIDEBAR()
-
+  if (!sideBar) {
+    return null // ou um fallback de erro
+  }
   return (
     <aside
       className={twMerge(

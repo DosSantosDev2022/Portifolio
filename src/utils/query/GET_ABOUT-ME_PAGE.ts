@@ -1,3 +1,4 @@
+import { fetchHygraphQuery } from '@/app/api/hygraph/fetchHygraphQuery'
 import { AboutMeData } from '@/types/about'
 
 export const GET_ABOUT_ME = async (): Promise<AboutMeData> => {
@@ -50,28 +51,5 @@ export const GET_ABOUT_ME = async (): Promise<AboutMeData> => {
     }
   `
 
-  const baseURL =
-    process.env.NODE_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION
-      : process.env.NEXT_PUBLIC_BASE_URL
-
-  if (!baseURL) {
-    console.error('Base URL not defined:', process.env.NODE_ENV)
-    throw new Error('Base URL is not defined in environment variables')
-  }
-
-  const response = await fetch(`${baseURL}/api/cms`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query }),
-  })
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch about page')
-  }
-
-  const { aboutMe } = await response.json()
-  return { aboutMe }
+  return fetchHygraphQuery(query)
 }

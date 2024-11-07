@@ -1,12 +1,27 @@
-import { Project } from '@/types/projects' // Considerando que os tipos estejam em um arquivo separado para organização
+import { fetchHygraphQuery } from '@/app/api/hygraph/fetchHygraphQuery'
+import { Project } from '@/types/projects'
+
+interface HygraphResponse {
+  project: Project[]
+  projectConnection: {
+    aggregate: {
+      count: number
+    }
+  }
+}
+
+interface ProjectData {
+  project: Project[]
+  totalCount: number
+}
 
 export const GET_ALL_PROJECTS = async (
   page: number,
   pageSize: number,
-): Promise<Project> => {
+): Promise<ProjectData> => {
   const query = `
     query MyQuery($first: Int, $skip: Int) {
-      project(first: $first, skip: $skip ) {
+      project(first: $first, skip: $skip) {
         id
         title
         subtitle
@@ -37,31 +52,14 @@ export const GET_ALL_PROJECTS = async (
   const skip = (page - 1) * pageSize
   const variables = { first: pageSize, skip }
 
-  // Realiza a requisição para a rota API
+  const response = await fetchHygraphQuery<HygraphResponse>(query, variables)
 
-  const baseURL =
-    process.env.NODE_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION
-      : process.env.NEXT_PUBLIC_BASE_URL
+  const { project, projectConnection } = response
 
-  if (!baseURL) {
-    console.error('Base URL not defined:', process.env.NODE_ENV)
-    throw new Error('Base URL is not defined in environment variables')
+  if (!project || !projectConnection) {
+    throw new Error('Failed to fetch projects or projectConnection')
   }
 
-  const response = await fetch(`${baseURL}/api/cms`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query, variables }),
-  })
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch projects')
-  }
-
-  const { project, projectConnection } = await response.json()
   const totalCount = projectConnection.aggregate.count
   return { project, totalCount }
 }

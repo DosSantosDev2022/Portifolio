@@ -2,6 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: #f4f4f5;
+    --foreground: #151517;
+
+    --primary: #3f3f46;
+    --primary-hover: #616167;
+    --primary-foreground: #ffffff;
+    --secondary: #c1c1c3;
+    --secondary-hover: #adadb0;
+    --secondary-foreground: #424242;
+    --muted: #adadad;
+    --muted-hover: #ededed;
+    --muted-foreground: #7b7b7b;
+    --accent: #6b29ae;
+    --accent-hover: #8233d1;
+    --accent-foreground: #ede8e8;
+
+    --danger: #ff5a5a;
+    --danger-hover: #e04848;
+    --danger-foreground: #f8f8f8;
+    --warning: #f5c542;
+    --warning-hover: #e6b63c;
+    --warning-foreground: #1a1a1a;
+    --success: #5cb85c;
+    --success-hover: #4cae4c;
+    --success-foreground: #f8f8f8;
+
+    --border: #3a3a3b;
+    --ring: #1d1d1f;
+    --input: #f8f8f8;
+
+    --chart-1: #3f3f46;
+    --chart-2: #463f46;
+    --chart-3: #463f3f;
+    --chart-4: #46463f;
+    --chart-5: #3f463f;
+ }
+
+  .dark {
+    --background: #000000;
+    --foreground: #FFFFFF;
+
+    --primary: #181819;
+    --primary-hover: #1d1d1f;
+    --primary-foreground: #eaeaeb;
+    --secondary: #121213;
+    --secondary-hover: #181819;
+    --secondary-foreground: #d5d5d7;
+    --muted: #232323;
+    --muted-hover: #323232;
+    --muted-foreground: #e5e5e5;
+    --accent: #6b29ae;
+    --accent-hover: #8233d1;
+    --accent-foreground: #ede8e8;
+
+    --danger: #ff5a5a;
+    --danger-hover: #e04848;
+    --danger-foreground: #f8f8f8;
+    --warning: #f5c542;
+    --warning-hover: #e6b63c;
+    --warning-foreground: #1a1a1a;
+    --success: #5cb85c;
+    --success-hover: #4cae4c;
+    --success-foreground: #f8f8f8;
+
+    --border: #36363c;
+    --ring: #3f3f46;
+    --input: #34343a;
+
+    --chart-1: #181819;
+    --chart-2: #191819;
+    --chart-3: #191818;
+    --chart-4: #191918;
+    --chart-5: #181918;
+  }
+}
 
 @layer utilities {
   .text-limit {
@@ -11,3 +88,7 @@
   overflow: hidden;
   }
 }
+
+.custom-scrollbar {
+  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-muted;
+} 

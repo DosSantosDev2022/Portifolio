@@ -1,87 +1,107 @@
-import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
+import * as React from 'react'
 import { ForwardedRef } from 'react'
+import { ImSpinner2 } from 'react-icons/im'
 import { twMerge } from 'tailwind-merge'
-import { FaSpinner } from 'react-icons/fa6'
 
-export type ButtonVariant =
-  | 'primary'
-  | 'secundary'
-  | 'outline'
-  | 'highlight'
-  | 'disabled'
-  | 'link'
-  | 'danger'
-  | 'warning'
-  | 'Shine'
-  | 'Swipe'
-
-export type ButtonSize = 'xs' | 'sm' | 'lg' | 'icon' | 'full'
-
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean
-  animate?: 'default' | 'Swipe' | 'Shine'
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  loading?: boolean
   asChild?: boolean
-  sizes?: ButtonSize
-  variant?: ButtonVariant
+  sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
+  variants?:
+    | 'primary'
+    | 'secundary'
+    | 'outline'
+    | 'ghost'
+    | 'accent'
+    | 'disabled'
+    | 'link'
+    | 'danger'
+    | 'warning'
+    | 'success'
+    | 'shine'
+    | 'swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
-export function Button({
-  className,
-  isLoading = false,
-  sizes = 'xs',
-  variant = 'primary',
-  asChild = false,
-  ref,
-  ...props
-}: ButtonProps) {
-  const variantClasses = {
-    primary: 'bg-primary text-secondary hover:bg-primary_hover',
-    secundary: 'bg-secondary text-primary-900 hover:bg-secundary_hover',
-    outline:
-      'bg-transparent border border-secundary text-light hover:bg-primary_hover ',
-    highlight: 'text-zinc-50 hover:bg-violet-800 bg-violet-900',
-    disabled: 'bg-opacity-80 bg-zinc-900 border border-zinc-800 text-zinc-50',
-    link: 'bg-transparent border-none underline-offset-4 hover:underline',
-    danger: 'bg-red-700 hover:bg-red-600 text-zinc-50',
-    warning: 'bg-yellow-400 text-zinc-900 hover:bg-yellow-300',
-    Shine:
-      'before:ease relative  overflow-hidden border border-zinc-800 bg-zinc-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-zinc-500 hover:before:-translate-x-40',
-    Swipe:
-      'text-zinc-50 hover:before:bg-redborder-red-500 relative  overflow-hidden border border-zinc-500 bg-white text-zinc-500 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-zinc-500 before:transition-all before:duration-500 hover:text-white hover:shadow-zinc-500 hover:before:left-0 hover:before:w-full',
-  }
-  const sizeClasses = {
-    xs: 'h-10 w-20  px-3 py-2 text-xs',
-    sm: 'h-14 w-24  px-3 py-2 text-sm',
-    lg: 'h-16 w-28  px-8 py-4 text-lg',
-    icon: 'h-9 w-9 p-1 ',
-    full: 'h-10 px-4 py-2 w-full text-lg',
-  }
-
-  const _className = twMerge(
-    variantClasses[variant],
-    sizeClasses[sizes],
-    `appearance-none rounded-md  flex items-center justify-center  font-normal transition-all duration-300 `,
-    className,
-  )
-  const Comp = asChild ? Slot : 'button'
-  return (
-    <Comp
-      ref={ref}
-      className={_className}
-      {...props}
-      disabled={isLoading || variant === 'disabled'}
-    >
-      {isLoading ? (
-        <span className="flex items-center w-full gap-1">
-          {props.children}
-          <FaSpinner size={20} className="animate-spin text-zinc-50" />
-        </span>
-      ) : (
-        <Comp>{props.children}</Comp>
-      )}
-    </Comp>
-  )
+const variantClasses = {
+  primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
+  secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
+  outline:
+    'text-accent bg-accent-foreground hover:bg-accent-hover hover:text-accent-foreground',
+  ghost:
+    'bg-background text-primary hover:bg-muted-hover select-none outline-none focus:bg-muted-hover',
+  accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
+  disabled: 'bg-opacity-50 bg-accent border text-accent-foreground',
+  link: 'bg-transparent border-none underline-offset-4 hover:underline',
+  danger: 'bg-danger hover:bg-danger-hover text-danger-foreground',
+  warning: 'bg-warning text-warning-foreground hover:bg-warning-hover',
+  success: 'bg-success hover:bg-success-hover text-success-foreground',
+  shine:
+    'before:ease relative  overflow-hidden border border-border bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-primary-foreground before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-40',
+  swipe:
+    'hover:before:bg-accent-foreground hover:before:text-accent relative  overflow-hidden border bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full',
 }
+const sizeClasses = {
+  xs: 'h-10 text-sm',
+  sm: 'h-12 text-sm',
+  lg: 'h-14 text-lg',
+  icon: 'h-8 w-8 p-1',
+  full: 'h-10 w-full text-lg',
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      loading = false,
+      sizes = 'sm',
+      variants = 'primary',
+      asChild = false,
+      ...props
+    },
+    ref,
+  ) => {
+    // Memoizando as classes para melhorar a performance
+    const _className = React.useMemo(
+      () =>
+        twMerge(
+          variantClasses[variants!],
+          sizeClasses[sizes!],
+          'appearance-none rounded-md px-2 py-1.5 flex gap-2 duration-300 transition-all active:scale-95',
+          ' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
+          'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+          className,
+        ),
+      [className, sizes, variants],
+    )
+
+    // Definindo o componente a ser usado (Slot ou button)
+    const Comp = asChild ? Slot : 'button'
+
+    return (
+      <Comp
+        ref={ref}
+        className={_className}
+        {...props}
+        disabled={loading || variants === 'disabled'}
+        aria-busy={loading}
+        aria-live={loading ? 'polite' : undefined}
+      >
+        {loading ? (
+          <>
+            {props.children}
+            <ImSpinner2 size={18} className="animate-spin" />
+          </>
+        ) : (
+          props.children
+        )}
+      </Comp>
+    )
+  },
+)
+
+Button.displayName = 'Button'
+
+export { Button }
+export type { ButtonProps }

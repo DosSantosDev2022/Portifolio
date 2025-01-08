@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { Button } from '@/components/global/uiChroma/button'
 import { RichText } from '@/components/global/RichText'
 import { Projects } from '@/components/global/Projects'
-import { MiniCards } from '@/components/global/minicard'
 import ScrollAnimation from '@/components/animations/ScrollAnimation'
+import { Card } from '@/components/global/card'
 
 export default async function Home() {
   const { home } = await GET_DATA_HOME()
@@ -23,7 +23,7 @@ export default async function Home() {
         </span>
       </ScrollAnimation>
 
-      <ScrollAnimation className="flex w-full flex-col items-start justify-around gap-6 rounded-md bg-secundary/40 px-4 py-4 md:gap-12">
+      <ScrollAnimation className="flex w-full flex-col items-start justify-around gap-6 rounded-md px-4 py-4 md:gap-12">
         <div className="flex flex-col items-start justify-center gap-4">
           <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
             {home.sectionAboutMe.smallText}
@@ -39,20 +39,22 @@ export default async function Home() {
               ),
             }}
           />
-          <Button asChild variant="outline" className="mt-2 w-36 text-center">
+          <Button asChild variants="shine">
             <Link href={'/About'} className="text-sm">
               Veja mais
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-4 items-center justify-center gap-3">
+        <div className="grid grid-cols-2 items-center justify-center gap-3">
           {home.features.map((feature) => (
-            <MiniCards
-              title={feature.title}
-              description={feature.description}
-              icon={feature.icon}
-              key={feature.id}
-            />
+            <Card className="" key={feature.id}>
+              <div className="text-lightSilver w-full flex items-start flex-col justify-start h-full">
+                <h4 className="text-base font-bold ">{feature.title}</h4>
+                <span className="text-xs tracking-wide font-light ">
+                  {feature.description}
+                </span>
+              </div>
+            </Card>
           ))}
         </div>
       </ScrollAnimation>
@@ -70,8 +72,9 @@ export default async function Home() {
         </div>
         <div className="mt-8 flex flex-col gap-14 md:gap-20 lg:mt-20">
           {home.featuredProjects.projects.map((project) => (
-            <ScrollAnimation key={project.id}>
+            <>
               <Projects
+                key={project.id}
                 title={project.title}
                 codeUrl={project.codeLink}
                 demoUrl={project.deployLink}
@@ -85,12 +88,12 @@ export default async function Home() {
                   icon: tech.icon.url,
                 }))}
               />
-            </ScrollAnimation>
+            </>
           ))}
         </div>
         <div className="mt-10 flex w-full items-center justify-end p-2">
-          <Button asChild sizes="xs" variant="outline">
-            <Link href={'/Projects'}>Ver mais..</Link>
+          <Button asChild sizes="xs" variants="primary">
+            <Link href={'/Projects'}>Ver mais</Link>
           </Button>
         </div>
       </ScrollAnimation>

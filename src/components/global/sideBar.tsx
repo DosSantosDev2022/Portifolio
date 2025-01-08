@@ -2,9 +2,8 @@ import { GET_DATA_SIDEBAR } from '@/utils/query/GET_SIDEBAR'
 import Image from 'next/image'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
-import { CMSIcon } from './CmsIcon'
-import { TooltipComponent } from './Tooltip'
-import { Technologies } from './technologies'
+import { Card } from './card'
+import { contactLinks, socialLinks, technologies } from '@/config/sidebarLinks'
 
 export async function SideBar({ className }: { className: string }) {
   const { sideBar } = await GET_DATA_SIDEBAR()
@@ -14,69 +13,69 @@ export async function SideBar({ className }: { className: string }) {
   return (
     <aside
       className={twMerge(
-        'top-0 flex h-full w-full  flex-col  items-center gap-6 rounded-md bg-primary p-4 lg:sticky lg:w-72',
+        'top-0 flex h-full w-full flex-col  items-center space-y-6 rounded-md bg-foreground px-4 py-3 lg:sticky lg:w-72',
         className,
       )}
     >
-      <div className="flex w-full flex-col items-center justify-center ">
+      {/* Seção profile */}
+      <Card className="items-center bg-transparent p-0">
         <Image
           width={500}
           height={500}
           quality={100}
           src={sideBar.profile.url}
           alt={sideBar.name}
-          className="relative -top-10 h-[180px] w-[180px]  rounded-3xl border border-border_color"
+          className="h-[180px] w-[180px] rounded-3xl shadow-sm border border-border"
         />
 
-        <div className="flex  h-12 w-full flex-col items-center justify-center  rounded-md  ">
-          <h4 className="text-lg font-bold text-lightSilver">{sideBar.name}</h4>
-          <span className="rounded-md bg-secundary/40 px-2 py-1.5 text-sm font-thin text-lightSilver">
-            {sideBar.profession}
-          </span>
+        <div className="flex w-full flex-col text-muted items-center justify-center">
+          <h4 className="text-lg font-bold">{sideBar.name}</h4>
+          <span className="text-sm font-thin">{sideBar.profession}</span>
         </div>
-      </div>
-      <div className="flex w-full flex-col gap-2 rounded-md bg-secundary/40 px-2 py-3">
-        <span className="ml-2 text-lightSilver">Social links</span>
-        <div className="flex items-center gap-2">
-          {sideBar.links?.map((link) => (
-            <Link
-              href={link.url}
-              key={link.id}
-              className="flex h-10 w-10 items-center justify-center rounded-md bg-secundary/40 text-2xl text-zinc-400 duration-200 hover:scale-105"
-            >
-              <CMSIcon icon={link.icon} />
-            </Link>
-          ))}
+      </Card>
+      {/* Seção links */}
+      <Card>
+        <span className="ml-2 text-muted">Social links</span>
+        <div className="px-1.5 py-2">
+          <ul className="flex items-center gap-1">
+            {socialLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.url}
+                className="flex h-8 w-8 items-center justify-center rounded-md text-muted border border-border transition-all duration-300 hover:scale-95"
+              >
+                <li>
+                  <link.icon size={20} />
+                </li>
+              </Link>
+            ))}
+          </ul>
         </div>
-      </div>
-      <div className="w-full rounded-md bg-secundary/40 px-2 py-3">
-        <span className="mb-6 ml-2 text-lightSilver">Tecnologias</span>
+      </Card>
+      {/* Seção tecnologias */}
+      <Card>
+        <span className="ml-2 text-muted">Tecnologias</span>
         <div className="flex flex-wrap items-center gap-2 p-2">
-          {sideBar.technologies?.map((tech) => (
-            <TooltipComponent key={tech.id} content={tech.name}>
-              <Technologies
-                icon={tech.icon.url}
-                id={tech.id}
-                name={tech.name}
-              />
-            </TooltipComponent>
+          {technologies.map((tech, index) => (
+            <div className="p-1.5 border border-border rounded-md" key={index}>
+              <Image src={tech.url} alt={tech.alt} width={24} height={24} />
+            </div>
           ))}
         </div>
-      </div>
-      <div className="flex w-full flex-col gap-2 rounded-md bg-secundary/40 px-2 py-3">
-        <span className="ml-2 text-lightSilver">Meus contatos</span>
-        {sideBar.contact?.map((contact) => (
-          <div key={contact.type} className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-secundary/40 text-2xl text-zinc-400">
-              <CMSIcon icon={contact.icon} />
-            </div>
-            <div className="flex flex-col gap-1 text-lightSilver">
-              <span className="text-xs font-bold ">{contact.type}</span>
-              <span className="text-[10px] font-thin ">{contact.contact}</span>
+      </Card>
+      {/* Seção contatos */}
+      <Card>
+        <span className="ml-2 text-muted">Meus contatos</span>
+        {contactLinks.map((contact, index) => (
+          <div key={index} className="flex items-center gap-2">
+            <contact.icon size={18} className="text-muted" />
+            <div className="flex flex-col gap-1 text-muted">
+              <span className="text-sm font-bold ">{contact.name}</span>
+              <span className="text-xs font-thin">{contact.label}</span>
             </div>
           </div>
         ))}
-      </div>
+      </Card>
     </aside>
   )
 }

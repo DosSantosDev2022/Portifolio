@@ -23,35 +23,38 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 
   return (
     <div className="mt-8 flex w-full items-center justify-between p-2">
-      <span className="flex w-full font-light text-light">
+      <span className="flex w-full font-light text-muted">
         Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
       </span>
 
       <div className="flex items-center gap-2">
         <Button
-          className={`flex items-center justify-center ${
-            isFirstPage ? 'pointer-events-none opacity-50' : ''
-          }`}
+          className={` ${isFirstPage ? 'pointer-events-none opacity-50' : ''}`}
           sizes="icon"
-          variant="outline"
+          variants="primary"
           asChild
         >
-          <Link href={!isFirstPage ? `/Projects?page=1` : '#'} passHref>
+          <Link
+            href={!isFirstPage ? `/Projects?page=1` : '#'}
+            passHref
+            aria-label="Primeira página"
+          >
             <ChevronsLeft />
           </Link>
         </Button>
         {pages.map((pageNumber) => (
           <Button
-            variant="outline"
+            variants="primary"
             asChild
             sizes="icon"
             key={pageNumber}
-            className={`flex  items-center justify-center ${
-              page === pageNumber ? 'pointer-events-none border opacity-50' : ''
+            className={`${
+              page === pageNumber ? 'pointer-events-none opacity-50' : ''
             }`}
           >
             <Link
               href={page !== pageNumber ? `/Projects?page=${pageNumber}` : '#'}
+              aria-label={`Página ${pageNumber}`}
             >
               {pageNumber}
             </Link>
@@ -59,16 +62,15 @@ export function Pagination({ page, limit, total }: PaginationProps) {
         ))}
 
         <Button
-          variant="outline"
+          variants="primary"
           sizes="icon"
-          className={`flex items-center justify-center ${
-            isLastPage ? 'pointer-events-none opacity-50' : ''
-          }`}
+          className={`${isLastPage ? 'pointer-events-none opacity-50' : ''}`}
           asChild
         >
           <Link
             href={!isLastPage ? `/Projects?page=${page + 1}` : '#'}
             passHref
+            aria-label="Última página"
           >
             <ChevronsRight />
           </Link>

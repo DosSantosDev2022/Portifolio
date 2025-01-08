@@ -47,7 +47,7 @@ const sizeClasses = {
   sm: 'h-12 text-sm',
   lg: 'h-14 text-lg',
   icon: 'h-8 w-8 p-1',
-  full: 'h-10 w-full text-lg',
+  full: 'h-10 w-full text-base',
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

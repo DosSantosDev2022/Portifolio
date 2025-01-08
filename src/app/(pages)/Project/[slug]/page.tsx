@@ -21,36 +21,31 @@ export default async function ProjectPageDetails({
 
   return (
     <div className="px-5 py-10">
-      <div className="flex flex-col gap-4">
-        <h1 className={`${bebas.className} text-7xl font-normal  lg:text-9xl`}>
+      <div className="grid">
+        <h1 className={`${bebas.className} text-7xl font-normal lg:text-9xl`}>
           {projectDetails?.title}{' '}
         </h1>
-
-        <p className="text-lg text-lightSilver">
-          {projectDetails?.description}{' '}
-        </p>
+        <p className="text-base text-muted">{projectDetails?.description} </p>
       </div>
-      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25 ">
+
+      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25">
         <Image
-          quality={100}
-          className="w-[358px] object-contain  "
+          className="w-[358px] object-contain"
           alt={projectDetails?.title || 'Foto de capa do projeto'}
           src={projectDetails?.coverImage.url || ''}
           width={400}
           height={400}
+          quality={100}
         />
       </div>
 
       <section className="mt-4 flex flex-col items-start justify-between gap-4 lg:flex-row">
-        <div className=" px-3">
-          <div className="mt-10 w-full ">
-            <h2
-              className={`${bebas.className} text-3xl font-medium text-highlights`}
-            >
+        <div className="px-3">
+          <div className="mt-10 w-full space-y-1">
+            <h2 className={`${bebas.className} text-3xl`}>
               Stack de desenvolvimento
             </h2>
-
-            <div className="mt-5 flex w-full flex-wrap items-start justify-items-start gap-4  px-1 pb-2 pt-2 ">
+            <div className="flex w-full flex-wrap items-start justify-items-start gap-4">
               {projectDetails?.technologie.map((tech) => (
                 <Image
                   alt={tech.name}
@@ -65,7 +60,7 @@ export default async function ProjectPageDetails({
             </div>
           </div>
 
-          <div className="mt-10 w-full space-y-3  ">
+          <div className="mt-10 w-full space-y-3">
             <RichText
               content={projectDetails?.completeDescription.raw || []}
               renderers={{
@@ -74,43 +69,41 @@ export default async function ProjectPageDetails({
                 ),
                 h2: ({ children }) => (
                   <h2
-                    className={`${bebas.className} space-y-2 text-3xl font-bold tracking-wider text-highlights`}
+                    className={`${bebas.className} space-y-2 text-3xl tracking-wider`}
                   >
                     {children}{' '}
                   </h2>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="space-y-2 font-semibold ">{children} </h5>
+                  <h5 className="space-y-2 font-semibold">{children} </h5>
                 ),
-                p: ({ children }) => (
-                  <p className="font-light text-lightSilver">{children}</p>
-                ),
+                p: ({ children }) => <p className="font-light ">{children}</p>,
                 li: ({ children }) => <li className=" ">{children} </li>,
                 ul: ({ children }) => (
-                  <ul className="list-inside list-disc space-y-2 p-2 text-lightSilver">
+                  <ul className="list-inside list-disc space-y-2 p-2">
                     {children}
                   </ul>
                 ),
               }}
             />
             <div className="mt-12 w-full lg:w-[496px]  px-2 py-2.5 flex items-start justify-start gap-2">
-              <Button sizes="full" variant="outline" asChild>
+              <Button sizes="full" variants="primary" asChild>
                 <Link
                   target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.codeLink || ''}
                 >
-                  Code
+                  Código fonte
                   <FaGithub size={18} />
                 </Link>
               </Button>
-              <Button sizes="full" variant="outline" asChild>
+              <Button sizes="full" variants="primary" asChild>
                 <Link
                   target="_blank"
                   className="flex items-center gap-2"
                   href={projectDetails?.deployLink || ''}
                 >
-                  Deploy
+                  Preview
                   <FaRegWindowMaximize size={18} />
                 </Link>
               </Button>
@@ -118,7 +111,7 @@ export default async function ProjectPageDetails({
           </div>
 
           <Button
-            variant="highlight"
+            variants="primary"
             asChild
             className="fixed bottom-4 right-4 w-16 animate-bounce text-center z-50"
           >

@@ -1,48 +1,42 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const InputRoot = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={twMerge(
-      'flex h-12 w-full items-center gap-3 rounded  bg-secundary p-4 focus-within:ring-2 focus-within:ring-secundary_hover',
-      className,
-    )}
-    {...props}
-  />
-))
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  icon?: ReactNode
+  variants?: 'success' | 'error' | 'default'
+}
 
-InputRoot.displayName = 'InputRoot'
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, icon, variants = 'default', ...props }, ref) => {
+    const variantClasses = {
+      default: 'focus-within:ring-2 focus-within:ring-accent',
+      success: 'focus-within:ring-2 focus-within:ring-success',
+      error: 'focus-within:ring-2 focus-within:ring-danger',
+    }
+    return (
+      <div
+        className={twMerge(
+          'flex h-12 w-full items-center gap-1 rounded  bg-input p-3',
+          variantClasses[variants],
+          className,
+        )}
+      >
+        {icon && <i className="text-muted-foreground">{icon}</i>}
+        <input
+          type={type}
+          ref={ref}
+          {...props}
+          className={twMerge(
+            'text-md flex-1 font-light outline-none',
+            'bg-transparent text-muted-foreground placeholder:text-muted-foreground',
+            'file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground',
+          )}
+        />
+      </div>
+    )
+  },
+)
 
-const InputIcon = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->(({ className, ...props }, ref) => (
-  <i ref={ref} className={twMerge('', className)} {...props} />
-))
+Input.displayName = 'Input'
 
-InputIcon.displayName = 'InputIcon'
-
-const ComponentInput = React.forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
->(({ className, type, ...props }, ref) => {
-  return (
-    <input
-      type={type}
-      className={twMerge(
-        'text-md flex-1 bg-transparent font-light text-lightSilver outline-none  placeholder:text-lightSilver',
-        className,
-      )}
-      ref={ref}
-      {...props}
-    />
-  )
-})
-
-ComponentInput.displayName = 'Input'
-
-export { InputRoot, InputIcon, ComponentInput }
+export { Input }

@@ -107,7 +107,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={twMerge('text-xl font-semibold text-light', className)}
+    className={twMerge('text-xl font-semibold text-muted', className)}
     {...props}
   />
 ))
@@ -119,7 +119,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={twMerge('text-base text-light', className)}
+    className={twMerge('text-base text-muted', className)}
     {...props}
   />
 ))

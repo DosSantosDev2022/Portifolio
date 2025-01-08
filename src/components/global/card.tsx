@@ -9,7 +9,7 @@ const Card = React.forwardRef<
     <div
       ref={ref}
       className={twMerge(
-        'flex w-full flex-col items-start justify-center space-y-2',
+        'flex w-full flex-col items-start justify-center space-y-2 h-full',
         'p-4 rounded-md bg-zinc-800/40',
         className,
       )}

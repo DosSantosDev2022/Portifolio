@@ -95,7 +95,7 @@ const Form = () => {
           </span>
         )}
       </div>
-      <div className="flex w-full items-center justify-end p-2">
+      <div className="flex w-full items-center justify-end">
         <Button variants="accent" disabled={isLoading} sizes="full">
           {isLoading ? (
             <span className="flex items-center justify-center gap-1">

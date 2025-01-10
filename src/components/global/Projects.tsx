@@ -60,13 +60,13 @@ const Projects = ({
           </div>
 
           <div className="flex w-full flex-col items-center justify-start gap-2 lg:flex-row">
-            <Button sizes="full" variants={'primary'} asChild>
+            <Button sizes="full" variants={'shine'} asChild>
               <Link href={codeUrl || ''}>{'Code'}</Link>
             </Button>
-            <Button sizes="full" variants={'primary'} asChild>
+            <Button sizes="full" variants={'shine'} asChild>
               <Link href={demoUrl}>{'Preview'}</Link>
             </Button>
-            <Button sizes="full" variants={'primary'} asChild>
+            <Button sizes="full" variants={'shine'} asChild>
               <Link href={slug}>{'Ver mais'}</Link>
             </Button>
           </div>

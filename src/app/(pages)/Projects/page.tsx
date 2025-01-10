@@ -19,15 +19,15 @@ export default async function ProjetcsPage({
   return (
     <div className="flex flex-col items-start justify-between gap-16  lg:gap-0 ">
       <ScrollAnimation className="flex flex-col gap-2  px-3 py-8 lg:px-12 lg:py-16">
-        <h1 className={`${bebas.className} mt-10 text-8xl `}>Meus projetos</h1>
-        <p className="text-lg font-medium ">
+        <h1 className={`${bebas.className} mt-10 text-8xl`}>Meus projetos</h1>
+        <p className="text-lg text-muted ">
           Explore minha galeria de projetos! Descubra criações dinâmicas e
           envolventes, refletindo minha paixão e expertise fullstack. Prepare-se
           para se inspirar enquanto mergulha em soluções inovadoras!
         </p>
       </ScrollAnimation>
 
-      <div className="mt-10 flex flex-col  gap-28  px-3 py-8 lg:mt-20 lg:px-12 lg:py-16  ">
+      <div className="mt-10 flex flex-col  gap-28  px-3 py-8 lg:mt-20 lg:px-12 lg:py-16">
         {project.map((project) => (
           <ScrollAnimation key={project.id}>
             <Projects

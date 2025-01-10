@@ -28,9 +28,9 @@ export default async function ProjectPageDetails({
         <p className="text-base text-muted">{projectDetails?.description} </p>
       </div>
 
-      <div className=" mt-10 flex  w-full items-center  justify-around rounded-xl bg-zinc-600/25">
+      <div className="mt-10 flex justify-center rounded-xl bg-zinc-600/25">
         <Image
-          className="w-[358px] object-contain"
+          className="w-full max-w-xs sm:max-w-md lg:max-w-lg object-contain"
           alt={projectDetails?.title || 'Foto de capa do projeto'}
           src={projectDetails?.coverImage.url || ''}
           width={400}
@@ -41,11 +41,11 @@ export default async function ProjectPageDetails({
 
       <section className="mt-4 flex flex-col items-start justify-between gap-4 lg:flex-row">
         <div className="px-3">
-          <div className="mt-10 w-full space-y-1">
+          <div className="mt-10 w-full space-y-2">
             <h2 className={`${bebas.className} text-3xl`}>
               Stack de desenvolvimento
             </h2>
-            <div className="flex w-full flex-wrap items-start justify-items-start gap-4">
+            <div className="flex w-full flex-wrap gap-2 sm:gap-4">
               {projectDetails?.technologie.map((tech) => (
                 <Image
                   alt={tech.name}
@@ -54,7 +54,7 @@ export default async function ProjectPageDetails({
                   width={45}
                   height={45}
                   quality={100}
-                  className=" rounded-md border border-zinc-700 bg-zinc-800 p-2"
+                  className="rounded-md border border-zinc-700 bg-zinc-800 p-1"
                 />
               ))}
             </div>
@@ -64,47 +64,47 @@ export default async function ProjectPageDetails({
             <RichText
               content={projectDetails?.completeDescription.raw || []}
               renderers={{
-                bold: ({ children }) => (
-                  <b className=" font-bold ">{children} </b>
-                ),
+                bold: ({ children }) => <b className="font-bold">{children}</b>,
                 h2: ({ children }) => (
                   <h2
-                    className={`${bebas.className} space-y-2 text-3xl tracking-wider`}
+                    className={`${bebas.className} text-2xl sm:text-3xl tracking-wider text-accent`}
                   >
-                    {children}{' '}
+                    {children}
                   </h2>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="space-y-2 font-semibold">{children} </h5>
+                  <h5 className={`mb-1 font-bold`}>{children}</h5>
                 ),
-                p: ({ children }) => <p className="font-light ">{children}</p>,
-                li: ({ children }) => <li className=" ">{children} </li>,
+                p: ({ children }) => (
+                  <p className="text-sm sm:text-base">{children}</p>
+                ),
                 ul: ({ children }) => (
-                  <ul className="list-inside list-disc space-y-2 p-2">
+                  <ul className="list-disc pl-5 text-sm sm:text-base">
                     {children}
                   </ul>
                 ),
+                li: ({ children }) => <li className="">{children}</li>,
+                ol: ({ children }) => <ol className="space-y-2">{children}</ol>,
               }}
             />
-            <div className="mt-12 w-full lg:w-[496px]  px-2 py-2.5 flex items-start justify-start gap-2">
+
+            <div className="mt-12 flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
               <Button sizes="full" variants="primary" asChild>
                 <Link
                   target="_blank"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-sm sm:text-base"
                   href={projectDetails?.codeLink || ''}
                 >
-                  Código fonte
-                  <FaGithub size={18} />
+                  Código fonte <FaGithub size={18} />
                 </Link>
               </Button>
               <Button sizes="full" variants="primary" asChild>
                 <Link
                   target="_blank"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-sm sm:text-base"
                   href={projectDetails?.deployLink || ''}
                 >
-                  Preview
-                  <FaRegWindowMaximize size={18} />
+                  Preview <FaRegWindowMaximize size={18} />
                 </Link>
               </Button>
             </div>

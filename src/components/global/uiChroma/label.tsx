@@ -10,8 +10,8 @@ const Label = ({ className, ...props }: LabelProps) => {
     <label
       {...props}
       className={twMerge(
-        'text-base font-medium leading-[25.6px] text-muted',
-        className,
+        'text-muted text-base leading-[25.6px] font-medium',
+        className
       )}
     />
   )

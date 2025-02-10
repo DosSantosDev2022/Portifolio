@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 order-first flex flex-col sm:flex-row sm:h-[90px] w-full items-center justify-between rounded-md bg-foreground px-6 py-3 lg:w-auto">
+    <header className="bg-foreground sticky top-0 z-50 order-first flex w-full flex-col items-center justify-between rounded-md px-6 py-3 sm:h-[90px] sm:flex-row lg:w-auto">
       <div className="flex w-full justify-between">
         <Logo />
         <Button
@@ -30,13 +30,13 @@ const Header = () => {
       </div>
 
       {/* Desktop nav */}
-      <nav className="sm:flex sm:items-center w-full hidden sm:gap-6">
+      <nav className="hidden w-full sm:flex sm:items-center sm:gap-6">
         <ul className="flex items-center justify-between gap-4">
           {NavLinks.map((link) => (
             <Link
               key={link.name}
               href={link.url}
-              className="rounded-md p-2 text-base font-light leading-6 tracking-tight transition-all duration-300 hover:bg-accent-hover text-accent-foreground"
+              className="hover:bg-accent-hover text-accent-foreground rounded-md p-2 text-base leading-6 font-light tracking-tight transition-all duration-300"
               prefetch
             >
               <li>{link.name}</li>
@@ -47,13 +47,13 @@ const Header = () => {
 
       {/* Mobile nav */}
       {isOpen && (
-        <nav className="sticky top-full left-0 w-full bg-foreground p-6 sm:hidden animate-smooth-fadein">
+        <nav className="bg-foreground animate-smooth-fadein sticky top-full left-0 w-full p-6 sm:hidden">
           <ul className="flex flex-col items-center gap-6">
             {NavLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.url}
-                className="rounded-md p-2 text-base font-light leading-6 tracking-tight transition-all duration-300 hover:bg-accent-hover text-accent-foreground"
+                className="hover:bg-accent-hover text-accent-foreground rounded-md p-2 text-base leading-6 font-light tracking-tight transition-all duration-300"
                 prefetch
               >
                 <li>{link.name}</li>

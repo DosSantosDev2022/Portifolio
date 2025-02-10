@@ -13,8 +13,8 @@ export async function SideBar({ className }: { className: string }) {
   return (
     <aside
       className={twMerge(
-        'top-0 flex h-full w-full flex-col  items-center space-y-6 rounded-md bg-foreground px-4 py-3 lg:sticky lg:w-72',
-        className,
+        'bg-foreground top-0 flex h-full w-full flex-col items-center space-y-6 rounded-md px-4 py-3 lg:sticky lg:w-72',
+        className
       )}
     >
       {/* Seção profile */}
@@ -25,24 +25,24 @@ export async function SideBar({ className }: { className: string }) {
           quality={100}
           src={sideBar.profile.url}
           alt={sideBar.name}
-          className="h-[180px] w-[180px] rounded-3xl shadow-sm border border-border"
+          className="border-border h-[180px] w-[180px] rounded-3xl border shadow-xs"
         />
 
-        <div className="flex w-full flex-col text-muted items-center justify-center">
+        <div className="text-muted flex w-full flex-col items-center justify-center">
           <h4 className="text-lg font-bold">{sideBar.name}</h4>
           <span className="text-sm font-thin">{sideBar.profession}</span>
         </div>
       </Card>
       {/* Seção links */}
       <Card>
-        <span className="ml-2 text-muted">Social links</span>
+        <span className="text-muted ml-2">Social links</span>
         <div className="px-1.5 py-2">
           <ul className="flex items-center gap-1">
             {socialLinks.map((link, index) => (
               <Link
                 key={index}
                 href={link.url}
-                className="flex h-8 w-8 items-center justify-center rounded-md text-muted border border-border transition-all duration-300 hover:scale-95"
+                className="text-muted border-border flex h-8 w-8 items-center justify-center rounded-md border transition-all duration-300 hover:scale-95"
               >
                 <li>
                   <link.icon size={20} />
@@ -54,10 +54,10 @@ export async function SideBar({ className }: { className: string }) {
       </Card>
       {/* Seção tecnologias */}
       <Card>
-        <span className="ml-2 text-muted">Tecnologias</span>
+        <span className="text-muted ml-2">Tecnologias</span>
         <div className="flex flex-wrap items-center gap-2 p-2">
           {technologies.map((tech, index) => (
-            <div className="p-1.5 border border-border rounded-md" key={index}>
+            <div className="border-border rounded-md border p-1.5" key={index}>
               <Image src={tech.url} alt={tech.alt} width={24} height={24} />
             </div>
           ))}
@@ -65,12 +65,12 @@ export async function SideBar({ className }: { className: string }) {
       </Card>
       {/* Seção contatos */}
       <Card>
-        <span className="ml-2 text-muted">Meus contatos</span>
+        <span className="text-muted ml-2">Meus contatos</span>
         {contactLinks.map((contact, index) => (
           <div key={index} className="flex items-center gap-2">
             <contact.icon size={18} className="text-muted" />
-            <div className="flex flex-col gap-1 text-muted">
-              <span className="text-sm font-bold ">{contact.name}</span>
+            <div className="text-muted flex flex-col gap-1">
+              <span className="text-sm font-bold">{contact.name}</span>
               <span className="text-xs font-thin">{contact.label}</span>
             </div>
           </div>

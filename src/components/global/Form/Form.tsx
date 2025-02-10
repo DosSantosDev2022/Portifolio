@@ -15,9 +15,9 @@ const Form = () => {
     register,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(FormSchema)
   })
   const { showNotification } = useNotification()
   const [isLoading, setIsLoading] = useState(false)
@@ -27,9 +27,9 @@ const Form = () => {
     const response = await fetch('api/send', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
 
     setIsLoading(false)
@@ -52,7 +52,7 @@ const Form = () => {
         />
 
         {errors && (
-          <span className="text-md font-normal text-danger">
+          <span className="text-md text-danger font-normal">
             {errors.nome?.message}
           </span>
         )}
@@ -65,7 +65,7 @@ const Form = () => {
           type="email"
         />
         {errors && (
-          <span className="text-md font-normal text-danger">
+          <span className="text-md text-danger font-normal">
             {errors.email?.message}
           </span>
         )}
@@ -78,7 +78,7 @@ const Form = () => {
           type="tel"
         />
         {errors && (
-          <span className="text-md font-normal text-danger">
+          <span className="text-md text-danger font-normal">
             {errors.telefone?.message}
           </span>
         )}
@@ -90,7 +90,7 @@ const Form = () => {
           placeholder="Deixe sua mensagem..."
         />
         {errors && (
-          <span className="text-md font-normal text-danger">
+          <span className="text-md text-danger font-normal">
             {errors.mensagem?.message}
           </span>
         )}
@@ -100,7 +100,7 @@ const Form = () => {
           {isLoading ? (
             <span className="flex items-center justify-center gap-1">
               Enviando...
-              <ImSpinner9 className="animate-spin text-light" />
+              <ImSpinner9 className="text-light animate-spin" />
             </span>
           ) : (
             'Enviar'

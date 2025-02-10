@@ -26,12 +26,12 @@ const Projects = ({
   tech,
   demoUrl,
   slug,
-  codeUrl,
+  codeUrl
 }: ProjectsProps) => {
   return (
     <ScrollAnimation>
       <div
-        className="flex w-full flex-col items-center justify-center gap-3 lg:flex-row lg:gap-12 border border-border shadow-sm rounded-md"
+        className="border-border flex w-full flex-col items-center justify-center gap-3 rounded-md border shadow-xs lg:flex-row lg:gap-12"
         key={id}
       >
         <div className="relative flex w-full items-center justify-center rounded-md object-cover">
@@ -44,16 +44,16 @@ const Projects = ({
           />
         </div>
 
-        <div className="flex  w-full flex-col items-center justify-center space-y-4 p-5">
+        <div className="flex w-full flex-col items-center justify-center space-y-4 p-5">
           <div className="flex flex-col gap-4">
-            <h2 className="text-4xl font-bold leading-[44.8px] ">{title}</h2>
-            <p className="left-[27px] text-sm font-normal text-muted">
+            <h2 className="text-4xl leading-[44.8px] font-bold">{title}</h2>
+            <p className="text-muted left-[27px] text-sm font-normal">
               {description}
             </p>
           </div>
-          <div className="flex items-center gap-2 ">
+          <div className="flex items-center gap-2">
             {tech?.map((tech) => (
-              <div key={id} className="rounded-md border border-border p-1.5">
+              <div key={id} className="border-border rounded-md border p-1.5">
                 <Image width={24} height={24} src={tech.icon} alt={tech.name} />
               </div>
             ))}

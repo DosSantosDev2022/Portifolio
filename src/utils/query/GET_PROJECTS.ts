@@ -17,7 +17,7 @@ interface ProjectData {
 
 export const GET_ALL_PROJECTS = async (
   page: number,
-  pageSize: number,
+  pageSize: number
 ): Promise<ProjectData> => {
   const query = `
     query MyQuery($first: Int, $skip: Int) {

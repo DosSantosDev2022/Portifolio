@@ -11,14 +11,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const variantClasses = {
       default: 'focus-within:ring-2 focus-within:ring-accent',
       success: 'focus-within:ring-2 focus-within:ring-success',
-      error: 'focus-within:ring-2 focus-within:ring-danger',
+      error: 'focus-within:ring-2 focus-within:ring-danger'
     }
     return (
       <div
         className={twMerge(
-          'flex h-12 w-full items-center gap-1 rounded bg-input p-3',
+          'bg-input flex h-12 w-full items-center gap-1 rounded-sm p-3',
           variantClasses[variants],
-          className,
+          className
         )}
       >
         {icon && <i className="text-muted-foreground">{icon}</i>}
@@ -27,14 +27,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
           className={twMerge(
-            'text-md flex-1 font-light outline-none duration-300 transition-all',
-            'bg-transparent text-muted-foreground placeholder:text-muted-foreground',
-            'file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground',
+            'text-md flex-1 font-light outline-hidden transition-all duration-300',
+            'text-muted-foreground placeholder:text-muted-foreground bg-transparent',
+            'file:text-foreground file:border-0 file:bg-transparent file:text-sm file:font-medium'
           )}
         />
       </div>
     )
-  },
+  }
 )
 
 Input.displayName = 'Input'

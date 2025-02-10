@@ -9,13 +9,13 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {...props}
         ref={ref}
         className={twMerge(
-          'rounded duration-300 transition-all px-4 py-3 border border-border',
+          'border-border rounded-sm border px-4 py-3 transition-all duration-300',
           'bg-input text-muted placeholder:text-muted',
-          'outline-none focus-within:ring-2 focus-within:ring-accent',
+          'focus-within:ring-accent outline-hidden focus-within:ring-2'
         )}
       />
     )
-  },
+  }
 )
 
 TextArea.displayName = 'textArea'

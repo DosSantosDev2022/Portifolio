@@ -20,8 +20,8 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={twMerge(
-      'data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out fixed inset-0 z-50 backdrop-blur-sm',
-      className,
+      'data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out fixed inset-0 z-50 backdrop-blur-xs',
+      className
     )}
     {...props}
     ref={ref}
@@ -39,13 +39,13 @@ const sheetVariants = cva(
           'inset-x-0 bottom-0 border-t data-[state=closed]:animate-slide-out-to-bottom data-[state=open]:animate-slide-in-from-bottom',
         left: 'inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:animate-slide-out-to-left data-[state=open]:animate-slide-in-from-left sm:max-w-sm',
         right:
-          'inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:animate-slide-out-to-right data-[state=open]:animate-slide-in-from-right sm:max-w-sm',
-      },
+          'inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:animate-slide-out-to-right data-[state=open]:animate-slide-in-from-right sm:max-w-sm'
+      }
     },
     defaultVariants: {
-      side: 'right',
-    },
-  },
+      side: 'right'
+    }
+  }
 )
 
 interface SheetContentProps
@@ -64,7 +64,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="focus:ring-ring absolute right-4 top-4 rounded-full border p-1 transition-opacity data-[state=open]:bg-zinc-950 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
+      <SheetPrimitive.Close className="focus:ring-ring absolute top-4 right-4 rounded-full border p-1 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-zinc-950">
         <LuX className="h-8 w-8" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
@@ -80,7 +80,7 @@ const SheetHeader = ({
   <div
     className={twMerge(
       'flex flex-col space-y-2 text-center sm:text-left',
-      className,
+      className
     )}
     {...props}
   />
@@ -94,7 +94,7 @@ const SheetFooter = ({
   <div
     className={twMerge(
       'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
-      className,
+      className
     )}
     {...props}
   />
@@ -107,7 +107,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={twMerge('text-xl font-semibold text-muted', className)}
+    className={twMerge('text-muted text-xl font-semibold', className)}
     {...props}
   />
 ))
@@ -119,7 +119,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={twMerge('text-base text-muted', className)}
+    className={twMerge('text-muted text-base', className)}
     {...props}
   />
 ))
@@ -135,5 +135,5 @@ export {
   SheetHeader,
   SheetFooter,
   SheetTitle,
-  SheetDescription,
+  SheetDescription
 }

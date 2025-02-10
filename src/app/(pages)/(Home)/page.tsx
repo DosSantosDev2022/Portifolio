@@ -15,19 +15,19 @@ export default async function Home() {
       {/* Hero Section */}
       <ScrollAnimation className="flex flex-col items-start gap-1 lg:w-[582px]">
         <h1
-          className={`${bebas.className} text-4xl md:text-6xl lg:text-8xl font-normal leading-tight`}
+          className={`${bebas.className} text-4xl leading-tight font-normal md:text-6xl lg:text-8xl`}
         >
           {home.sectionHero.title}
         </h1>
-        <span className="text-base font-normal leading-relaxed">
+        <span className="text-base leading-relaxed font-normal">
           {home.sectionHero.smallText}
         </span>
       </ScrollAnimation>
 
       {/* About Me Section */}
-      <ScrollAnimation className="flex flex-col items-start gap-6 md:gap-12 rounded-md">
+      <ScrollAnimation className="flex flex-col items-start gap-6 rounded-md md:gap-12">
         <div className="flex flex-col items-start gap-4">
-          <h2 className="text-lg md:text-xl lg:text-4xl font-bold">
+          <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
             {home.sectionAboutMe.smallText}
           </h2>
           <RichText
@@ -36,7 +36,7 @@ export default async function Home() {
               bold: ({ children }) => <b className="font-bold">{children}</b>,
               p: ({ children }) => (
                 <p className="text-base font-light">{children}</p>
-              ),
+              )
             }}
           />
           <Button asChild variants="shine">
@@ -45,7 +45,7 @@ export default async function Home() {
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {home.features.map((feature) => (
             <Card key={feature.id} className="h-full">
               <div className="flex flex-col items-start gap-2">
@@ -65,7 +65,7 @@ export default async function Home() {
           <h2 className={`${bebas.className} text-4xl font-normal`}>
             {home.featuredProjects.title}
           </h2>
-          <p className="text-sm text-muted">
+          <p className="text-muted text-sm">
             {home.featuredProjects.smallText}
           </p>
         </div>
@@ -83,7 +83,7 @@ export default async function Home() {
               tech={project.technologie.map((tech) => ({
                 id: tech.id,
                 name: tech.name,
-                icon: tech.icon.url,
+                icon: tech.icon.url
               }))}
             />
           ))}

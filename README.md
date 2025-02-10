@@ -27,15 +27,17 @@ Este projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
 ## 📸 Pré-visualização
 
 ### Página Inicial
+
 ![Página inicial do portfólio](public/images/homepage-preview.jpg)
 
 ### Página Sobre mim
+
 ![Página inicial do portfólio](public/images/aboutPage-preview.jpg)
 
-### Página detalhes de  um projeto
+### Página detalhes de um projeto
+
 ![Página inicial do portfólio](public/images/detailsProject-preview.jpg)
 
 ### Página contato
+
 ![Página inicial do portfólio](public/images/contactPage-preview.jpg)
-
-

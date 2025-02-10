@@ -6,21 +6,21 @@ export const NavLinks = [
   {
     name: 'Home',
     url: '/',
-    icon: FaHome,
+    icon: FaHome
   },
   {
     name: 'Sobre mim',
     url: '/About',
-    icon: FaUser,
+    icon: FaUser
   },
   {
     name: 'Projetos',
     url: '/Projects',
-    icon: GoProjectSymlink,
+    icon: GoProjectSymlink
   },
   {
     name: 'Contato',
     url: '/Contact',
-    icon: MdContacts,
-  },
+    icon: MdContacts
+  }
 ]

@@ -15,7 +15,7 @@ export function Pagination({ page, limit, total }: PaginationProps) {
   const { pages } = usePagination({
     page,
     limit,
-    total,
+    total
   })
 
   const isFirstPage = page === 1
@@ -23,7 +23,7 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 
   return (
     <div className="mt-8 flex w-full items-center justify-between p-2">
-      <span className="flex w-full font-light text-muted">
+      <span className="text-muted flex w-full font-light">
         Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
       </span>
 

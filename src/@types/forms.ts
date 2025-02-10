@@ -17,7 +17,7 @@ export const FormSchema = z.object({
     .string()
     .nonempty('O email é obrigatório')
     .refine((value) => regexEmail.test(value), {
-      message: 'Email inválido, tente novamente!',
+      message: 'Email inválido, tente novamente!'
     }),
 
   telefone: z
@@ -25,13 +25,13 @@ export const FormSchema = z.object({
     .nonempty('O telefone é obrigatório')
     .refine((value) => regexTelefone.test(value), {
       message:
-        'O telefone deve conter apenas números e símbolos válidos (+, -, (), espaço)',
+        'O telefone deve conter apenas números e símbolos válidos (+, -, (), espaço)'
     }),
 
   mensagem: z.string().nonempty('A mensagem é obrigatória').min(10, {
     message:
-      'A mensagem deve ser bem elaborada para te atendermos da melhor maneira',
-  }),
+      'A mensagem deve ser bem elaborada para te atendermos da melhor maneira'
+  })
 })
 
 export type FormData = z.infer<typeof FormSchema>

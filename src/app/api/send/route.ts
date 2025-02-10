@@ -11,7 +11,7 @@ export async function POST() {
       to: ['dossantosdevoficial@gmail.com'],
       subject: 'Olá Juliano',
       text: '',
-      react: EmailTemplate({ firstName: 'Juliano' }),
+      react: EmailTemplate({ firstName: 'Juliano' })
     })
 
     return NextResponse.json(data)

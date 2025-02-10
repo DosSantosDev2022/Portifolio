@@ -38,7 +38,7 @@ const generatePages = (page: number, totalPages: number) => {
     current,
     current + 1,
     ELLIPSIS_RIGTH,
-    total,
+    total
   ]
 }
 

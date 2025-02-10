@@ -13,7 +13,7 @@ export function Notification({
   message,
   type,
   duration = 5000,
-  onClose,
+  onClose
 }: NotificationProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,10 +29,9 @@ export function Notification({
       initial={{ opacity: 0, y: 50, scale: 0.3 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.5 } }}
-      className={`fixed bottom-4 rounded-md right-4 p-4 shadow-lg
-         ${type === 'success' ? 'bg-success text-success-foreground' : 'bg-danger text-danger-foreground'} `}
+      className={`fixed right-4 bottom-4 rounded-md p-4 shadow-lg ${type === 'success' ? 'bg-success text-success-foreground' : 'bg-danger text-danger-foreground'} `}
     >
-      <div className="flex items-center justify-between gap-2 w-full">
+      <div className="flex w-full items-center justify-between gap-2">
         <p className="text-base font-medium">{message}</p>
         {type === 'success' ? (
           <ImCheckboxChecked className="text-success-foreground" />

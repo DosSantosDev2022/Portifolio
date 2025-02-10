@@ -13,7 +13,7 @@ export default async function AboutPage() {
       {/* Hero Section */}
       <ScrollAnimation className="flex w-full flex-col items-start justify-between gap-6 lg:flex-row">
         <Image
-          className="w-full max-w-sm sm:max-w-md lg:max-w-lg object-cover rounded-lg"
+          className="w-full max-w-sm rounded-lg object-cover sm:max-w-md lg:max-w-lg"
           alt={aboutMe.authorImage02.fileName}
           src={aboutMe.authorImage02.url}
           quality={100}
@@ -22,23 +22,23 @@ export default async function AboutPage() {
         />
         <div className="flex w-full flex-col gap-2">
           <h1
-            className={`${bebas.className} text-4xl sm:text-5xl lg:text-[5rem] font-normal leading-tight lg:leading-[90.9px]`}
+            className={`${bebas.className} text-4xl leading-tight font-normal sm:text-5xl lg:text-[5rem] lg:leading-[90.9px]`}
           >
             {aboutMe.sectionHero.title}
           </h1>
-          <p className="text-sm sm:text-base font-normal leading-6 sm:leading-[27px] text-muted">
+          <p className="text-muted text-sm leading-6 font-normal sm:text-base sm:leading-[27px]">
             {aboutMe.sectionHero.longText.text}
           </p>
         </div>
       </ScrollAnimation>
 
       {/* Technologies Section */}
-      <ScrollAnimation className="flex flex-col items-start justify-center p-4 sm:p-6 rounded-md bg-zinc-800/40">
+      <ScrollAnimation className="flex flex-col items-start justify-center rounded-md bg-zinc-800/40 p-4 sm:p-6">
         <div className="mb-6 sm:mb-8">
           <h2 className={`${bebas.className} text-4xl sm:text-6xl`}>
             {aboutMe.sectionTechnologies.title}
           </h2>
-          <p className="text-sm sm:text-base font-light text-muted">
+          <p className="text-muted text-sm font-light sm:text-base">
             {aboutMe.sectionTechnologies.smallText}
           </p>
         </div>
@@ -61,7 +61,7 @@ export default async function AboutPage() {
       <ScrollAnimation className="flex w-full flex-col gap-6 lg:flex-row">
         <div className="flex w-full flex-col">
           <h2
-            className={`${bebas.className} text-4xl sm:text-5xl lg:text-[5rem] lg:w-2/3 font-normal leading-tight lg:leading-[76px]`}
+            className={`${bebas.className} text-4xl leading-tight font-normal sm:text-5xl lg:w-2/3 lg:text-[5rem] lg:leading-[76px]`}
           >
             {aboutMe.sectionstory.title}
           </h2>
@@ -69,10 +69,10 @@ export default async function AboutPage() {
             content={aboutMe.sectionstory.longText.raw}
             renderers={{
               p: ({ children }) => (
-                <p className="text-sm sm:text-base font-light text-muted">
+                <p className="text-muted text-sm font-light sm:text-base">
                   {children}
                 </p>
-              ),
+              )
             }}
           />
         </div>

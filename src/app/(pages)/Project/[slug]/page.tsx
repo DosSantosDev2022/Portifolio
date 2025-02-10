@@ -13,7 +13,7 @@ interface ProjectPageDetailsProps {
 }
 
 export default async function ProjectPageDetails({
-  params,
+  params
 }: ProjectPageDetailsProps) {
   const { project } = await GET_DETAILS_PROJECT()
 
@@ -25,12 +25,12 @@ export default async function ProjectPageDetails({
         <h1 className={`${bebas.className} text-7xl font-normal lg:text-9xl`}>
           {projectDetails?.title}{' '}
         </h1>
-        <p className="text-base text-muted">{projectDetails?.description} </p>
+        <p className="text-muted text-base">{projectDetails?.description} </p>
       </div>
 
       <div className="mt-10 flex justify-center rounded-xl bg-zinc-600/25">
         <Image
-          className="w-full max-w-xs sm:max-w-md lg:max-w-lg object-contain"
+          className="w-full max-w-xs object-contain sm:max-w-md lg:max-w-lg"
           alt={projectDetails?.title || 'Foto de capa do projeto'}
           src={projectDetails?.coverImage.url || ''}
           width={400}
@@ -67,7 +67,7 @@ export default async function ProjectPageDetails({
                 bold: ({ children }) => <b className="font-bold">{children}</b>,
                 h2: ({ children }) => (
                   <h2
-                    className={`${bebas.className} text-2xl sm:text-3xl tracking-wider text-accent`}
+                    className={`${bebas.className} text-accent text-2xl tracking-wider sm:text-3xl`}
                   >
                     {children}
                   </h2>
@@ -84,7 +84,7 @@ export default async function ProjectPageDetails({
                   </ul>
                 ),
                 li: ({ children }) => <li className="">{children}</li>,
-                ol: ({ children }) => <ol className="space-y-2">{children}</ol>,
+                ol: ({ children }) => <ol className="space-y-2">{children}</ol>
               }}
             />
 
@@ -113,7 +113,7 @@ export default async function ProjectPageDetails({
           <Button
             variants="primary"
             asChild
-            className="fixed bottom-4 right-4 w-16 animate-bounce text-center z-50"
+            className="fixed right-4 bottom-4 z-50 w-16 animate-bounce text-center"
           >
             <Link href={'/Projects'}>Voltar</Link>
           </Button>

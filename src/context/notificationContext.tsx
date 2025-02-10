@@ -7,7 +7,7 @@ interface NotificationContextType {
   showNotification: (
     message: string,
     type: 'success' | 'error',
-    duration?: number,
+    duration?: number
   ) => void
 }
 
@@ -19,7 +19,7 @@ export const useNotification = () => {
   const context = useContext(NotificationContext)
   if (!context) {
     throw new Error(
-      'useNotification must be used within a NotificationProvider',
+      'useNotification must be used within a NotificationProvider'
     )
   }
   return context
@@ -35,7 +35,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const showNotification = (
     message: string,
     type: 'success' | 'error',
-    duration = 5000,
+    duration = 5000
   ) => {
     setNotification({ message, type, duration })
   }

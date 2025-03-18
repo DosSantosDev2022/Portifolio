@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import { Card } from '@/components/global'
 
-export async function SideBar({ className }: { className: string }) {
+const SideBar = async ({ className }: { className: string }) => {
 	const { sideBar } = await getSideBar()
 	return (
 		<aside
@@ -102,3 +102,5 @@ export async function SideBar({ className }: { className: string }) {
 		</aside>
 	)
 }
+
+export { SideBar }

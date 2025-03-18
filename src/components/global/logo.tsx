@@ -1,6 +1,6 @@
 import { bebas } from '@/assets/fonts'
 
-export function Logo() {
+const Logo = () => {
 	return (
 		<span
 			className={`text-muted text-3xl leading-10 font-normal tracking-wider ${bebas.className}`}
@@ -9,3 +9,5 @@ export function Logo() {
 		</span>
 	)
 }
+
+export { Logo }

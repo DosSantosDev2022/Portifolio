@@ -11,7 +11,7 @@ interface PaginationProps {
 	total: number
 }
 
-export function Pagination({ page, limit, total }: PaginationProps) {
+const Pagination = ({ page, limit, total }: PaginationProps) => {
 	const { pages } = usePagination({
 		page,
 		limit,
@@ -81,3 +81,5 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 		</div>
 	)
 }
+
+export { Pagination }

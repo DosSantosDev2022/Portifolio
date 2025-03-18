@@ -9,12 +9,12 @@ interface NotificationProps {
 	onClose: () => void // Função para fechar a notificação
 }
 
-export function Notification({
+const Notification = ({
 	message,
 	type,
 	duration = 5000,
 	onClose,
-}: NotificationProps) {
+}: NotificationProps) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			onClose()
@@ -42,3 +42,5 @@ export function Notification({
 		</motion.div>
 	)
 }
+
+export { Notification }

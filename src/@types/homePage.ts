@@ -43,7 +43,7 @@ export interface homePageTypes {
 			id: string
 			title: string
 			icon: {
-				 url: string
+				url: string
 			}
 			description: string
 		}[]

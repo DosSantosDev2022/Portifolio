@@ -1,9 +1,9 @@
-import { RichText as CmsRichText } from '@graphcms/rich-text-react-renderer'
+import { RichText as RichTextComponent } from '@graphcms/rich-text-react-renderer'
 
-type RichTextProps = React.ComponentProps<typeof CmsRichText>
+type RichTextProps = React.ComponentProps<typeof RichTextComponent>
 
 const RichText = ({ ...props }: RichTextProps) => {
-	return <CmsRichText {...props} />
+	return <RichTextComponent {...props} />
 }
 
 export { RichText }

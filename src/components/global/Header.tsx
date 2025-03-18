@@ -21,7 +21,7 @@ const Header = () => {
 					type='button'
 					className='sm:hidden'
 					sizes='icon'
-					variants='accent'
+					variants='primary'
 					onClick={toggleMenu}
 					aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
 				>

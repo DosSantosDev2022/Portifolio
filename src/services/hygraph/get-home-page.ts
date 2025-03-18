@@ -1,19 +1,13 @@
 import { fetchHygraphQuery } from '@/app/api/hygraph/fetchHygraphQuery'
-import { HomePageTypes } from '@/types/homePage'
+import type { homePageTypes } from '@/@types/homePage'
 
-export const GET_DATA_HOME = async (): Promise<HomePageTypes> => {
-  const query = `
+export const getHomePage = async (): Promise<homePageTypes> => {
+	const query = `
       query MyQuery {
       home(where: {slug: "home"}) {
         sectionHero {
           title
           smallText
-          links {
-            id
-            name
-            url
-            icon
-          }
           image {
             url
           }
@@ -51,12 +45,14 @@ export const GET_DATA_HOME = async (): Promise<HomePageTypes> => {
         features {
           id
           title
-          icon
+          icon {
+           url
+          }
           description
         }
       }
     }
   `
 
-  return fetchHygraphQuery(query)
+	return fetchHygraphQuery(query)
 }

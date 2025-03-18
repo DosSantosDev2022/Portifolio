@@ -1,22 +1,16 @@
 import { fetchHygraphQuery } from '@/app/api/hygraph/fetchHygraphQuery'
-import { AboutMeData } from '@/types/about'
+import type { aboutMe } from '@/@types/about'
 
-export const GET_ABOUT_ME = async (): Promise<AboutMeData> => {
-  const query = `
+export const getAboutMe = async (): Promise<aboutMe> => {
+	const query = `
       query MyQuery {
-      aboutMe(where: {slug: "about-me"}) {
+      aboutMe(where: {slug: "about"}) {
         slug
         sectionHero {
           title
           smallText
           longText {
             text
-          }
-          links {
-            id
-            name
-            icon
-            url
           }
           image {
             url
@@ -39,17 +33,9 @@ export const GET_ABOUT_ME = async (): Promise<AboutMeData> => {
             raw
           }
         }
-        authorImage01 {
-          fileName
-          url
-        }
-        authorImage02 {
-          fileName
-          url
-        }
       }
     }
   `
 
-  return fetchHygraphQuery(query)
+	return fetchHygraphQuery(query)
 }

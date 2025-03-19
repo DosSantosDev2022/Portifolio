@@ -11,7 +11,6 @@ Este portfólio é um site que reúne informações sobre mim, minhas habilidade
 Este projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
 
 - **Next.js**: Estrutura de React para renderização do lado do servidor e criação de sites dinâmicos.
-- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
 - **Tailwind CSS**: Framework de CSS utilitário para um design responsivo e moderno.
 - **Zod**: Validação de formulários.
 - **Hygraph**: CMS para gestão de conteúdo.
@@ -28,16 +27,20 @@ Este projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
 
 ### Página Inicial
 
-![Página inicial do portfólio](public/images/homepage-preview.jpg)
+![Página inicial do portfólio](public/images/home.png)
 
 ### Página Sobre mim
 
-![Página inicial do portfólio](public/images/aboutPage-preview.jpg)
+![Página inicial do portfólio](public/images/about.png)
+
+### Página lista de projetos
+
+![Página de listagem de projetos](public/images/projects.png)
 
 ### Página detalhes de um projeto
 
-![Página inicial do portfólio](public/images/detailsProject-preview.jpg)
+![Página inicial do portfólio](public/images/details-project.png)
 
 ### Página contato
 
-![Página inicial do portfólio](public/images/contactPage-preview.jpg)
+![Página inicial do portfólio](public/images/contact.png)

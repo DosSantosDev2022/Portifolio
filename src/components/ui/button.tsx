@@ -69,7 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				twMerge(
 					variantClasses[variants],
 					sizeClasses[sizes],
-					'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all active:scale-75 cursor-pointer',
+					'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all active:scale-95 cursor-pointer',
 					' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
 					'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 					className,

@@ -45,7 +45,7 @@ export default async function Home() {
 						}}
 					/>
 					<Button sizes='xs' asChild variants='shine'>
-						<Link href={'/About'} className='text-sm'>
+						<Link href={'/about'} className='text-sm'>
 							Veja mais
 						</Link>
 					</Button>
@@ -92,7 +92,7 @@ export default async function Home() {
 							title={project.title}
 							codeUrl={project.codeLink}
 							demoUrl={project.deployLink}
-							slug={`/Project/${project.slug}`}
+							slug={`/project/${project.slug}`}
 							description={project.description}
 							coverImage={project.coverImage.url}
 							id={project.title}
@@ -106,7 +106,7 @@ export default async function Home() {
 				</div>
 				<div className='flex justify-end'>
 					<Button asChild sizes='xs' variants='shine'>
-						<Link href={'/Projects'}>Ver todos</Link>
+						<Link href={'/projects'}>Ver todos</Link>
 					</Button>
 				</div>
 			</ScrollAnimation>

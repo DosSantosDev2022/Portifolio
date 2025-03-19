@@ -16,7 +16,7 @@ export default async function ProjectPageDetails({
 	params,
 }: ProjectPageDetailsProps) {
 	const project = await getDetailsProject(params.slug)
-	console.log(project)
+
 	return (
 		<div className='px-5 py-10'>
 			<div className='grid'>
@@ -25,7 +25,7 @@ export default async function ProjectPageDetails({
 				>
 					{project.title}{' '}
 				</h1>
-				<p className='text-muted text-base'>{project.description} </p>
+				<p className='text-muted text-lg'>{project.description} </p>
 			</div>
 
 			<div className='mt-10 flex justify-center rounded-xl bg-zinc-600/25'>
@@ -44,7 +44,7 @@ export default async function ProjectPageDetails({
 			<section className='mt-4 flex flex-col items-start justify-between gap-4 lg:flex-row'>
 				<div className='px-3'>
 					<div className='mt-10 w-full space-y-2'>
-						<h2 className={`${bebas.className} text-3xl`}>
+						<h2 className={`${bebas.className} text-3xl lg:text-5xl`}>
 							Stack de desenvolvimento
 						</h2>
 						<div className='flex w-full flex-wrap gap-2 sm:gap-4'>
@@ -73,7 +73,7 @@ export default async function ProjectPageDetails({
 								),
 								h2: ({ children }) => (
 									<h2
-										className={`${bebas.className} text-accent text-2xl tracking-wider sm:text-3xl`}
+										className={`${bebas.className} text-accent text-2xl tracking-wider lg:text-4xl`}
 									>
 										{children}
 									</h2>
@@ -82,7 +82,7 @@ export default async function ProjectPageDetails({
 									<h5 className={'mb-1 font-bold'}>{children}</h5>
 								),
 								p: ({ children }) => (
-									<p className='text-base text-muted'>{children}</p>
+									<p className='text-lg text-muted'>{children}</p>
 								),
 								ul: ({ children }) => (
 									<ul className='list-disc pl-5 text-sm sm:text-base'>
@@ -99,7 +99,7 @@ export default async function ProjectPageDetails({
 						/>
 
 						<div className='mt-12 flex w-full gap-3 flex-row sm:gap-4'>
-							<Button sizes='full' variants='primary' asChild>
+							<Button sizes='sm' variants='primary' asChild>
 								<Link
 									target='_blank'
 									className='flex items-center gap-2 text-lg lg:text-base'
@@ -108,7 +108,7 @@ export default async function ProjectPageDetails({
 									GitHub <FaGithub size={18} />
 								</Link>
 							</Button>
-							<Button sizes='full' variants='primary' asChild>
+							<Button sizes='sm' variants='primary' asChild>
 								<Link
 									target='_blank'
 									className='flex items-center gap-2 text-lg lg:text-base'

@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<div
 				className={twMerge(
-					'bg-input flex h-12 w-full items-center gap-1 rounded-sm p-3',
+					'bg-input flex h-12 w-full items-center gap-1 rounded-sm p-3 transition-all duration-300',
 					variantClasses[variants],
 					className,
 				)}
@@ -27,8 +27,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 					ref={ref}
 					{...props}
 					className={twMerge(
-						'text-md flex-1 font-light outline-hidden transition-all duration-300',
-						'text-muted-foreground placeholder:text-muted-foreground bg-transparent',
+						'flex-1 outline-hidden ',
+						'text-muted placeholder:text-muted bg-transparent',
 						'file:text-foreground file:border-0 file:bg-transparent file:text-sm file:font-medium',
 					)}
 				/>

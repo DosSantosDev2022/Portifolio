@@ -35,7 +35,7 @@ const Pagination = ({ page, limit, total }: PaginationProps) => {
 					asChild
 				>
 					<Link
-						href={!isFirstPage ? '/Projects?page=1' : '#'}
+						href={!isFirstPage ? '/projects?page=1' : '#'}
 						passHref
 						aria-label='Primeira página'
 					>
@@ -54,7 +54,7 @@ const Pagination = ({ page, limit, total }: PaginationProps) => {
 					>
 						<Link
 							href={
-								page !== pageNumber ? `/Projects?page=${pageNumber}` : '#'
+								page !== pageNumber ? `/projects?page=${pageNumber}` : '#'
 							}
 							aria-label={`Página ${pageNumber}`}
 						>
@@ -70,7 +70,7 @@ const Pagination = ({ page, limit, total }: PaginationProps) => {
 					asChild
 				>
 					<Link
-						href={!isLastPage ? `/Projects?page=${page + 1}` : '#'}
+						href={!isLastPage ? `/projects?page=${page + 1}` : '#'}
 						passHref
 						aria-label='Última página'
 					>

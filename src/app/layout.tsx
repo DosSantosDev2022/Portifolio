@@ -10,6 +10,9 @@ export default async function RootLayout({
 }>) {
 	return (
 		<html lang='pt-BR' className={twMerge('custom-scrollbar')}>
+			<head>
+				<link rel='icon' href='/favicon.ico' sizes='any' />
+			</head>
 			<body className='bg-gradient-color h-full rounded-md bg-contain bg-no-repeat'>
 				<NotificationProvider>
 					<div className='flex flex-col gap-6 px-6 py-12 lg:flex-row lg:px-24'>

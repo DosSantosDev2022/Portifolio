@@ -5,10 +5,98 @@ import { Button } from '@/components/ui'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa'
+import type { Metadata } from 'next'
 
 interface ProjectPageDetailsProps {
 	params: {
 		slug: string
+	}
+}
+
+// --- Metadata Dinâmico ---
+export async function generateMetadata({
+	params,
+}: ProjectPageDetailsProps): Promise<Metadata> {
+	const project = await getDetailsProject(params.slug)
+
+	// Se o projeto não for encontrado, você pode retornar metadados padrão ou um 404
+	if (!project) {
+		return {
+			title: 'Projeto Não Encontrado',
+			description: 'O projeto que você está procurando não existe.',
+		}
+	}
+
+	const projectTitle = `${project.title} | Detalhes do Projeto`
+	const projectDescription =
+		project.description ||
+		'Confira os detalhes e tecnologias utilizadas neste projeto de desenvolvimento web.'
+	const projectImageUrl =
+		project.coverImage?.url || '/images/placeholder.png' // Imagem de fallback
+
+	return {
+		// Título da página: Título do projeto + Sufixo
+		title: projectTitle,
+		// Descrição meta: Breve resumo do projeto
+		description: projectDescription,
+
+		// Open Graph (para compartilhamento em redes sociais)
+		openGraph: {
+			title: projectTitle,
+			description: projectDescription,
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}/project/${project.slug}`, // URL específica do projeto
+			siteName: 'Seu Portfólio / UIChroma', // Nome do seu site/projeto
+			images: [
+				{
+					url: projectImageUrl,
+					width: 1200,
+					height: 630,
+					alt: project.title,
+				},
+			],
+			locale: 'pt_BR',
+			type: 'article', // Tipo 'article' é mais apropriado para páginas de conteúdo específico
+			tags: project.technologie?.map((tech) => tech.name) || [], // Tags baseadas nas tecnologias
+		},
+
+		// Twitter Card
+		twitter: {
+			card: 'summary_large_image',
+			title: projectTitle,
+			description: projectDescription,
+			images: [projectImageUrl],
+			// creator: '@seu_usuario_twitter', // Opcional
+		},
+
+		// Ícone da aba do navegador
+		icons: {
+			icon: '/favicon.ico',
+			shortcut: '/favicon-16x16.png',
+			apple: '/apple-touch-icon.png',
+		},
+
+		// Robots
+		robots: {
+			index: true,
+			follow: true,
+			nocache: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				noimageindex: true,
+				'max-video-preview': -1,
+				'max-image-preview': 'large',
+				'max-snippet': -1,
+			},
+		},
+		// Opcional: Keywords
+		keywords: [
+			'projeto',
+			project.title || 'desenvolvimento',
+			...(project.technologie?.map((tech) => tech.name) || []), // Adicione as tecnologias como keywords
+			'portfólio',
+			'programação',
+		],
 	}
 }
 

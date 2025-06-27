@@ -3,7 +3,7 @@ export const fetchHygraphQuery = async <T>(
 	variables?: Record<string, unknown>,
 	options?: { cache?: RequestCache; revalidate?: number },
 ): Promise<T> => {
-	const { cache = 'default', revalidate = 60 * 60 * 24 } = options || {}
+	const { cache = 'force-cache', revalidate = 60 * 60 * 24 } = options || {}
 	const response = await fetch(process.env.HYGRAPH_URL || '', {
 		method: 'POST',
 		headers: {

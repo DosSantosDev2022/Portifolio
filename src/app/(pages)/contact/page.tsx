@@ -74,7 +74,7 @@ export function metadata() {
 export default async function Contact() {
 	return (
 		<ScrollAnimation className='flex flex-col gap-10 p-4 lg:px-10 lg:py-8'>
-			<div className=' w-full lg:max-w-3xl  space-y-10'>
+			<div className=' w-full lg:max-w-4xl mx-auto space-y-10'>
 				<h2 className='text-start text-2xl font-bold  sm:text-4xl'>
 					Entre em contato para parcerias.
 				</h2>

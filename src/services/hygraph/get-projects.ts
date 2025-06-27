@@ -53,13 +53,7 @@ export const getAllProjects = async (
 	const variables = { first: pageSize, skip }
 
 	const response = await fetchHygraphQuery<HygraphResponse>(
-		query,
-		variables,
-    {
-      cache: 'force-cache',
-      revalidate: 21600 /* revalida após 6hs */
-    }
-	)
+		query, variables)
 
 	const { project, projectConnection } = response
 

@@ -32,9 +32,7 @@ export const getDetailsProject = async (
   
   `
 	const variables = { slug }
-	const data: DetailsProject = await fetchHygraphQuery(query, variables, {
-		cache: 'force-cache',
-	})
+	const data: DetailsProject = await fetchHygraphQuery(query, variables)
 
 	return data.projects
 }

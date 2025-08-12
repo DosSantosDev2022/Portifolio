@@ -1,186 +1,73 @@
-import { getHomePage } from '@/services/hygraph/get-home-page'
-import { bebas } from '@/assets/fonts'
-import Link from 'next/link'
-import { Button } from '@/components/ui'
-import {
-	RichText,
-	Projects,
-	ScrollAnimation,
-	Card,
-} from '@/components/global'
-import Image from 'next/image'
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {feature} from '@/config/home-data'
+// Ícones
+import { MapPin } from 'lucide-react';
+import { MdEmail } from 'react-icons/md';
+import { ScrollAnimation } from '@/components/global';
 
-// ---  Metadata ---
-export function metadata() {
-	return {
-		title: 'Portifílio - Home',
-		description:
-			'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-		openGraph: {
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			url:
-				process.env.NEXT_PUBLIC_SITE_URL || 'https://dossantosdev.com.br/',
-			siteName: 'Meu Portfólio / DosSantosdev',
-			images: [
-				{
-					url: '/images/author.png',
-					width: 1200,
-					height: 630,
-					alt: 'Juliano Santos, desenvolvedor FullStack',
-				},
-			],
-			locale: 'pt_BR',
-			type: 'website',
-		},
+export default function Home() {
+  return (
+    <div className="mx-auto mb-6 max-w-screen-md space-y-14 px-4 py-6 lg:space-y-20 lg:py-16">
+      
+      {/* --- Secção 1: Introdução (Mantida) --- */}
+      <section className="space-y-4">
+        <ScrollAnimation>
+            <h1 className="text-3xl font-medium lg:text-4xl">Olá! Eu sou Juliano
+              <div className="flex flex-col items-start sm:flex-row sm:items-center">
+                <span className="text-primary">FullStack Developer</span>
+                <div className="mt-3 inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-base sm:ms-4 lg:mt-0">
+                  <MapPin className="size-4" /> Brasil
+                </div>
+              </div>
+            </h1>
+        <p className="text-muted-foreground">
+          Desenvolvedor fullstack e especialista em Next Js, construindo aplicações de ponta a ponta.
+        </p>
+        <div className="flex gap-4 pt-2">
+          <Button asChild variant={'secondary'}>
+            <Link href="/about">Sobre mim</Link>
+          </Button>
+          <Button asChild variant={'ghost'} className="inline-flex items-center justify-center gap-2">
+            <Link href="/contact" className='flex items-center gap-2'>
+              <MdEmail className="size-4" /> Contato
+            </Link>
+          </Button>
+        </div>
+        </ScrollAnimation>
+        
+      </section>
 
-		twitter: {
-			card: 'summary_large_image',
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			images: ['/images/author.png'],
-		},
+      {/* --- NOVA Secção 2: Features / O que eu ofereço --- */}
+      <section>
+        <ScrollAnimation className="pb-8 text-center">
+          <h2 className="text-2xl font-medium">Principais Serviços</h2>
+          <p className="text-muted-foreground mt-1">Soluções completas para levar sua ideia ao próximo nível.</p>
+        </ScrollAnimation>
 
-		icons: {
-			icon: '/favicon.ico',
-			shortcut: '/favicon-16x16.png',
-			apple: '/apple-touch-icon.png',
-		},
-
-		robots: {
-			index: true,
-			follow: true,
-			nocache: true,
-			googleBot: {
-				index: true,
-				follow: true,
-				noimageindex: true,
-				'max-video-preview': -1,
-				'max-image-preview': 'large',
-				'max-snippet': -1,
-			},
-		},
-
-		// Opcional: Autor
-		// authors: [{ name: 'Seu Nome', url: 'https://seusite.com/sobre' }],
-
-		keywords: [
-			'desenvolvimento web',
-			'desenvolvimento mobile',
-			'tailwindcss',
-			'react',
-			'next.js',
-			'portfólio',
-			'programação',
-			'frontend',
-			'fullstack',
-			'backend',
-		],
-	}
-}
-
-export default async function Home() {
-	const { home } = await getHomePage()
-
-	return (
-		<div className='container mx-auto space-y-10 px-4 py-8 md:space-y-20 lg:px-12 lg:py-16'>
-			{/* Hero Section */}
-			<ScrollAnimation className='flex flex-col items-start lg:w-[582px]'>
-				<h1
-					className={`${bebas.className} text-4xl font-normal md:text-6xl lg:text-8xl`}
-				>
-					{home.sectionHero.title}
-				</h1>
-				<span className='lg:text-xl text-base text-muted font-normal'>
-					{home.sectionHero.smallText}
-				</span>
-			</ScrollAnimation>
-
-			{/* About Me Section */}
-			<ScrollAnimation className='flex flex-col items-start gap-6 rounded-md md:gap-12'>
-				<div className='flex flex-col items-start gap-4'>
-					<h2 className='text-lg font-bold md:text-xl lg:text-4xl'>
-						{home.sectionAboutMe.smallText}
-					</h2>
-					<RichText
-						content={home.sectionAboutMe.longText.raw}
-						renderers={{
-							bold: ({ children }) => (
-								<b className='font-bold'>{children}</b>
-							),
-							p: ({ children }) => (
-								<p className='text-base font-light'>{children}</p>
-							),
-						}}
-					/>
-					<Button sizes='xs' asChild variants='shine'>
-						<Link href={'/about'} className='text-sm'>
-							Veja mais
-						</Link>
-					</Button>
-				</div>
-				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-					{home.features.map((feature) => (
-						<Card key={feature.id} className='h-full'>
-							<div className='flex flex-col items-start gap-2'>
-								<div className='flex items-center space-x-2 w-full p-0.5'>
-									<Image
-										alt=''
-										src={feature.icon?.url}
-										width={20}
-										height={20}
-										quality={100}
-									/>
-									<h4 className='text-base font-bold'>{feature.title}</h4>
-								</div>
-								<span className='text-base text-muted font-light'>
-									{feature.description}
-								</span>
-							</div>
-						</Card>
-					))}
-				</div>
-			</ScrollAnimation>
-
-			{/* Featured Projects Section */}
-			<ScrollAnimation className='space-y-8'>
-				<div className='flex flex-col items-start gap-1'>
-					<h2
-						className={`${bebas.className} text-4xl lg:text-6xl font-normal`}
-					>
-						{home.featuredProjects.title}
-					</h2>
-					<p className='text-muted text-base lg:text-xl'>
-						{home.featuredProjects.smallText}
-					</p>
-				</div>
-				<div className='flex flex-col gap-14 md:gap-20'>
-					{home.featuredProjects.projects.map((project) => (
-						<Projects
-							key={project.id}
-							title={project.title}
-							codeUrl={project.codeLink}
-							demoUrl={project.deployLink}
-							slug={`/project/${project.slug}`}
-							description={project.description}
-							coverImage={project.coverImage.url}
-							id={project.title}
-							tech={project.technologie.map((tech) => ({
-								id: tech.id,
-								name: tech.name,
-								icon: tech.icon.url,
-							}))}
-						/>
-					))}
-				</div>
-				<div className='flex justify-end'>
-					<Button asChild sizes='xs' variants='shine'>
-						<Link href={'/projects'}>Ver todos</Link>
-					</Button>
-				</div>
-			</ScrollAnimation>
-		</div>
-	)
+        <ScrollAnimation className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {/* Feature 1: Frontend */}
+          {feature.map((feat) => {
+            return (
+            <Card key={feat.id} className="text-center">
+            <CardHeader>
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4">
+                <feat.icon className="size-6 text-primary" />
+              </div>
+              <CardTitle>{feat.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground text-sm">
+                  {feat.description}
+              </p>
+            </CardContent>
+          </Card>
+            )
+          })}
+        
+        </ScrollAnimation>
+      </section>
+    </div>
+  );
 }

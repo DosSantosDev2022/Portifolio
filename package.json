@@ -13,7 +13,9 @@
 		"prepare": "husky"
 	},
 	"commitlint": {
-		"extends": ["@commitlint/config-conventional"]
+		"extends": [
+			"@commitlint/config-conventional"
+		]
 	},
 	"lint-staged": {
 		"**.{js|ts|cjs|mjs|d.cts|d.mts|jsx|tsx|json|jsonc}": [
@@ -26,10 +28,17 @@
 		"@graphcms/rich-text-react-renderer": "^0.6.2",
 		"@graphcms/rich-text-types": "^0.5.1",
 		"@hookform/resolvers": "^3.10.0",
+		"@radix-ui/react-avatar": "^1.1.10",
+		"@radix-ui/react-collapsible": "^1.1.11",
 		"@radix-ui/react-dialog": "^1.1.6",
+		"@radix-ui/react-label": "^2.1.7",
+		"@radix-ui/react-popover": "^1.1.14",
+		"@radix-ui/react-select": "^2.2.5",
 		"@radix-ui/react-slot": "^1.1.2",
 		"@radix-ui/react-tooltip": "^1.1.8",
+		"@tanstack/react-query": "^5.85.0",
 		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"dotenv": "^16.4.7",
 		"framer-motion": "^11.18.2",
 		"lucide-react": "^0.364.0",
@@ -58,6 +67,7 @@
 		"lint-staged": "^15.5.0",
 		"postcss": "^8.5.3",
 		"tailwindcss": "^4.0.14",
+		"tw-animate-css": "^1.3.6",
 		"typescript": "^5.8.2"
 	}
 }

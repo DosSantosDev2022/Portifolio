@@ -1,85 +1,73 @@
-import { ScrollAnimation } from '@/components/global'
-import { FormContact } from '@/components/global/form'
+import { ScrollAnimation } from '@/components/global';
+import { FormContact } from '@/components/global/form';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription,Button } from '@/components/ui';
+import { Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
 
-export function metadata() {
-	return {
-		title: 'Portifílio - Contato',
-		description:
-			'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-		openGraph: {
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			url:
-				process.env.NEXT_PUBLIC_SITE_URL || 'https://dossantosdev.com.br/',
-			siteName: 'Meu Portfólio / DosSantosdev',
-			images: [
-				{
-					url: '/images/author.png',
-					width: 1200,
-					height: 630,
-					alt: 'Juliano Santos, desenvolvedor FullStack',
-				},
-			],
-			locale: 'pt_BR',
-			type: 'website',
-		},
+export default function ContactPage() {
 
-		twitter: {
-			card: 'summary_large_image',
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			images: ['/images/author.png'],
-		},
+  const whatsappNumber = "5511916453897";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Vi seu portfólio e gostaria de conversar.")}`;
 
-		icons: {
-			icon: '/favicon.ico',
-			shortcut: '/favicon-16x16.png',
-			apple: '/apple-touch-icon.png',
-		},
+  return (
+    <ScrollAnimation className="p-4 sm:p-6 lg:p-8">
+      {/* --- Cabeçalho da Página --- */}
+      <header className="max-w-4xl mx-auto text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Entre em Contato</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Tem uma pergunta ou uma proposta, entre em contato.
+        </p>
+      </header>
 
-		robots: {
-			index: true,
-			follow: true,
-			nocache: true,
-			googleBot: {
-				index: true,
-				follow: true,
-				noimageindex: true,
-				'max-video-preview': -1,
-				'max-image-preview': 'large',
-				'max-snippet': -1,
-			},
-		},
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        {/* --- Coluna do Formulário --- */}
+        <div className="lg:col-span-1">
+          <Card>
+            <CardHeader>
+              <CardTitle>Envie-me uma mensagem</CardTitle>
+              <CardDescription>Preencha o formulário abaixo e retornarei o mais breve possível.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <FormContact />
+            </CardContent>
+          </Card>
+        </div>
 
-		// Opcional: Autor
-		// authors: [{ name: 'Seu Nome', url: 'https://seusite.com/sobre' }],
+        {/* --- Coluna de Contato Direto --- */}
+        <div className="lg:col-span-1 space-y-8">
+          <h2 className="text-3xl font-bold">Outras Formas de Contato</h2>
+          <p className="text-muted-foreground">
+            Se preferir um contato mais direto, pode me encontrar aqui. Respondo rapidamente, especialmente via WhatsApp.
+          </p>
+          
+          <div className="space-y-4">
+            {/* Contato via WhatsApp */}
+            <Button asChild variant="outline" className="w-full text-lg p-6 justify-start">
+              <Link href={whatsappLink} target="_blank">
+                <Phone className="mr-4 size-6 text-green-500" />
+                <span>Conversar no WhatsApp</span>
+              </Link>
+            </Button>
 
-		keywords: [
-			'desenvolvimento web',
-			'desenvolvimento mobile',
-			'tailwindcss',
-			'react',
-			'next.js',
-			'portfólio',
-			'programação',
-			'frontend',
-			'fullstack',
-			'backend',
-		],
-	}
-}
-
-export default async function Contact() {
-	return (
-		<ScrollAnimation className='flex flex-col gap-10 p-4 lg:px-10 lg:py-8'>
-			<div className=' w-full lg:max-w-4xl mx-auto space-y-10'>
-				<h2 className='text-start text-2xl font-bold  sm:text-4xl'>
-					Entre em contato para parcerias.
-				</h2>
-				<FormContact />
-			</div>
-		</ScrollAnimation>
-	)
+            {/* Contato via E-mail */}
+            <Button asChild variant="outline" className="w-full text-lg p-6 justify-start">
+              <Link href="dossantosdevoficial@gmail.com">
+                <Mail className="mr-4 size-6 text-primary" />
+                <span>dossantosdevoficial@gmail.com</span>
+              </Link>
+            </Button>
+          </div>
+          
+          <div className="pt-4">
+            <h3 className="text-xl font-semibold mb-3">Horário de Atendimento</h3>
+            <p className="text-muted-foreground">
+              Segunda a Sexta<br/>
+              09:00 - 18:00
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollAnimation>
+  );
 }

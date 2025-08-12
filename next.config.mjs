@@ -9,6 +9,14 @@ const nextConfig = {
 			{
 				hostname: 'sa-east-1.graphassets.com',
 			},
+			{
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bundui-images.netlify.app',
+      },
 		],
 	},
 }

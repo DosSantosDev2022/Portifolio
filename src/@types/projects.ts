@@ -23,6 +23,6 @@ export interface Project {
 }
 
 export interface ProjectData {
-	project: Project[]
+	projects: Project[]
 	totalCount: number
 }

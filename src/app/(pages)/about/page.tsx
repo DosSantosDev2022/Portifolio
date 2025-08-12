@@ -1,141 +1,84 @@
-import { getAboutMe } from '@/services/hygraph/get-about-me'
-import { bebas } from '@/assets/fonts'
-import Image from 'next/image'
-import { RichText, ScrollAnimation } from '@/components/global'
+import Image from 'next/image';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Mail, ArrowRight } from 'lucide-react';
+// Importa os dados do nosso novo ficheiro
+import { pageHeader, biography, skillCategories, cta } from '@/config/about-data';
+import { ScrollAnimation } from '@/components/global';
 
-export function metadata() {
-	return {
-		title: 'Portifílio - Sobre mim',
-		description:
-			'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-		openGraph: {
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			url:
-				process.env.NEXT_PUBLIC_SITE_URL || 'https://dossantosdev.com.br/',
-			siteName: 'Meu Portfólio / DosSantosdev',
-			images: [
-				{
-					url: '/images/author.png',
-					width: 1200,
-					height: 630,
-					alt: 'Juliano Santos, desenvolvedor FullStack',
-				},
-			],
-			locale: 'pt_BR',
-			type: 'website',
-		},
+export default function AboutPage() {
+  return (
+    <ScrollAnimation className="p-4 sm:p-6 lg:p-8 space-y-16">
+      
+      {/* --- Cabeçalho e Introdução (Dados Dinâmicos) --- */}
+      <section className="max-w-4xl mx-auto text-center">
+        <Badge variant="secondary" className="mb-4">{pageHeader.badge}</Badge>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          {pageHeader.title}
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          {pageHeader.description}
+        </p>
+      </section>
 
-		twitter: {
-			card: 'summary_large_image',
-			title: 'Portifílio - DosSantosDev',
-			description:
-				'Olá! Sou um apaixonado desenvolvedor Full Stack com experiência em diversas tecnologias modernas da web. Minha jornada no mundo da programação começou com uma paixão pelo front-end, e ao longo dos anos, expandi meu conhecimento para abranger também o back-end, tornando-me um desenvolvedor versátil e capaz de criar soluções completas e eficientes.',
-			images: ['/images/author.png'],
-		},
+      {/* --- Secção de Biografia com Foto (Dados Dinâmicos) --- */}
+      <section className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
+          <div className="md:col-span-1 flex justify-center">
+            <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <Image
+                src={biography.imageUrl}
+                alt="Foto de Juliano Santos"
+                fill
+                className="rounded-full object-cover shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="md:col-span-2 space-y-4 text-muted-foreground">
+            <h2 className="text-2xl font-semibold text-foreground">{biography.title}</h2>
+            {biography.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
 
-		icons: {
-			icon: '/favicon.ico',
-			shortcut: '/favicon-16x16.png',
-			apple: '/apple-touch-icon.png',
-		},
+      {/* --- Secção de Competências (Skills) (Dados Dinâmicos) --- */}
+      <section className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-6">Minhas Competências</h2>
+        <div className="space-y-6">
+          {skillCategories.map((category) => (
+            <div key={category.title}>
+              <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {category.skills.map((skill) => (
+                  <Badge key={skill.name}>{skill.name}</Badge>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      {/* --- Secção Call to Action (CTA) (Dados Dinâmicos) --- */}
+      <section className="max-w-4xl mx-auto text-center bg-secondary/50 p-8 rounded-lg">
+        <h2 className="text-3xl font-bold mb-4">{cta.title}</h2>
+        <p className="text-muted-foreground mb-6">{cta.description}</p>
+        <div className="flex gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link href="/contact">
+              Entrar em Contato <Mail className="ml-2 size-4" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/projects">
+              Ver Meus Projetos <ArrowRight className="ml-2 size-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
 
-		robots: {
-			index: true,
-			follow: true,
-			nocache: true,
-			googleBot: {
-				index: true,
-				follow: true,
-				noimageindex: true,
-				'max-video-preview': -1,
-				'max-image-preview': 'large',
-				'max-snippet': -1,
-			},
-		},
-
-		// Opcional: Autor
-		// authors: [{ name: 'Seu Nome', url: 'https://seusite.com/sobre' }],
-
-		keywords: [
-			'desenvolvimento web',
-			'desenvolvimento mobile',
-			'tailwindcss',
-			'react',
-			'next.js',
-			'portfólio',
-			'programação',
-			'frontend',
-			'fullstack',
-			'backend',
-		],
-	}
-}
-
-export default async function AboutPage() {
-	const { aboutMe } = await getAboutMe()
-
-	const techs = aboutMe.sectionTechnologies
-	return (
-		<div className='container mx-auto space-y-28 p-4 sm:px-8 lg:px-16 lg:py-20'>
-			{/* Hero Section */}
-			<ScrollAnimation className='flex w-full flex-col items-start justify-between gap-6 lg:flex-row'>
-				<div className='flex w-full flex-col gap-2'>
-					<h1
-						className={`${bebas.className} text-4xl leading-tight font-normal sm:text-5xl lg:text-[5rem] lg:leading-[90.9px]`}
-					>
-						{aboutMe.sectionHero.title}
-					</h1>
-					<p className='text-muted text-sm leading-6 font-normal sm:text-base sm:leading-[27px]'>
-						{aboutMe.sectionHero.longText.text}
-					</p>
-				</div>
-			</ScrollAnimation>
-
-			{/* Technologies Section */}
-			<ScrollAnimation className='flex flex-col items-start justify-center rounded-md bg-zinc-800/40 p-4 sm:p-6'>
-				<div className='mb-6 sm:mb-8'>
-					<h2 className={`${bebas.className} text-4xl sm:text-6xl`}>
-						{aboutMe.sectionTechnologies.title}
-					</h2>
-					<p className='text-muted text-sm font-light sm:text-base'>
-						{aboutMe.sectionTechnologies.smallText}
-					</p>
-				</div>
-				<div className='flex w-full flex-wrap items-center gap-2 sm:gap-4'>
-					{techs?.technologies.map((tech) => (
-						<Image
-							key={tech.id}
-							alt={tech.name}
-							src={tech.icon.url}
-							width={42}
-							height={42}
-							quality={100}
-							className='rounded-md border border-zinc-700 bg-zinc-800 p-1'
-						/>
-					))}
-				</div>
-			</ScrollAnimation>
-
-			{/* Story Section */}
-			<ScrollAnimation className='flex w-full flex-col gap-6 lg:flex-row'>
-				<div className='flex w-full flex-col'>
-					<h2 className={`${bebas.className} text-4xl lg:text-7xl`}>
-						{aboutMe.sectionstory.title}
-					</h2>
-					<RichText
-						content={aboutMe.sectionstory.longText.raw}
-						renderers={{
-							p: ({ children }) => (
-								<p className='text-muted text-base font-light'>
-									{children}
-								</p>
-							),
-						}}
-					/>
-				</div>
-			</ScrollAnimation>
-		</div>
-	)
+    </ScrollAnimation>
+  );
 }

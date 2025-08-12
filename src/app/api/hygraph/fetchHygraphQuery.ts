@@ -19,6 +19,6 @@ export const fetchHygraphQuery = async <T>(
 	})
 
 	const { data } = await response.json()
-
+  console.log("retorno api:", data)
 	return data
 }

@@ -2,7 +2,7 @@
 
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, Input, Label, TextArea } from '@/components/ui'
+import { Button, Input, Label, Textarea } from '@/components/ui'
 import { useState } from 'react'
 import { ImSpinner9 } from 'react-icons/im'
 import { useNotification } from '@/context/notification/notificationContext'
@@ -84,7 +84,7 @@ const FormContact = () => {
 			</div>
 			<div className='flex flex-col gap-1'>
 				<Label htmlFor='mensagem'>Mensagem</Label>
-				<TextArea
+				<Textarea
 					{...register('mensagem')}
 					placeholder='Deixe sua mensagem...'
 				/>
@@ -95,7 +95,7 @@ const FormContact = () => {
 				)}
 			</div>
 			<div className='flex w-full items-center justify-end'>
-				<Button variants='accent' disabled={isLoading} sizes='full'>
+				<Button type='submit' variant='secondary' disabled={isLoading} size='default'>
 					{isLoading ? (
 						<span className='flex items-center justify-center gap-1'>
 							Enviando...

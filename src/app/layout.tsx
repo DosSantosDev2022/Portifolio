@@ -1,8 +1,35 @@
+// app/layout.tsx
+
 import '../styles/globals.css'
+import type { Metadata } from 'next' // 1. Importar o tipo Metadata
 import { NotificationProvider } from '@/context/notification/notificationContext'
 import { twMerge } from 'tailwind-merge'
 import { Sidebar } from '@/components/global/sidebar/sidebar'
 import { QueryProvider } from '@/providers/query-provider'
+
+// 2. Criar e exportar o objeto de metadados
+export const metadata: Metadata = {
+	// Título que aparecerá na aba do navegador
+	title: {
+		template: 'Portifólio',
+		default: 'Juliano Santos | Desenvolvedor FullStack',
+	},
+	// Descrição do seu site (importante para SEO)
+	description:
+		'Um portfólio incrível mostrando meus projetos e habilidades em desenvolvimento web.',
+	// Palavras-chave relevantes para o seu site
+	keywords: [
+		'Desenvolvimento Web',
+		'React',
+		'Next.js',
+		'TypeScript',
+		'Portfólio',
+	],
+	// Ícone do site (favicon)
+	icons: {
+		icon: '/favicon.ico',
+	},
+}
 
 export default async function RootLayout({
 	children,
@@ -10,11 +37,9 @@ export default async function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='pt-BR' className={twMerge('custom-scrollbar')}>
-			<head>
-				<link rel='icon' href='/favicon.ico' sizes='any' />
-			</head>
-			<body className='bg-background text-foreground dark'>
+		// A tag <head> foi removida daqui, o Next.js vai gerá-la automaticamente
+		<html lang='pt-BR'>
+			<body className='bg-background text-foreground scrollbar-custom dark'>
 				<QueryProvider>
 					<NotificationProvider>
 						<div className='flex min-h-screen'>

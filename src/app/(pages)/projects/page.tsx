@@ -68,7 +68,9 @@ export default function ProjectsPage() {
 				{isFetchingNextPage && (
 					<Loader2 className='animate-spin size-8 text-primary' />
 				)}
-				{!hasNextPage && status !== 'pending' && (
+				{/* A mensagem só deve aparecer se não houver próxima página. 
+      Já sabemos que o status não é 'pending' aqui. */}
+				{!hasNextPage && (
 					<p className='text-muted-foreground'>Você chegou ao fim!</p>
 				)}
 			</div>

@@ -38,8 +38,8 @@ export default async function RootLayout({
 }>) {
 	return (
 		// A tag <head> foi removida daqui, o Next.js vai gerá-la automaticamente
-		<html lang='pt-BR' className={twMerge('custom-scrollbar')}>
-			<body className='bg-background text-foreground dark'>
+		<html lang='pt-BR'>
+			<body className='bg-background text-foreground scrollbar-custom dark'>
 				<QueryProvider>
 					<NotificationProvider>
 						<div className='flex min-h-screen'>

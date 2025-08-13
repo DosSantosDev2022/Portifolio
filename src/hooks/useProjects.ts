@@ -11,7 +11,7 @@ const PROJECTS_PER_PAGE = 6; // Defina quantos projetos carregar por vez
 const fetchProjects = async ({ pageParam = 0 }): Promise<ProjectData['projects']> => {
 
    const query = `
-    query ProjectsQuery($first: Int, $skip: Int) {
+     query ProjectsQuery($first: Int, $skip: Int) {
       projects(orderBy: createdAt_DESC, first: $first, skip: $skip) {
         id
         description
@@ -30,7 +30,13 @@ const fetchProjects = async ({ pageParam = 0 }): Promise<ProjectData['projects']
   };
 
   try {
-    const data: ProjectData = await fetchHygraphQuery(query, variables);
+    const data = await fetchHygraphQuery<ProjectData>(query, variables);
+      // retorna um array vazio para evitar erros.
+    if (!data || !data.projects) {
+      console.warn('A resposta da API não contém a propriedade "projects" ou está vazia.');
+      return []; 
+    }
+
     return data.projects;
   } catch (error) {
     console.error('ERRO AO BUSCAR DADOS DO HYGRAPH:', error); // <-- LOG DE ERRO

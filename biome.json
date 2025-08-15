@@ -21,6 +21,9 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"suspicious": {
+       "noArrayIndexKey":"warn"
+			},
 			"recommended": true,
 			"a11y": {
 				"noRedundantRoles": "warn",

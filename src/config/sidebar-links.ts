@@ -10,7 +10,7 @@ export const navLinks = [
 ];
 
 export const socialLinks = [
-  {  id: "social-link-01" , href: "https://x.com", label: "Twitter", icon: FaTwitter },
-  {  id: "social-link-02" , href: "https://x.com", label: "Instagram", icon: FaInstagram },
-  {  id: "social-link-03" , href: "https://x.com", label: "Linkedin", icon: FaLinkedin },
+  {  id: "social-link-01" , href: "https://x.com/DosSantosDev?t=fkUO6D9V_sX9JUbOExmbgw&s=09", label: "Twitter", icon: FaTwitter },
+  {  id: "social-link-02" , href: "https://www.instagram.com/julianosantosdev/", label: "Instagram", icon: FaInstagram },
+  {  id: "social-link-03" , href: "https://www.linkedin.com/in/dossantosdev", label: "Linkedin", icon: FaLinkedin },
 ];

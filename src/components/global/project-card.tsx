@@ -34,7 +34,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 				<CardTitle className='mb-2 text-xl font-semibold'>
 					{project.title}
 				</CardTitle>
-				<p className='text-muted-foreground text-sm'>
+				<p className='text-muted-foreground text-sm line-clamp-6'>
 					{project.description}
 				</p>
 			</CardContent>
@@ -49,13 +49,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 					</div>
 					<div className='space-y-2'>
 						<Button className='w-full mt-4' variant={'secondary'} asChild>
-							<Link href={''}>
+							<Link target='_blank' href={project.deployLink}>
 								<FaRegWindowMaximize />
 								Preview
 							</Link>
 						</Button>
 						<Button className='w-full' variant={'secondary'} asChild>
-							<Link href={''}>
+							<Link target='_blank' href={project.codeLink}>
 								<FaGithub />
 								Repositório
 							</Link>

@@ -1,58 +1,17 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input, Textarea } from '@/components/ui'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { useState } from 'react'
+import { useFormContactController } from '@/hooks/use-form-contact-controller'
 import { ImSpinner9 } from 'react-icons/im'
-import { useNotification } from '@/context/notification/notificationContext'
-import { type FormData, FormSchema } from '@/@types/forms'
 
 const FormContact = () => {
-  const { showNotification } = useNotification()
-  const [isLoading, setIsLoading] = useState(false)
+  const { form, isLoading, onSubmit } = useFormContactController();
 
-  // 1. A inicialização do useForm permanece a mesma
-  const form = useForm<FormData>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      nome: '',
-      email: '',
-      telefone: '',
-      mensagem: '',
-    }
-  })
-
-  // 2. A função onSubmit também permanece a mesma
-  const onSubmit = async (data: FormData) => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      setIsLoading(false);
-      if (response.ok) {
-        showNotification('Email enviado com sucesso!', 'success');
-        form.reset(); // Usamos o form.reset() do hook
-      } else {
-        showNotification('Ocorreu um erro ao enviar o email.', 'error');
-      }
-    } catch (error) {
-      console.error('Erro na requisição fetch:', error);
-      setIsLoading(false);
-      showNotification('Erro de rede. Verifique sua conexão.', 'error');
-    }
-  };
-
-  // 3. A grande mudança está aqui, no JSX retornado
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
-        
+
         {/* Campo NOME */}
         <FormField
           control={form.control}
@@ -82,7 +41,7 @@ const FormContact = () => {
             </FormItem>
           )}
         />
-        
+
         {/* Campo TELEFONE */}
         <FormField
           control={form.control}
@@ -114,14 +73,14 @@ const FormContact = () => {
         />
 
         <div className='flex w-full items-center justify-end'>
-          <Button type='submit' variant='secondary' disabled={isLoading} size='default'>
+          <Button className='w-full' type='submit' variant='secondary' disabled={isLoading} size='default'>
             {isLoading ? (
               <span className='flex items-center justify-center gap-1'>
-                Enviando...
+                Enviando mensagem...
                 <ImSpinner9 className='text-light animate-spin' />
               </span>
             ) : (
-              'Enviar'
+              'Enviar mensagem'
             )}
           </Button>
         </div>
@@ -131,3 +90,4 @@ const FormContact = () => {
 }
 
 export { FormContact }
+

@@ -1,21 +1,19 @@
 // app/projects/page.tsx
 'use client'
 
+import { ScrollAnimation } from '@/components/global'
+import { ProjectCard } from '@/components/global/project-card'
+import { useProjectData } from '@/hooks/use-project-data'
+import { Loader2 } from 'lucide-react'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useProjects } from '@/hooks/useProjects'
-import { ProjectCard } from '@/components/global/project-card'
-import { ScrollAnimation } from '@/components/global'
-import { Loader2 } from 'lucide-react'
 
 export default function ProjectsPage() {
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-		useProjects()
+		useProjectData()
 
 	const { ref, inView } = useInView()
 
-	// Quando o elemento 'ref' (no final da lista) se torna visível,
-	// busca a próxima página, se houver uma.
 	useEffect(() => {
 		if (inView && hasNextPage) {
 			fetchNextPage()

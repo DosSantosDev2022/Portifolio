@@ -1,11 +1,10 @@
 // app/layout.tsx
 
-import '../styles/globals.css'
-import type { Metadata } from 'next' // 1. Importar o tipo Metadata
-import { NotificationProvider } from '@/context/notification/notificationContext'
-import { twMerge } from 'tailwind-merge'
 import { Sidebar } from '@/components/global/sidebar/sidebar'
 import { QueryProvider } from '@/providers/query-provider'
+import { ToastProvider } from '@/providers/toast-provider'
+import type { Metadata } from 'next'; // 1. Importar o tipo Metadata
+import '../styles/globals.css'
 
 // 2. Criar e exportar o objeto de metadados
 export const metadata: Metadata = {
@@ -41,14 +40,14 @@ export default async function RootLayout({
 		<html lang='pt-BR'>
 			<body className='bg-background text-foreground scrollbar-custom dark'>
 				<QueryProvider>
-					<NotificationProvider>
+					<ToastProvider>
 						<div className='flex min-h-screen'>
 							<Sidebar />
 							<main className='flex-1 md:pl-64 lg:pl-72 pt-16 lg:pt-0'>
 								{children}
 							</main>
 						</div>
-					</NotificationProvider>
+					</ToastProvider>
 				</QueryProvider>
 			</body>
 		</html>

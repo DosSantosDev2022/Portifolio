@@ -8,10 +8,10 @@ import {
 	CardTitle,
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
 import { Button } from '../ui'
-import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa'
+import { FaEye } from 'react-icons/fa'
 import type { Project } from '@/@types/projects'
+import { ProjectDetailsModal } from './project-details-modal'
 
 interface ProjectCardProps {
 	project: Project
@@ -40,26 +40,22 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 			</CardContent>
 			<CardFooter>
 				<div className='grid w-full'>
-					<div className='flex flex-wrap gap-2'>
+					<div className='flex flex-wrap gap-2 mb-3'>
 						{project.technologie.map((tag) => (
 							<Badge key={tag.id} variant='secondary'>
 								{tag.name}
 							</Badge>
 						))}
 					</div>
-					<div className='space-y-2'>
-						<Button className='w-full mt-4' variant={'secondary'} asChild>
-							<Link target='_blank' href={project.deployLink}>
-								<FaRegWindowMaximize />
-								Preview
-							</Link>
-						</Button>
-						<Button className='w-full' variant={'secondary'} asChild>
-							<Link target='_blank' href={project.codeLink}>
-								<FaGithub />
-								Repositório
-							</Link>
-						</Button>
+					<div className='flex items-center w-full'>
+						<ProjectDetailsModal project={project}>
+							<Button
+								className='w-full font-semibold text-foreground'
+								variant={'default'}
+							>
+								Ver Detalhes
+							</Button>
+						</ProjectDetailsModal>
 					</div>
 				</div>
 			</CardFooter>

@@ -16,6 +16,9 @@ const fetchProjects = async ({
       projects(orderBy: createdAt_DESC, first: $first, skip: $skip) {
         id
         description
+				completeDescription {
+					raw
+				}
         title
         technologie { id, name, icon { url } }
         deployLink

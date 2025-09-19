@@ -1,4 +1,5 @@
-// Este tipo representa objetos que contêm uma URL, como ícones e imagens de capa.
+import type { RichTextContent } from '@graphcms/rich-text-types'
+
 export type Asset = {
   url: string;
 };
@@ -14,6 +15,9 @@ export type Technology = {
 export type Project = {
   id: string;
   description: string;
+  completeDescription: {
+      raw: RichTextContent
+    }
   title: string;
   technologie: Technology[];
   deployLink: string;

@@ -3,7 +3,7 @@ import { type FormData, FormSchema } from '@/@types/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 export const useFormContactController = () => {
 	const [isLoading, setIsLoading] = useState(false)

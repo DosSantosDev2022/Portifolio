@@ -1,4 +1,4 @@
-// app/components/sidebar/user-profile.jsx
+'use client'
 import Image from 'next/image';
 
 /**
@@ -9,22 +9,24 @@ import Image from 'next/image';
  * @param {string} props.imageUrl - A URL da imagem de perfil.
  */
 
-const  UserProfile = () => {
+const UserProfile = () => {
   return (
-    <div className='flex items-center space-x-4 lg:p-4'>
+    < div className='flex items-center space-x-4' >
       <Image
         src={'/images/profile.png'}
+        // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
         alt={`Avatar de Julano Santos`}
         width={48}
         height={48}
         className='rounded-full object-cover'
       />
       <div>
-        <p className='font-semibold text-foreground'>Juliano Santos</p>
-        <p className='text-sm text-muted-foreground'>FullStack developer</p>
+        <p className='font-semibold text-white'>Juliano Santos</p> {/* Corrigido para branco puro ou foreground */}
+        <p className='text-sm text-gray-500'>FullStack developer</p>
       </div>
-    </div>
+    </ div>
   );
 }
 
-export { UserProfile }
+export { UserProfile };
+

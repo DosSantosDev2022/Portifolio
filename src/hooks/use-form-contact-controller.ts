@@ -29,7 +29,7 @@ export const useFormContactController = () => {
 
 			setIsLoading(false)
 			if (response.ok) {
-				toast.success('Email enviado com sucesso!')
+				toast('Email enviado com sucesso!')
 				form.reset()
 			} else {
 				toast.error('Ocorreu um erro ao enviar o email.')

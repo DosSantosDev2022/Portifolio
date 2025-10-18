@@ -1,12 +1,12 @@
 // app/components/sidebar/sidebar-nav.jsx
 'use client'
 
+import { Button } from '@/components/ui/button'
+import { SheetClose } from '@/components/ui/sheet'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import type { IconType } from 'react-icons/lib'
-import { SheetClose } from '@/components/ui/sheet'
 import React from 'react'
+import type { IconType } from 'react-icons/lib'
 
 /**
  * Renderiza uma lista de links de navegação.
@@ -41,11 +41,11 @@ const SidebarNav = ({
 	return (
 		<div className='w-full'>
 			{title && (
-				<div className='text-xs font-medium uppercase text-muted-foreground mb-4 px-4'>
+				<div className='text-xs font-medium uppercase text-gray-500 mb-4 px-4'>
 					{title}
 				</div>
 			)}
-			<ul className='flex flex-col gap-2'>
+			<ul className='flex flex-col gap-1'> {/* Reduzi o gap para compactar */}
 				{links.map((link) => {
 					const isActive = !isSocial && pathname === link.href
 
@@ -56,33 +56,31 @@ const SidebarNav = ({
 						</>
 					)
 
-					const buttonLink = isSocial ? (
+					// 🎯 MUDANÇA 2: Estilo dos botões para o nav principal.
+					// Usaremos 'secondary' para ativo e refinaremos as classes de 'ghost'.
+					const navButtonClasses = isActive
+						? 'bg-secondary text-primary font-semibold' // Link ativo: fundo secundário (cinza escuro no dark mode), texto primário (ou branco).
+						: 'text-gray-400 hover:bg-gray-800 hover:text-white font-medium' // Link inativo: texto cinza, hover sutil.
+
+					// Mantenho o Button em vez de usar div/Link direto para acessibilidade (role="button")
+					const buttonLink = (
 						<Button
-							variant={isActive ? 'secondary' : 'ghost'}
+							variant='ghost' // Deixamos 'ghost', mas sobrescrevemos com navButtonClasses
 							asChild
-							className='w-full justify-start gap-3'
+							className={`w-full justify-start gap-3 px-4 py-2 h-auto rounded-lg ${navButtonClasses}`}
 						>
 							<Link
 								href={link.href}
-								target='_blank'
-								rel='noopener noreferrer'
+								target={isSocial ? '_blank' : undefined}
+								rel={isSocial ? 'noopener noreferrer' : undefined}
 							>
 								{linkContent}
 							</Link>
-						</Button>
-					) : (
-						<Button
-							variant={isActive ? 'secondary' : 'ghost'}
-							asChild
-							className='w-full justify-start gap-3'
-						>
-							<Link href={link.href}>{linkContent}</Link>
 						</Button>
 					)
 
 					return (
 						<li key={link.href}>
-							{/* 4. USAR O WRAPPER AQUI */}
 							<Wrapper asChild>{buttonLink}</Wrapper>
 						</li>
 					)
@@ -93,3 +91,4 @@ const SidebarNav = ({
 }
 
 export { SidebarNav }
+

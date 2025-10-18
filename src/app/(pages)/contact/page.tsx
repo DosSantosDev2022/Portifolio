@@ -11,64 +11,70 @@ export default function ContactPage() {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Vi seu portfólio e gostaria de conversar.")}`;
 
   return (
-    <ScrollAnimation className="p-4 sm:p-6 lg:p-8 border h-full flex items-center flex-col justify-center">
-      {/* --- Cabeçalho da Página --- */}
-      <div className="max-w-6xl text-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Entre em Contato</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Tem uma pergunta ou uma proposta, entre em contato.
-        </p>
-      </div>
+    <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-20">
+      <ScrollAnimation>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-        {/* --- Coluna do Formulário --- */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader>
-              <CardTitle>Envie-me uma mensagem</CardTitle>
-              <CardDescription>Preencha o formulário abaixo e retornarei o mais breve possível.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <FormContact />
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* --- Coluna de Contato Direto --- */}
-        <div className="lg:col-span-1 space-y-8">
-          <h2 className="text-3xl font-bold">Outras Formas de Contato</h2>
-          <p className="text-muted-foreground">
-            Se preferir um contato mais direto, pode me encontrar aqui. Respondo rapidamente, especialmente via WhatsApp.
+        {/* --- Cabeçalho da Página --- */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+            Entre em Contato
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Tem uma pergunta, proposta de projeto ou apenas quer bater um papo? Envie uma mensagem!
           </p>
+        </div>
 
-          <div className="space-y-4">
-            {/* Contato via WhatsApp */}
-            <Button asChild variant="outline" className="w-full text-lg p-6 justify-start">
-              <Link href={whatsappLink} target="_blank">
-                <Phone className="mr-4 size-6 text-green-500" />
-                <span className='text-sm lg:text-base'>Conversar no WhatsApp</span>
-              </Link>
-            </Button>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
-            {/* Contato via telegram */}
-            <Button asChild variant="outline" className="w-full text-lg p-6 justify-start">
-              <Link target='_blank' href="https://t.me/DosSantosDev">
-                <FaTelegramPlane className="mr-4 size-6 text-blue-500" />
-                <span className='text-sm lg:text-base'>Conversar no Telegram</span>
-              </Link>
-            </Button>
+          {/* --- Coluna do Formulário (2/3 de largura em LG) --- */}
+          <div className="lg:col-span-2">
+            <Card className='shadow-2xl'> {/* Destaque no card do formulário */}
+              <CardHeader>
+                <CardTitle className='text-2xl font-bold'>Envie-me uma mensagem</CardTitle>
+                <CardDescription>Preencha o formulário abaixo e retornarei o mais breve possível.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <FormContact /> {/* Componente de formulário */}
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="text-center lg:text-start pt-4">
-            <h3 className="text-xl font-semibold mb-3">Horário de Atendimento</h3>
+          {/* --- Coluna de Contato Direto (1/3 de largura em LG) --- */}
+          <div className="lg:col-span-1 space-y-8 pt-4 lg:pt-0">
+            <h2 className="text-3xl font-bold border-b pb-2">Contatos Diretos</h2>
+
             <p className="text-muted-foreground">
-              Segunda a Sexta<br />
-              09:00 - 18:00
+              Se preferir, me encontre diretamente por estas plataformas. Respondo rapidamente, especialmente via WhatsApp e Telegram.
             </p>
+
+            <div className="space-y-4">
+              {/* Contato via WhatsApp */}
+              <Button asChild variant="secondary" className="w-full text-lg p-6 h-auto justify-start transition-transform hover:scale-[1.01]">
+                <Link href={whatsappLink} target="_blank">
+                  <Phone className="mr-4 size-6 text-green-500" />
+                  <span className='text-base font-semibold'>Conversar no WhatsApp</span>
+                </Link>
+              </Button>
+
+              {/* Contato via Telegram */}
+              <Button asChild variant="secondary" className="w-full text-lg p-6 h-auto justify-start transition-transform hover:scale-[1.01]">
+                <Link target='_blank' href="https://t.me/DosSantosDev">
+                  <FaTelegramPlane className="mr-4 size-6 text-blue-500" />
+                  <span className='text-base font-semibold'>Conversar no Telegram</span>
+                </Link>
+              </Button>
+            </div>
+
+            <div className="text-center lg:text-start pt-4 border-t lg:border-none">
+              <h3 className="text-xl font-semibold mb-3">Horário de Atendimento</h3>
+              <p className="text-muted-foreground">
+                **Segunda a Sexta**<br />
+                09:00 - 18:00 (Fuso Horário de Brasília)
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </ScrollAnimation>
+      </ScrollAnimation>
+    </div>
   );
 }

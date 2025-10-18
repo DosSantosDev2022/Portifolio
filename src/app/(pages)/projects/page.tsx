@@ -1,18 +1,24 @@
 // app/projects/page.tsx
 'use client'
 
-import { ScrollAnimation } from '@/components/global'
-import { ProjectCard } from '@/components/global/project-card'
-import { useProjectData } from '@/hooks/use-project-data'
-import { Loader2 } from 'lucide-react'
-import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { ScrollAnimation } from '@/components/global';
+import { ProjectCard } from '@/components/global/project-card';
+import { Heading, Paragraph } from '@/components/ui'; // Importado para consistência
+import { useProjectData } from '@/hooks/use-project-data';
+import { Loader2 } from 'lucide-react';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-export default function ProjectsPage() {
+/**
+ * @title Projects Page
+ * @description Página principal de listagem de projetos com Infinite Scroll.
+ * @returns {JSX.Element} O componente da página de projetos.
+ */
+export default function ProjectsPage(): JSX.Element {
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
 		useProjectData()
 
-	const { ref, inView } = useInView()
+	const { ref, inView } = useInView({ threshold: 0.1 }) // Otimizado threshold
 
 	useEffect(() => {
 		if (inView && hasNextPage) {
@@ -20,9 +26,10 @@ export default function ProjectsPage() {
 		}
 	}, [inView, hasNextPage, fetchNextPage])
 
+	// Estados de Carregamento e Erro
 	if (status === 'pending') {
 		return (
-			<div className='flex justify-center items-center h-screen'>
+			<div className='flex justify-center items-center min-h-[50vh]'>
 				<Loader2 className='animate-spin size-12 text-primary' />
 			</div>
 		)
@@ -30,28 +37,31 @@ export default function ProjectsPage() {
 
 	if (status === 'error') {
 		return (
-			<div className='text-center p-8'>
-				Ocorreu um erro ao carregar os projetos.
+			<div className='text-center p-12'>
+				<Paragraph className='text-red-500'>
+					Ocorreu um erro ao carregar os projetos.
+				</Paragraph>
 			</div>
 		)
 	}
 
 	return (
-		<div className='p-4 sm:p-6 lg:p-8'>
-			<div className='mb-8'>
-				<h1 className='text-4xl font-bold tracking-tight'>
+		<div className='container mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-12'>
+
+			{/* --- Cabeçalho da Página --- */}
+			<div className='mb-8 max-w-2xl'>
+				<Heading as={'h1'} className='text-4xl lg:text-5xl font-extrabold'>
 					Meus Projetos
-				</h1>
-				<p className='mt-2 text-lg text-muted-foreground'>
-					Uma coleção de trabalhos que desenvolvi, desde aplicações web a
-					sistemas de design.
-				</p>
+				</Heading>
+				<Paragraph className='mt-3 text-lg text-muted-foreground'>
+					Uma coleção de trabalhos que desenvolvi, focada em aplicações modernas e escaláveis.
+				</Paragraph>
 			</div>
 
+			{/* --- Listagem dos Projetos --- */}
 			<section>
-				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{/* Mapeamos sobre as páginas e, em seguida, sobre os projetos de cada página */}
-					{data?.pages.map((page, pageIndex) =>
+				<div className='grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10'>
+					{data?.pages.map((page) =>
 						page.map((project) => (
 							<ScrollAnimation key={project.id}>
 								<ProjectCard project={project} />
@@ -61,15 +71,15 @@ export default function ProjectsPage() {
 				</div>
 			</section>
 
-			{/* Elemento "sentinela" para o Intersection Observer */}
-			<div ref={ref} className='mt-8 flex justify-center'>
+			{/* --- Infinite Scroll Loader/Sentinel --- */}
+			<div ref={ref} className='mt-12 flex flex-col items-center justify-center space-y-4'>
 				{isFetchingNextPage && (
 					<Loader2 className='animate-spin size-8 text-primary' />
 				)}
-				{/* A mensagem só deve aparecer se não houver próxima página. 
-      Já sabemos que o status não é 'pending' aqui. */}
-				{!hasNextPage && (
-					<p className='text-muted-foreground'>Você chegou ao fim!</p>
+				{!hasNextPage && !isFetchingNextPage && (
+					<Paragraph className='text-sm text-muted-foreground pt-4'>
+						Você chegou ao fim dos projetos!
+					</Paragraph>
 				)}
 			</div>
 		</div>

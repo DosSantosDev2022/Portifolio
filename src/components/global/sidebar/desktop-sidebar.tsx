@@ -1,13 +1,15 @@
 'use client'
-import { UserProfile } from './user-profile'
-import { SidebarNav } from './sidebar-nav'
+
 import { navLinks, socialLinks } from '@/config/sidebar-links'
+import { SidebarNav } from './sidebar-nav'
+import { UserProfile } from './user-profile'
 
 const DesktopSidebar = () => {
 	return (
-		<aside className='hidden md:flex md:w-64 lg:w-72 flex-col fixed inset-y-0 z-10 border-r p-4'>
+		<aside className='hidden md:flex md:w-64 flex-col fixed inset-y-0 z-10 bg-secondary/20 p-4'>
 			<div className='flex h-full w-full flex-col'>
-				<div className='mb-4'>
+				{/* Mantenho o UserProfile separado do padding do nav. */}
+				<div className='mb-8'> {/* Aumentei o espaçamento inferior. */}
 					<UserProfile />
 				</div>
 
@@ -26,8 +28,9 @@ const DesktopSidebar = () => {
 					/>
 				</nav>
 			</div>
-		</aside>
+		</ aside>
 	)
 }
 
 export { DesktopSidebar }
+
